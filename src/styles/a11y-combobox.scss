@@ -1,0 +1,33 @@
+@mixin v-a11y-combobox {
+  all: inherit;
+  margin: 0 auto;
+  max-width: 30rem;
+  padding: 2vmin;
+  position: relative;
+  width: 100%;
+
+  /* &::after {
+    background-color: darkblue;
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  } */
+}
+
+@mixin v-a11y-combobox__input {
+  border-radius: .25rem .25rem 0 0;
+  border: none;
+  border-bottom: 2px solid #eee;
+  font-size: inherit;
+  font-family: inherit;
+  padding: .25rem .5rem;
+  width: 100%;
+
+  &:focus {
+    border-bottom-color: darkblue;
+    outline: 0;
+  }
+}
