@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <!-- onclick="void(0)" fixes non registering click events in iOS Safari -->
+  <div id="app" onclick="void(0)">
     <header class="example-header">
       <img alt="Vue logo" src="./assets/logo.png" class="example-header__logo">
       <h1 class="main-headline">Vue a11y Combobox</h1>
@@ -63,18 +64,19 @@ export default {
 </script>
 
 <style lang="scss">
-
 body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   margin: 0;
   min-height: 100vh;
   padding: 4vmin 2vmin 2vmin;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -85,7 +87,7 @@ body {
 }
 
 .example-header__logo {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   max-width: 3rem;
 }
 
@@ -93,5 +95,4 @@ body {
   margin: 2vmin auto;
   max-width: 60ch;
 }
-
 </style>
