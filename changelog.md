@@ -1,5 +1,19 @@
 # Changelog
 
+## [unreleased]
+
+### Added
+
+- circleci config
+
+### Updated
+
+- switched to vue:recommended code style
+
+### Removed
+
+- sample HelloWorld component
+
 ## v0.2.1
 
 ### Fixed
