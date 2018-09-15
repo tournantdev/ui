@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <header class="example-header">
-      <img alt="Vue logo" src="./assets/logo.png" class="example-header__logo">
+      <img
+        alt="Vue logo"
+        src="./assets/logo.png"
+        class="example-header__logo">
       <h1 class="main-headline">Vue a11y Combobox</h1>
     </header>
     <main>
       <a11y-combobox
         :items="filteredPosts"
+        input-label="Search for posts"
         @input="filterItems"
         @foundResult="showResult"
-        inputLabel="Search for posts"
       />
       <transition name="fade-up">
         <article
@@ -29,7 +32,7 @@
 import A11yCombobox from './components/combobox/A11yCombobox'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     A11yCombobox
   },
@@ -39,6 +42,13 @@ export default {
       filteredPosts: [],
       activePost: null
     }
+  },
+  mounted () {
+    fetch('https://jsonplaceholder.typicode.com/posts/')
+      .then((response) => response.json())
+      .then((json) => {
+        this.posts = json
+      })
   },
   methods: {
     filterItems (value) {
@@ -51,13 +61,6 @@ export default {
     showResult (id) {
       this.activePost = this.posts.find((post) => post.id === id)
     }
-  },
-  mounted () {
-    fetch('https://jsonplaceholder.typicode.com/posts/')
-      .then((response) => response.json())
-      .then((json) => {
-        this.posts = json
-      })
   }
 }
 </script>
