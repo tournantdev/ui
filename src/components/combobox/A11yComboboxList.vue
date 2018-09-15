@@ -1,10 +1,10 @@
 <template>
   <transition-group
+    id="vCbResultList"
+    :class="listClasses.listClass"
     name="list"
     mode="out-in"
     tag="ul"
-    id="vCbResultList"
-    :class="listClasses.listClass"
     tabindex="0"
   >
     <li
@@ -14,14 +14,14 @@
       <span>Sorry, but no results could be found …</span>
     </li>
     <li
-      v-else
       v-for="(item, index) in items"
+      v-else
       :key="index"
-      @click="$emit('resultClick', index)"
       :id="getId(index)"
       :class="listClasses.itemClass"
       :aria-selected="(activeItem === index).toString()"
       role="option"
+      @click="$emit('resultClick', index)"
     >
       <span>{{ item.title }}</span>
     </li>

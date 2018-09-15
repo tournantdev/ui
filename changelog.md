@@ -2,6 +2,18 @@
 
 ## [unreleased]
 
+### Added
+
+- circleci config
+
+### Updated
+
+- switched to vue:recommended code style
+
+### Removed
+
+- sample HelloWorld component
+
 ### Fixed
 
 - Click event not firing in iOS Safari
