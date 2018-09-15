@@ -1,5 +1,11 @@
 # Changelog
 
+## [unreleased]
+
+### Fixed
+
+- Click event not firing in iOS Safari
+
 ## v0.2.1
 
 ### Fixed
