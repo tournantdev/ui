@@ -80,10 +80,10 @@ export default {
     }
   },
   mounted () {
-    document.addEventListener('click', this.handleClick)
+    document.addEventListener('click', this.handleClick, false)
   },
   destroyed () {
-    document.removeEventListener('click', this.handleClick)
+    document.removeEventListener('click', this.handleClick, false)
   },
   methods: {
     onChange () {
@@ -139,26 +139,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "Styles/a11y-combobox.scss";
+@import 'Styles/a11y-combobox.scss';
 
 .fade-up-enter-active,
 .fade-up-move {
-    transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 .fade-up-move {
-    transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 .fade-up-enter {
-    opacity: 0;
-    transform: translateY(1.5rem);
+  opacity: 0;
+  transform: translateY(1.5rem);
 }
 .fade-up-leave-to {
-    opacity: 0;
-    position: absolute;
-    transform: translateY(.5rem);
+  opacity: 0;
+  position: absolute;
+  transform: translateY(0.5rem);
 }
 .fade-up-leave-active {
-    transition: all .1333s ease-in;
+  transition: all 0.1333s ease-in;
 }
 
 .v-a11y-combobox {
@@ -168,5 +168,4 @@ export default {
 .v-a11y-combobox__input {
   @include v-a11y-combobox__input;
 }
-
 </style>
