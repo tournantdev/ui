@@ -5,6 +5,7 @@
 ### Added
 
 - circleci config
+- Add husky to control git hooks
 
 ### Updated
 
