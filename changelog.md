@@ -1,5 +1,24 @@
 # Changelog
 
+## [unreleased]
+
+### Added
+
+- circleci config
+- Add husky to control git hooks
+
+### Updated
+
+- switched to vue:recommended code style
+
+### Removed
+
+- sample HelloWorld component
+
+### Fixed
+
+- Click event not firing in iOS Safari
+
 ## v0.2.1
 
 ### Fixed

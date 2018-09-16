@@ -1,38 +1,38 @@
 <template>
   <div
     :class="cbClasses.base"
+    :aria-expanded="showsList.toString()"
     role="combobox"
     aria-owns="vCbResultList"
     aria-haspopup="listbox"
-    :aria-expanded="showsList.toString()"
   >
     <input
+      ref="input"
       v-model.trim="inputValue"
+      :class="cbClasses.input"
+      :aria-label="inputLabel"
+      :aria-activedescendant="getId(arrowPosition)"
+      type="text"
+      name="cbInput"
+      role="searchbox"
+      aria-autocomplete="list"
+      aria-controls="vCbResultList"
+      aria-multiline="false"
       @input="onChange"
       @focus="hasFocus = true"
       @keyup.down="onKeyDown"
       @keyup.up="onKeyUp"
       @keyup.enter="onEnter"
       @keyup.esc="onEscape"
-      ref="input"
-      :class="cbClasses.input"
-      type="text"
-      name="cbInput"
-      role="searchbox"
-      aria-autocomplete="list"
-      :aria-label="inputLabel"
-      aria-controls="vCbResultList"
-      :aria-activedescendant="getId(arrowPosition)"
-      aria-multiline="false"
     >
     <transition name="fade-up">
       <a11y-combobox-list
         v-show="showsList"
-        role="listbox"
         :items="items"
-        :activeItem="arrowPosition"
-        @resultClick="onResultClick"
+        :active-item="arrowPosition"
         :aria-label="inputLabel"
+        role="listbox"
+        @resultClick="onResultClick"
       />
     </transition>
   </div>
@@ -42,6 +42,9 @@
 import A11yComboboxList from './A11yComboboxList.vue'
 
 export default {
+  components: {
+    A11yComboboxList
+  },
   props: {
     items: {
       type: Array,
@@ -55,9 +58,6 @@ export default {
       type: Boolean,
       default: true
     }
-  },
-  components: {
-    A11yComboboxList
   },
   data () {
     return {
@@ -78,6 +78,12 @@ export default {
         }
         : ''
     }
+  },
+  mounted () {
+    document.addEventListener('click', this.handleClick, false)
+  },
+  destroyed () {
+    document.removeEventListener('click', this.handleClick, false)
   },
   methods: {
     onChange () {
@@ -123,12 +129,6 @@ export default {
       return id < 0 ? '' : `vCbItem_${id}`
     }
   },
-  mounted () {
-    document.addEventListener('click', this.handleClick)
-  },
-  destroyed () {
-    document.removeEventListener('click', this.handleClick)
-  },
   provide () {
     return {
       isStyled: this.isStyled,
@@ -139,26 +139,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "Styles/a11y-combobox.scss";
+@import 'Styles/a11y-combobox.scss';
 
 .fade-up-enter-active,
 .fade-up-move {
-    transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 .fade-up-move {
-    transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 .fade-up-enter {
-    opacity: 0;
-    transform: translateY(1.5rem);
+  opacity: 0;
+  transform: translateY(1.5rem);
 }
 .fade-up-leave-to {
-    opacity: 0;
-    position: absolute;
-    transform: translateY(.5rem);
+  opacity: 0;
+  position: absolute;
+  transform: translateY(0.5rem);
 }
 .fade-up-leave-active {
-    transition: all .1333s ease-in;
+  transition: all 0.1333s ease-in;
 }
 
 .v-a11y-combobox {
@@ -168,5 +168,4 @@ export default {
 .v-a11y-combobox__input {
   @include v-a11y-combobox__input;
 }
-
 </style>
