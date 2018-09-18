@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import A11yCombox from '@/components/combobox/A11yCombobox.vue'
+import A11yCombobox from '@/components/combobox/A11yCombobox.vue'
 
 const items = [
   { id: 1, title: 'test title 2' },
@@ -14,7 +14,7 @@ describe('A11yCombobox.vue', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallowMount(A11yCombox, {
+    wrapper = shallowMount(A11yCombobox, {
       propsData: {
         items,
         inputLabel
@@ -45,9 +45,8 @@ describe('A11yCombobox.vue', () => {
     expect(wrapper.vm.getId(1)).toBe(`${descendantIdBase}1`)
   })
 
-  it('starts at mouse position of `-1', () => {
-    console.log(wrapper.vm)
-    expect(wrapper.vm.$data.mousePosition).toBe(-1)
+  it('starts at arrow position of `-1', () => {
+    expect(wrapper.vm.$data.arrowPosition).toBe(-1)
   })
 
   it('has no active descendant by default', () => {
