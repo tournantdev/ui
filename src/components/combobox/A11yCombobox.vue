@@ -92,10 +92,8 @@ export default {
       this.arrowPosition = -1
     },
     onKeyDown () {
-      if (this.items.length) {
-        this.items.length - 1 > this.arrowPosition
-          ? this.arrowPosition++
-          : this.arrowPosition = 0
+      if (this.showsList && (this.arrowPosition < this.items.length - 1)) {
+        this.arrowPosition++
       }
     },
     onKeyUp () {
