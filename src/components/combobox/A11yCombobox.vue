@@ -106,6 +106,7 @@ export default {
     onEnter () {
       if (this.arrowPosition > -1) {
         this.$emit('foundResult', this.items[this.arrowPosition].id)
+        this.inputValue = this.items[this.arrowPosition].title
         this.hasFocus = false
         this.arrowPosition = -1
       }
