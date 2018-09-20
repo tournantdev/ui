@@ -63,12 +63,4 @@ describe('A11yCombobox.vue', () => {
 
     expect(inputAttr['aria-activedescendant']).toBe(`${descendantIdBase}1`)
   })
-
-  // it('changes the input value if the user navigates the list with the keyboard', () => {
-  //   // const $input = wrapper.find('input')
-  //   wrapper.trigger('keyup.down')
-
-  //   console.log(wrapper.vm.$data.inputValue)
-  //   expect(wrapper.vm.$data.inputValue).toBe(items[0].title)
-  // })
 })
