@@ -97,8 +97,8 @@ export default {
       }
     },
     onKeyUp () {
-      if (this.items.length) {
-        this.arrowPosition % this.items.length === 0
+      if (this.showsList) {
+        this.arrowPosition === -1
           ? this.arrowPosition = this.items.length - 1
           : this.arrowPosition = this.arrowPosition - 1
       }
