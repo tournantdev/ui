@@ -18,7 +18,8 @@ describe('A11yCombobox.vue', () => {
       propsData: {
         items,
         inputLabel
-      }
+      },
+      attachToDocument: true
     })
   })
 
@@ -42,6 +43,9 @@ describe('A11yCombobox.vue', () => {
 
   it('has a method to define the id of a list item', () => {
     expect(wrapper.vm.getId).toBeDefined()
+  })
+
+  it('creates the correct id', () => {
     expect(wrapper.vm.getId(1)).toBe(`${descendantIdBase}1`)
   })
 
@@ -57,10 +61,104 @@ describe('A11yCombobox.vue', () => {
   })
 
   it('updates `aria-activedescendant` based on arrowPosition', () => {
-    wrapper.setData({ arrowPosition: 1 })
+    const arrowPosition = 1
+    wrapper.setData({ arrowPosition })
     const $input = wrapper.find('input')
     const inputAttr = $input.attributes()
 
-    expect(inputAttr['aria-activedescendant']).toBe(`${descendantIdBase}1`)
+    expect(inputAttr['aria-activedescendant']).toBe(
+      `${descendantIdBase}${arrowPosition}`
+    )
+  })
+
+  describe('arrow keys', () => {
+    it('calls onKeyDown if pressing the down arrow key', () => {
+      const stub = jest.fn()
+      const $input = wrapper.find('input')
+
+      wrapper.setMethods({ onKeyDown: stub })
+
+      $input.trigger('keyup.down')
+
+      expect(wrapper.vm.onKeyDown).toBeCalled()
+    })
+
+    it('changes nothing when pressing arrow keys if the list is hidden (default state)', () => {
+      wrapper.vm.onKeyDown()
+      expect(wrapper.vm.arrowPosition).toBe(-1)
+      wrapper.vm.onKeyUp()
+      expect(wrapper.vm.arrowPosition).toBe(-1)
+    })
+
+    it('increments the value if the list is visible', () => {
+      wrapper.setData({ inputValue: 'sa', hasFocus: true, arrowPosition: -1 })
+      wrapper.vm.onKeyDown()
+
+      expect(wrapper.vm.arrowPosition).toBe(0)
+    })
+
+    it('does not increment the value further than the length of the list', () => {
+      wrapper.setData({
+        inputValue: 'sa',
+        hasFocus: true,
+        arrowPosition: items.length
+      })
+      wrapper.vm.onKeyDown()
+
+      expect(wrapper.vm.arrowPosition).toBe(items.length)
+    })
+
+    it('decrements the value if the list is visible', () => {
+      wrapper.setData({ inputValue: 'sa', hasFocus: true, arrowPosition: 2 })
+      wrapper.vm.onKeyUp()
+
+      expect(wrapper.vm.arrowPosition).toBe(1)
+    })
+
+    it('activates the last item in the list if the beginning is reached', () => {
+      wrapper.setData({ inputValue: 'sa', hasFocus: true, arrowPosition: -1 })
+      wrapper.vm.onKeyUp()
+
+      expect(wrapper.vm.arrowPosition).toBe(items.length - 1)
+    })
+  })
+
+  describe('enter key', () => {
+    it('calls onEnter', () => {
+      const stub = jest.fn()
+      const $input = wrapper.find('input')
+
+      wrapper.setMethods({ onEnter: stub })
+      $input.trigger('keyup.enter')
+
+      expect(wrapper.vm.onEnter).toBeCalled()
+    })
+
+    it('sets the input value to the title of the currently selected item', () => {
+      const $input = wrapper.find('input')
+      wrapper.setData({ arrowPosition: 1 })
+      $input.trigger('keyup.enter')
+
+      expect(wrapper.vm.inputValue).toBe(items[1].title)
+    })
+  })
+
+  describe('escape key', () => {
+    it('calls onEscape', () => {
+      const stub = jest.fn()
+      const $input = wrapper.find('input')
+
+      wrapper.setMethods({ onEscape: stub })
+      $input.trigger('keyup.esc')
+
+      expect(wrapper.vm.onEscape).toBeCalled()
+    })
+
+    it('clears the input data', () => {
+      wrapper.setData({ inputValue: 'test' })
+      wrapper.vm.onEscape()
+
+      expect(wrapper.vm.inputValue).toBe('')
+    })
   })
 })
