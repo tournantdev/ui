@@ -1,5 +1,11 @@
 # Changelog
 
+## [unreleased]
+
+### Fixed
+
+- #5: Manual completion of input
+
 ## 0.3.1 - 2018-09-16
 
 ### Added
