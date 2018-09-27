@@ -5,6 +5,7 @@
 ### Updated
 
 - Move demo files out of `src` folder
+- Run only `lint` task in husky’s `pre-commit hook`
 
 ## 0.3.1 - 2018-09-16
 
