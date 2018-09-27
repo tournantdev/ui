@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import A11yCombobox from './components/combobox/A11yCombobox'
+import A11yCombobox from '@/A11yCombobox'
 
 export default {
   name: 'App',
