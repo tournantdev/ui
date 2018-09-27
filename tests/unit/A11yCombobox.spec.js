@@ -83,7 +83,7 @@ describe('A11yCombobox.vue', () => {
       expect(wrapper.vm.onKeyDown).toBeCalled()
     })
 
-    it('calls onKeyUp if pressing the down arrow key', () => {
+    it('calls onKeyUp if pressing the up arrow key', () => {
       const stub = jest.fn()
       const $input = wrapper.find('input')
 
