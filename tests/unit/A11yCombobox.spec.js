@@ -83,6 +83,17 @@ describe('A11yCombobox.vue', () => {
       expect(wrapper.vm.onKeyDown).toBeCalled()
     })
 
+    it('calls onKeyUp if pressing the down arrow key', () => {
+      const stub = jest.fn()
+      const $input = wrapper.find('input')
+
+      wrapper.setMethods({ onKeyUp: stub })
+
+      $input.trigger('keyup.up')
+
+      expect(wrapper.vm.onKeyUp).toBeCalled()
+    })
+
     it('changes nothing when pressing arrow keys if the list is hidden (default state)', () => {
       wrapper.vm.onKeyDown()
       expect(wrapper.vm.arrowPosition).toBe(-1)
