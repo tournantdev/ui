@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import A11yCombobox from '@/components/combobox/A11yCombobox.vue'
+import A11yCombobox from '@/A11yCombobox.vue'
 
 const items = [
   { id: 1, title: 'test title 2' },

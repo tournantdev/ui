@@ -2,6 +2,11 @@
 
 ## [unreleased]
 
+### Updated
+
+- Move demo files out of `src` folder
+- Run only `lint` task in husky’s `pre-commit hook`
+
 ### Fixed
 
 - #5: Manual completion of input
