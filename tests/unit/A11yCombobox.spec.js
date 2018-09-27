@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import A11yCombox from '@/components/combobox/A11yCombobox.vue'
+import A11yCombox from '@/A11yCombobox.vue'
 
 describe('A11yCombobox.vue', () => {
   const inputLabel = 'Search for item'
