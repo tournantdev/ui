@@ -2,6 +2,7 @@
   <div
     :class="cbClasses.base"
     :aria-expanded="showsList.toString()"
+    class="v-a11y-combobox"
     role="combobox"
     aria-owns="vCbResultList"
     aria-haspopup="listbox"
@@ -12,6 +13,7 @@
       :class="cbClasses.input"
       :aria-label="inputLabel"
       :aria-activedescendant="getId(arrowPosition)"
+      class="v-a11y-combobox__input"
       type="text"
       name="cbInput"
       role="searchbox"
@@ -56,7 +58,7 @@ export default {
     },
     isStyled: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   data () {
@@ -73,8 +75,8 @@ export default {
     cbClasses () {
       return this.isStyled
         ? {
-          base: 'v-a11y-combobox',
-          input: 'v-a11y-combobox__input'
+          base: 'v-a11y-combobox--is-styled',
+          input: 'v-a11y-combobox__input--is-styled'
         }
         : ''
     }
@@ -138,7 +140,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'Styles/a11y-combobox.scss';
 
 .fade-up-enter-active,
@@ -161,11 +163,18 @@ export default {
   transition: all 0.1333s ease-in;
 }
 
-.v-a11y-combobox {
+:root {
+  --v-a11y-cb-space: 0.5rem;
+  --v-a11y-cb-clr-light: rgb(206, 206, 206);
+  --v-a11y-cb-clr-dark: darkblue;
+  --v-a11y-cb-z-index: 10;
+}
+
+.v-a11y-combobox--is-styled {
   @include v-a11y-combobox;
 }
 
-.v-a11y-combobox__input {
+.v-a11y-combobox__input--is-styled {
   @include v-a11y-combobox__input;
 }
 </style>

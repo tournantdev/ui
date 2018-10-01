@@ -1,33 +1,25 @@
 @mixin v-a11y-combobox {
-  all: inherit;
   margin: 0 auto;
   max-width: 30rem;
-  padding: 2vmin;
+  padding: 1rem;
+  padding: calc(var(--v-a11y-cb-space) * 2);
   position: relative;
   width: 100%;
-
-  /* &::after {
-    background-color: darkblue;
-    bottom: 0;
-    content: '';
-    height: 2px;
-    left: 0;
-    position: absolute;
-    width: 100%;
-  } */
 }
 
 @mixin v-a11y-combobox__input {
-  border-radius: .25rem .25rem 0 0;
-  border: none;
-  border-bottom: 2px solid #eee;
+  border-radius: 0.25rem 0.25rem 0 0;
+  border: 1px solid rgb(206, 206, 206);
+  border-bottom: 2px solid rgb(206, 206, 206);
   font-size: inherit;
   font-family: inherit;
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
+  padding: calc(var(--v-a11y-cb-space) / 2) var(--v-a11y-cb-space);
   width: 100%;
 
   &:focus {
     border-bottom-color: darkblue;
+    border-bottom-color: var(--v-a11y-cb-clr-dark);
     outline: 0;
   }
 }

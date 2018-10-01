@@ -2,6 +2,7 @@
   <transition-group
     id="vCbResultList"
     :class="listClasses.listClass"
+    class="v-a11y-combobox__list"
     name="list"
     mode="out-in"
     tag="ul"
@@ -10,6 +11,7 @@
     <li
       v-if="!items.length"
       key="vCbNoResults"
+      class="v-a11y-combobox__list-item"
     >
       <span>Sorry, but no results could be found …</span>
     </li>
@@ -20,6 +22,7 @@
       :id="getId(index)"
       :class="listClasses.itemClass"
       :aria-selected="(activeItem === index).toString()"
+      class="v-a11y-combobox__list-item"
       role="option"
       @click="$emit('resultClick', index)"
     >
@@ -44,8 +47,8 @@ export default {
     listClasses () {
       return this.isStyled
         ? {
-          listClass: 'v-a11y-combobox__list',
-          itemClass: 'v-a11y-combobox__list-item'
+          listClass: 'v-a11y-combobox__list--is-styled',
+          itemClass: 'v-a11y-combobox__list-item--is-styled'
         }
         : ''
     }
@@ -60,8 +63,10 @@ export default {
 <style lang="scss">
 @import 'Styles/a11y-combobox-list.scss';
 
-.list-enter-active, .list-leave-active, .list-move {
-  transition: all .2s;
+.list-enter-active,
+.list-leave-active,
+.list-move {
+  transition: all 0.2s;
 }
 
 .list-enter {
@@ -69,7 +74,7 @@ export default {
 }
 
 .list-enter,
-.list-leave-to  {
+.list-leave-to {
   opacity: 0;
 }
 
@@ -77,12 +82,11 @@ export default {
   position: absolute;
 }
 
-.v-a11y-combobox__list {
+.v-a11y-combobox__list--is-styled {
   @include v-a11y-combobox__list;
 }
 
-.v-a11y-combobox__list-item {
+.v-a11y-combobox__list-item--is-styled {
   @include v-a11y-combobox__list-item;
 }
-
 </style>
