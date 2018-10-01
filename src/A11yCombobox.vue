@@ -140,7 +140,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'Styles/a11y-combobox.scss';
 
 .fade-up-enter-active,
