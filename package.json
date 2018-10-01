@@ -2,6 +2,8 @@
   "name": "vue-a11y-combobox",
   "version": "0.2.0",
   "private": true,
+  "repository": "https://github.com/ovlb/vue-a11y-combobox",
+  "bugs": "https://github.com/ovlb/vue-a11y-combobox/issues",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
