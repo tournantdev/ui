@@ -94,15 +94,13 @@ export default {
       this.arrowPosition = -1
     },
     onKeyDown () {
-      if (this.items.length) {
-        this.items.length - 1 > this.arrowPosition
-          ? this.arrowPosition++
-          : this.arrowPosition = 0
+      if (this.showsList && (this.arrowPosition < this.items.length - 1)) {
+        this.arrowPosition++
       }
     },
     onKeyUp () {
-      if (this.items.length) {
-        this.arrowPosition % this.items.length === 0
+      if (this.showsList) {
+        this.arrowPosition === -1
           ? this.arrowPosition = this.items.length - 1
           : this.arrowPosition = this.arrowPosition - 1
       }
@@ -110,6 +108,7 @@ export default {
     onEnter () {
       if (this.arrowPosition > -1) {
         this.$emit('foundResult', this.items[this.arrowPosition].id)
+        this.inputValue = this.items[this.arrowPosition].title
         this.hasFocus = false
         this.arrowPosition = -1
       }
