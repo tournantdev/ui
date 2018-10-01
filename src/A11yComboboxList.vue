@@ -13,7 +13,7 @@
       key="vCbNoResults"
       class="v-a11y-combobox__list-item"
     >
-      <span>Sorry, but no results could be found …</span>
+      <span>{{ noResultsMessage }}</span>
     </li>
     <li
       v-for="(item, index) in items"
@@ -41,6 +41,10 @@ export default {
     activeItem: {
       type: Number,
       default: -1
+    },
+    noResultsMessage: {
+      type: String,
+      required: true
     }
   },
   computed: {

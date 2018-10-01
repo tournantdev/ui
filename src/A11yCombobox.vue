@@ -33,6 +33,7 @@
         :items="items"
         :active-item="arrowPosition"
         :aria-label="inputLabel"
+        :no-results-message="noResultsMessage"
         role="listbox"
         @resultClick="onResultClick"
       />
@@ -59,6 +60,10 @@ export default {
     isStyled: {
       type: Boolean,
       default: false
+    },
+    noResultsMessage: {
+      type: String,
+      required: true
     }
   },
   data () {

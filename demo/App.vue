@@ -13,6 +13,8 @@
     <main>
       <a11y-combobox
         :items="filteredPosts"
+        :is-styled="true"
+        no-results-message="Sorry, but no results could be found …"
         input-label="Search for posts"
         @input="filterItems"
         @foundResult="showResult"
