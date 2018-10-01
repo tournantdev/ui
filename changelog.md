@@ -4,6 +4,7 @@
 
 ### Updated
 
+- Expose BEM structured classes by default, add styling modifier if respective prop is set (Issue #5)
 - Move demo files out of `src` folder
 - Run only `lint` task in husky’s `pre-commit hook`
 
