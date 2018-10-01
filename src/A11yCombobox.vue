@@ -163,6 +163,13 @@ export default {
   transition: all 0.1333s ease-in;
 }
 
+:root {
+  --v-a11y-cb-space: 0.5rem;
+  --v-a11y-cb-clr-light: rgb(206, 206, 206);
+  --v-a11y-cb-clr-dark: darkblue;
+  --v-a11y-cb-z-index: 10;
+}
+
 .v-a11y-combobox--is-styled {
   @include v-a11y-combobox;
 }
