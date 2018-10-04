@@ -1,14 +1,40 @@
 {
   "name": "vue-a11y-combobox",
+  "author": {
+    "name": "Oscar Braunert",
+    "url": "https://www.ovl.design",
+    "email": "o@ovl.design"
+  },
+  "description": "Accessible Combobox component for Vue.js",
+  "keywords": [
+    "Vue",
+    "components",
+    "a11y",
+    "accessibility",
+    "combobox",
+    "ui"
+  ],
+  "license": "MIT",
   "version": "0.2.0",
   "private": true,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/A11yCombobox.ssr.js",
+  "module": "./dist/A11yCombobox.esm.js",
+  "browser": "./dist/A11yCombobox.js",
+  "unpkg": "./dist/A11yCombobox.js",
   "repository": "https://github.com/ovlb/vue-a11y-combobox",
   "bugs": "https://github.com/ovlb/vue-a11y-combobox/issues",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:bundle": "rollup -c --environment BUILD:production",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "version:patch": "npm version patch && npm run build:bundle",
+    "version:minor": "npm version minor && npm run build:bundle",
+    "version:major": "npm version major && npm run build:bundle"
   },
   "dependencies": {
     "vue": "^2.5.17"
