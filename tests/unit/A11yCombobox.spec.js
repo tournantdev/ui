@@ -8,6 +8,7 @@ const items = [
   { id: 4, title: 'test title 4' }
 ]
 const inputLabel = 'Search for item'
+const noResultsMessage = 'Sorry, no results'
 const descendantIdBase = 'vCbItem_'
 
 describe('A11yCombobox.vue', () => {
@@ -17,7 +18,8 @@ describe('A11yCombobox.vue', () => {
     wrapper = shallowMount(A11yCombobox, {
       propsData: {
         items,
-        inputLabel
+        inputLabel,
+        noResultsMessage
       },
       attachToDocument: true
     })
@@ -25,6 +27,10 @@ describe('A11yCombobox.vue', () => {
 
   it('has a required inputLabel', () => {
     expect(wrapper.vm.$options.props.inputLabel.required).toBeTruthy()
+  })
+
+  it('has a required noResultsMessage prop', () => {
+    expect(wrapper.vm.$options.props.noResultsMessage.required).toBeTruthy()
   })
 
   it('has an input with required aria attributes', () => {
