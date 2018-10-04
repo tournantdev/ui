@@ -11,6 +11,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.3",
     "@vue/cli-plugin-eslint": "^3.0.3",
     "@vue/cli-plugin-unit-jest": "^3.0.3",
@@ -19,13 +22,16 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "husky": "^1.0.0-rc.14",
     "node-sass": "^4.9.0",
+    "rollup": "^0.66.4",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-css-only": "^0.4.0",
+    "rollup-plugin-filesize": "^4.0.1",
+    "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-vue": "^4.3.2",
     "sass-loader": "^7.0.1",
-    "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17"
-  },
-  "devDependencies": {
-    "husky": "^1.0.0-rc.14"
   },
   "husky": {
     "hooks": {
