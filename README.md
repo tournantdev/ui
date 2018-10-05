@@ -2,27 +2,27 @@
 
 A Vue component that implements the [WAI-ARIA authoring practices for a Combobox](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox).
 
-### <pre aria-hidden="true">ℹ️</pre> Preface
+### <code aria-hidden="true">ℹ️</code> codeface
 
 I am no regular screenreader user. I followed the authoring practices to the best of my understanding. If something seems off, please open an [issue](https://github.com/ovlb/vue-a11y-combobox/issues/new 'New issue form of this project').
 
 The current implementation only covers the _List autocomplete with manual selection_ part of the authoring practices.
 
-### <pre aria-hidden="true">✉️</pre> API
+### <code aria-hidden="true">✉️</code> API
 
-#### <pre aria-hidden="true">📥</pre> Props
+#### <code aria-hidden="true">📥</code> Props
 
 - `items`: An array of items to be displayed. The items of the array _must_ be objects that have a `title` and `id` property. If an empty array is passed, the message set in the `noResultsMessage` prop is shown. Defaults to an empty array.
 - `inputLabel`: The label text of the input. Required.
 - `isStyled`: Whether or not default styles should be applied. Defaults to false. See section [Styles](#styles) below.
 - `noResultsMessage`: Text that should be shown if no results can be passed. Required.
 
-#### <pre aria-hidden="true">📤</pre> Emitted events
+#### <code aria-hidden="true">📤</code> Emitted events
 
 - `input`: The component emits an input event if the value of the textbox changes. Please note that this is not debounced or throttled.
 - `foundResult`: `keyup.enter` or `click` on an item emit the ID of the result.
 
-### <pre aria-hidden="true">🖍</pre> Styles
+### <code aria-hidden="true">🖍</code> Styles
 
 The combobox exposes the following CSS classes for its parts:
 
@@ -47,7 +47,7 @@ You can adapt spacing and color of the component by accessing the following Cust
 | --v-a11y-cb-clr-dark  | darkblue           |
 | --v-a11y-cb-z-index   | 10                 |
 
-### <pre aria-hidden="true">🙋</pre> Feedback & Contributions
+### <code aria-hidden="true">🙋</code> Feedback & Contributions
 
 Contributions are always welcome.
 
@@ -59,7 +59,7 @@ Pull Requests _should_ contain unit tests. However, if you are not sure how to w
 
 Thanks. 💞
 
-### <pre aria-hidden="true">⚙️</pre> Hack away
+### <code aria-hidden="true">⚙️</code> Hack away
 
 If you want to work with the code you can clone this repository and get started with these commands.
 
@@ -97,10 +97,10 @@ yarn run test:unit
 
 `yarn run test:unit --watch` will keep a server running that tests your changes as you save.
 
-### <pre aria-hidden="true">📝</pre> License
+### <code aria-hidden="true">📝</code> License
 
 This project is licensed under the [MIT license](LICENSE).
 
-### <pre aria-hidden="true">🤓</pre> Author
+### <code aria-hidden="true">🤓</code> Author
 
 Oscar Braunert | [@ovlb](https://github.com/ovlb 'GitHub profile of Oscar') | [www.ovl.design](www.ovl.design 'Homepage of Oscar Braunert')
