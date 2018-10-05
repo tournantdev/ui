@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.2 - 2018-10-05
+
+### Fixed
+
+- Remove emojis from readme
+
+## 0.4.1 – 2018-10-05
+
+### Fixed
+
+- Remove private flag
+
 ## 0.4.0 - 2018-10-05
 
 ### Added
