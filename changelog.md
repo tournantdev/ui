@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.4.0 - 2018-10-05
+
+### Added
+
+- Publish information
+- Rollup config to build dist bundle
+- Version tasks
+
+### Updated
+
+- Expose BEM structured classes by default, add styling modifier if respective prop is set (Issue #6)
+- Move demo files out of `src` folder
+- Run only `lint` task in husky’s `pre-commit` hook
+
+### Fixed
+
+- #5: Manual completion of input
+
 ## 0.3.1 - 2018-09-16
 
 ### Added

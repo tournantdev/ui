@@ -13,6 +13,8 @@
     <main>
       <a11y-combobox
         :items="filteredPosts"
+        :is-styled="true"
+        no-results-message="Sorry, but no results could be found …"
         input-label="Search for posts"
         @input="filterItems"
         @foundResult="showResult"
@@ -32,7 +34,7 @@
 </template>
 
 <script>
-import A11yCombobox from './components/combobox/A11yCombobox'
+import A11yCombobox from '@/A11yCombobox'
 
 export default {
   name: 'App',
