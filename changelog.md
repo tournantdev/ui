@@ -2,11 +2,17 @@
 
 ## [unreleased]
 
+### Added
+
+- Publish information
+- Rollup config to build dist bundle
+- Version tasks
+
 ### Updated
 
-- Expose BEM structured classes by default, add styling modifier if respective prop is set (Issue #5)
+- Expose BEM structured classes by default, add styling modifier if respective prop is set (Issue #6)
 - Move demo files out of `src` folder
-- Run only `lint` task in husky’s `pre-commit hook`
+- Run only `lint` task in husky’s `pre-commit` hook
 
 ### Fixed
 
