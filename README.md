@@ -1,28 +1,28 @@
-# vue-a11y-combobox
+## vue-a11y-combobox
 
 A Vue component that implements the [WAI-ARIA authoring practices for a Combobox](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox).
 
-## <span aria-hidden="true">ℹ️</span> Preface
+### ℹ️ Preface
 
 I am no regular screenreader user. I followed the authoring practices to the best of my understanding. If something seems off, please open an [issue](https://github.com/ovlb/vue-a11y-combobox/issues/new 'New issue form of this project').
 
 The current implementation only covers the _List autocomplete with manual selection_ part of the authoring practices.
 
-## <span aria-hidden="true">✉️</span> API
+### ✉️ API
 
-### <span aria-hidden="true">📥</span> Props
+#### 📥 Props
 
 - `items`: An array of items to be displayed. The items of the array _must_ be objects that have a `title` and `id` property. If an empty array is passed, the message set in the `noResultsMessage` prop is shown. Defaults to an empty array.
 - `inputLabel`: The label text of the input. Required.
 - `isStyled`: Whether or not default styles should be applied. Defaults to false. See section [Styles](#styles) below.
 - `noResultsMessage`: Text that should be shown if no results can be passed. Required.
 
-### <span aria-hidden="true">📤</span> Emitted events
+#### 📤 Emitted events
 
 - `input`: The component emits an input event if the value of the textbox changes. Please note that this is not debounced or throttled.
 - `foundResult`: `keyup.enter` or `click` on an item emit the ID of the result.
 
-## <span aria-hidden="true">🖍</span> Styles
+### 🖍 Styles
 
 The combobox exposes the following CSS classes for its parts:
 
@@ -47,7 +47,7 @@ You can adapt spacing and color of the component by accessing the following Cust
 | --v-a11y-cb-clr-dark  | darkblue           |
 | --v-a11y-cb-z-index   | 10                 |
 
-## <span aria-hidden="true">🙋</span> Feedback & Contributions
+### 🙋 Feedback & Contributions
 
 Contributions are always welcome.
 
@@ -59,23 +59,23 @@ Pull Requests _should_ contain unit tests. However, if you are not sure how to w
 
 Thanks. 💞
 
-## <span aria-hidden="true">⚙️</span> Hack away
+### ⚙️ Hack away
 
 If you want to work with the code you can clone this repository and get started with these commands.
 
-### Install dependencies
+#### Install dependencies
 
 ```js
 yarn install // npm run install
 ```
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
 
 ```
 yarn run build:bundle
@@ -83,13 +83,13 @@ yarn run build:bundle
 
 This builds only the component. `yarn run build` builds the file in the demo folder.
 
-### Lints and fixes files
+#### Lints and fixes files
 
 ```
 yarn run lint
 ```
 
-### Run your unit tests
+#### Run your unit tests
 
 ```
 yarn run test:unit
@@ -97,10 +97,10 @@ yarn run test:unit
 
 `yarn run test:unit --watch` will keep a server running that tests your changes as you save.
 
-## <span aria-hidden="true">📝</span> License
+### 📝 License
 
 This project is licensed under the [MIT license](LICENSE).
 
-## <span aria-hidden="true">🤓</span> Author
+### 🤓 Author
 
 Oscar Braunert | [@ovlb](https://github.com/ovlb 'GitHub profile of Oscar') | [www.ovl.design](www.ovl.design 'Homepage of Oscar Braunert')
