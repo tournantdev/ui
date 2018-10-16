@@ -177,5 +177,12 @@ describe('A11yCombobox.vue', () => {
 
       expect(wrapper.vm.inputValue).toBe('')
     })
+
+    it('resets the arrow position', () => {
+      wrapper.setData({ inputValue: 'test' })
+      wrapper.vm.onEscape()
+
+      expect(wrapper.vm.arrowPosition).toBe(-1)
+    })
   })
 })
