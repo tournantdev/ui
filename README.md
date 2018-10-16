@@ -2,27 +2,60 @@
 
 A Vue component that implements the [WAI-ARIA authoring practices for a Combobox](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox).
 
-### ℹ️ Preface
+### Preface
 
 I am no regular screenreader user. I followed the authoring practices to the best of my understanding. If something seems off, please open an [issue](https://github.com/ovlb/vue-a11y-combobox/issues/new 'New issue form of this project').
 
 The current implementation only covers the _List autocomplete with manual selection_ part of the authoring practices.
 
-### ✉️ API
+### Installation
 
-#### 📥 Props
+No rocket science here. Although rockets are cool, tbh. 🚀 Just install the component from npm.
+
+```
+npm install vue-a11y-combobox --save-dev
+```
+
+If you use Yarn:
+
+```
+yarn add -D vue-a11y-combobox
+```
+
+Once the component is installed you need to import wherever you want to use it.
+
+```js
+import A11yCombobox from 'vue-a11y-combobox';
+```
+
+Don’t forget to add it to the registered components (been there, done that):
+
+```js
+components: {
+  A11yCombobox,
+  // ... all the other amazing components
+}
+```
+
+### Demo
+
+You can find a live demo on [vue-a11y-combobox.code.ovl.design](https://vue-a11y-combobox.code.ovl.design/).
+
+### API
+
+#### Props
 
 - `items`: An array of items to be displayed. The items of the array _must_ be objects that have a `title` and `id` property. If an empty array is passed, the message set in the `noResultsMessage` prop is shown. Defaults to an empty array.
 - `inputLabel`: The label text of the input. Required.
 - `isStyled`: Whether or not default styles should be applied. Defaults to false. See section [Styles](#styles) below.
 - `noResultsMessage`: Text that should be shown if no results can be passed. Required.
 
-#### 📤 Emitted events
+#### Emitted events
 
 - `input`: The component emits an input event if the value of the textbox changes. Please note that this is not debounced or throttled.
 - `foundResult`: `keyup.enter` or `click` on an item emit the ID of the result.
 
-### 🖍 Styles
+### Styles
 
 The combobox exposes the following CSS classes for its parts:
 
@@ -47,7 +80,7 @@ You can adapt spacing and color of the component by accessing the following Cust
 | --v-a11y-cb-clr-dark  | darkblue           |
 | --v-a11y-cb-z-index   | 10                 |
 
-### 🙋 Feedback & Contributions
+### Feedback & Contributions
 
 Contributions are always welcome.
 
@@ -59,7 +92,7 @@ Pull Requests _should_ contain unit tests. However, if you are not sure how to w
 
 Thanks. 💞
 
-### ⚙️ Hack away
+### Hack away
 
 If you want to work with the code you can clone this repository and get started with these commands.
 
@@ -97,10 +130,10 @@ yarn run test:unit
 
 `yarn run test:unit --watch` will keep a server running that tests your changes as you save.
 
-### 📝 License
+### License
 
 This project is licensed under the [MIT license](LICENSE).
 
-### 🤓 Author
+### Author
 
 Oscar Braunert | [@ovlb](https://github.com/ovlb 'GitHub profile of Oscar') | [www.ovl.design](www.ovl.design 'Homepage of Oscar Braunert')
