@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0 - 2018-10-16
+
+### Added
+
+- Add installation information to Readme
+- Visible label
+
+### Fixed
+
+- Remove aria-activedescendant if no item is selected
+- Reset arrow position when pressing escape
+
 ## 0.4.2 - 2018-10-05
 
 ### Fixed

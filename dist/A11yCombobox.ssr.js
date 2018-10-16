@@ -245,6 +245,7 @@ var script$1 = {
       return this.isStyled
         ? {
           base: 'v-a11y-combobox--is-styled',
+          label: 'v-a11y-combobox__label--is-styled',
           input: 'v-a11y-combobox__input--is-styled'
         }
         : ''
@@ -283,6 +284,7 @@ var script$1 = {
       }
     },
     onEscape () {
+      this.arrowPosition = -1;
       this.inputValue = '';
     },
     onResultClick (id) {
@@ -296,7 +298,7 @@ var script$1 = {
       }
     },
     getId (id) {
-      return id < 0 ? '' : `vCbItem_${id}`
+      return id < 0 ? false : `vCbItem_${id}`
     }
   },
   provide () {
@@ -311,19 +313,19 @@ var script$1 = {
             const __vue_script__$1 = script$1;
             
 /* template */
-var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"v-a11y-combobox",class:_vm.cbClasses.base,attrs:{"aria-expanded":_vm.showsList.toString(),"role":"combobox","aria-owns":"vCbResultList","aria-haspopup":"listbox"}},[_vm._ssrNode("<input"+(_vm._ssrAttr("aria-label",_vm.inputLabel))+(_vm._ssrAttr("aria-activedescendant",_vm.getId(_vm.arrowPosition)))+" type=\"text\" name=\"cbInput\" role=\"searchbox\" aria-autocomplete=\"list\" aria-controls=\"vCbResultList\" aria-multiline=\"false\""+(_vm._ssrAttr("value",(_vm.inputValue)))+(_vm._ssrClass("v-a11y-combobox__input",_vm.cbClasses.input))+"> "),_c('transition',{attrs:{"name":"fade-up"}},[_c('a11y-combobox-list',{directives:[{name:"show",rawName:"v-show",value:(_vm.showsList),expression:"showsList"}],attrs:{"items":_vm.items,"active-item":_vm.arrowPosition,"aria-label":_vm.inputLabel,"no-results-message":_vm.noResultsMessage,"role":"listbox"},on:{"resultClick":_vm.onResultClick}})],1)],2)};
+var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"v-a11y-combobox",class:_vm.cbClasses.base,attrs:{"aria-expanded":_vm.showsList.toString(),"role":"combobox","aria-owns":"vCbResultList","aria-haspopup":"listbox"}},[_vm._ssrNode("<label for=\"cbInput\""+(_vm._ssrClass("v-a11y-combobox__label",_vm.cbClasses.label))+">"+_vm._ssrEscape(" "+_vm._s(_vm.inputLabel))+"</label> <input id=\"cbInput\""+(_vm._ssrAttr("aria-activedescendant",_vm.getId(_vm.arrowPosition)))+" type=\"text\" name=\"cbInput\" role=\"searchbox\" aria-autocomplete=\"list\" aria-controls=\"vCbResultList\" aria-multiline=\"false\""+(_vm._ssrAttr("value",(_vm.inputValue)))+(_vm._ssrClass("v-a11y-combobox__input",_vm.cbClasses.input))+"> "),_c('transition',{attrs:{"name":"fade-up"}},[_c('a11y-combobox-list',{directives:[{name:"show",rawName:"v-show",value:(_vm.showsList),expression:"showsList"}],attrs:{"items":_vm.items,"active-item":_vm.arrowPosition,"aria-label":_vm.inputLabel,"no-results-message":_vm.noResultsMessage,"role":"listbox"},on:{"resultClick":_vm.onResultClick}})],1)],2)};
 var __vue_staticRenderFns__$1 = [];
 
   /* style */
   const __vue_inject_styles__$1 = function (inject) {
     if (!inject) return
-    inject("data-v-5a2e1bcc_0", { source: "\n.fade-up-enter-active,.fade-up-move{transition:all .3s ease-out\n}\n.fade-up-move{transition:all .3s ease-out\n}\n.fade-up-enter{opacity:0;transform:translateY(1.5rem)\n}\n.fade-up-leave-to{opacity:0;position:absolute;transform:translateY(.5rem)\n}\n.fade-up-leave-active{transition:all .1333s ease-in\n}\n:root{--v-a11y-cb-space:0.5rem;--v-a11y-cb-clr-light:rgb(206, 206, 206);--v-a11y-cb-clr-dark:darkblue;--v-a11y-cb-z-index:10\n}\n.v-a11y-combobox--is-styled{margin:0 auto;max-width:30rem;padding:1rem;padding:calc(var(--v-a11y-cb-space) * 2);position:relative;width:100%\n}\n.v-a11y-combobox__input--is-styled{border-radius:.25rem .25rem 0 0;border:1px solid #cecece;border-bottom:2px solid #cecece;font-size:inherit;font-family:inherit;padding:.25rem .5rem;padding:calc(var(--v-a11y-cb-space)/ 2) var(--v-a11y-cb-space);width:100%\n}\n.v-a11y-combobox__input--is-styled:focus{border-bottom-color:#00008b;border-bottom-color:var(--v-a11y-cb-clr-dark);outline:0\n}", map: undefined, media: undefined });
+    inject("data-v-066e9b62_0", { source: "\n.fade-up-enter-active,.fade-up-move{transition:all .3s ease-out\n}\n.fade-up-move{transition:all .3s ease-out\n}\n.fade-up-enter{opacity:0;transform:translateY(1.5rem)\n}\n.fade-up-leave-to{opacity:0;position:absolute;transform:translateY(.5rem)\n}\n.fade-up-leave-active{transition:all .1333s ease-in\n}\n:root{--v-a11y-cb-space:0.5rem;--v-a11y-cb-clr-light:rgb(206, 206, 206);--v-a11y-cb-clr-dark:darkblue;--v-a11y-cb-z-index:10\n}\n.v-a11y-combobox--is-styled{margin:0 auto;max-width:30rem;padding:1rem;padding:calc(var(--v-a11y-cb-space) * 2);position:relative;width:100%\n}\n.v-a11y-combobox__label--is-styled{display:block;padding-bottom:.25rem;padding-bottom:calc(var(--v-a11y-cb-space)/ 2)\n}\n.v-a11y-combobox__input--is-styled{border-radius:.25rem .25rem 0 0;border:1px solid #cecece;border-bottom:2px solid #cecece;font-size:inherit;font-family:inherit;padding:.25rem .5rem;padding:calc(var(--v-a11y-cb-space)/ 2) var(--v-a11y-cb-space);width:100%\n}\n.v-a11y-combobox__input--is-styled:focus{border-bottom-color:#00008b;border-bottom-color:var(--v-a11y-cb-clr-dark);outline:0\n}", map: undefined, media: undefined });
 
   };
   /* scoped */
   const __vue_scope_id__$1 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1 = "data-v-5a2e1bcc";
+  const __vue_module_identifier__$1 = "data-v-066e9b62";
   /* functional template */
   const __vue_is_functional_template__$1 = false;
   /* component normalizer */

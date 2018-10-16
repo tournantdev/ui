@@ -7,6 +7,12 @@
   width: 100%;
 }
 
+@mixin v-a11y-combobox__label {
+  display: block;
+  padding-bottom: 0.25rem;
+  padding-bottom: calc(var(--v-a11y-cb-space) / 2);
+}
+
 @mixin v-a11y-combobox__input {
   border-radius: 0.25rem 0.25rem 0 0;
   border: 1px solid rgb(206, 206, 206);
