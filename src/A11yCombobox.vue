@@ -132,7 +132,7 @@ export default {
       }
     },
     getId (id) {
-      return id < 0 ? '' : `vCbItem_${id}`
+      return id < 0 ? false : `vCbItem_${id}`
     }
   },
   provide () {
