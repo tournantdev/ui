@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 body {
   color: #2c3e50;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
