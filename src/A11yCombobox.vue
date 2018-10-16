@@ -119,6 +119,7 @@ export default {
       }
     },
     onEscape () {
+      this.arrowPosition = -1
       this.inputValue = ''
     },
     onResultClick (id) {
