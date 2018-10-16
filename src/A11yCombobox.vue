@@ -119,6 +119,7 @@ export default {
       }
     },
     onEscape () {
+      this.arrowPosition = -1
       this.inputValue = ''
     },
     onResultClick (id) {
@@ -132,7 +133,7 @@ export default {
       }
     },
     getId (id) {
-      return id < 0 ? '' : `vCbItem_${id}`
+      return id < 0 ? false : `vCbItem_${id}`
     }
   },
   provide () {

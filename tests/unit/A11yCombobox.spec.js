@@ -63,7 +63,7 @@ describe('A11yCombobox.vue', () => {
     const $input = wrapper.find('input')
     const inputAttr = $input.attributes()
 
-    expect(inputAttr['aria-activedescendant']).toBe('')
+    expect(inputAttr['aria-activedescendant']).toBeUndefined()
   })
 
   it('updates `aria-activedescendant` based on arrowPosition', () => {
@@ -176,6 +176,13 @@ describe('A11yCombobox.vue', () => {
       wrapper.vm.onEscape()
 
       expect(wrapper.vm.inputValue).toBe('')
+    })
+
+    it('resets the arrow position', () => {
+      wrapper.setData({ inputValue: 'test' })
+      wrapper.vm.onEscape()
+
+      expect(wrapper.vm.arrowPosition).toBe(-1)
     })
   })
 })
