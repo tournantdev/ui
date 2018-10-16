@@ -42,9 +42,9 @@ describe('A11yCombobox.vue', () => {
   })
 
   it('sets the correct aria-label', () => {
-    const $input = wrapper.find('input')
+    const $label = wrapper.find('label')
 
-    expect($input.attributes()['aria-label']).toBe(inputLabel)
+    expect($label.text()).toBe(inputLabel)
   })
 
   it('has a method to define the id of a list item', () => {
