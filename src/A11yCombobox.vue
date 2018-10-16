@@ -7,11 +7,16 @@
     aria-owns="vCbResultList"
     aria-haspopup="listbox"
   >
+    <label
+      :class="cbClasses.label"
+      class="v-a11y-combobox__label"
+      for="cbInput"
+    > {{ inputLabel }}</label>
     <input
+      id="cbInput"
       ref="input"
       v-model.trim="inputValue"
       :class="cbClasses.input"
-      :aria-label="inputLabel"
       :aria-activedescendant="getId(arrowPosition)"
       class="v-a11y-combobox__input"
       type="text"
@@ -81,6 +86,7 @@ export default {
       return this.isStyled
         ? {
           base: 'v-a11y-combobox--is-styled',
+          label: 'v-a11y-combobox__label--is-styled',
           input: 'v-a11y-combobox__input--is-styled'
         }
         : ''
@@ -176,6 +182,10 @@ export default {
 
 .v-a11y-combobox--is-styled {
   @include v-a11y-combobox;
+}
+
+.v-a11y-combobox__label--is-styled {
+  @include v-a11y-combobox__label;
 }
 
 .v-a11y-combobox__input--is-styled {
