@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.1 - 2018-10-23
+
+### Fixed
+
+- Dist paths for browser and unpkg
+
 ## 0.5.0 - 2018-10-16
 
 ### Added

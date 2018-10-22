@@ -15,14 +15,14 @@
     "ui"
   ],
   "license": "MIT",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "files": [
     "dist"
   ],
   "main": "./dist/A11yCombobox.ssr.js",
   "module": "./dist/A11yCombobox.esm.js",
-  "browser": "./dist/A11yCombobox.js",
-  "unpkg": "./dist/A11yCombobox.js",
+  "browser": "./dist/A11yCombobox.min.js",
+  "unpkg": "./dist/A11yCombobox.min.js",
   "repository": "https://github.com/ovlb/vue-a11y-combobox",
   "bugs": "https://github.com/ovlb/vue-a11y-combobox/issues",
   "scripts": {
