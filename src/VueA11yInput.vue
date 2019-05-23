@@ -1,22 +1,25 @@
 <template>
   <div class="v-a11y-input">
-    <label :for="inputId" class="v-a11y-input__label">
+    <label :for="id" class="v-a11y-input__label">
       {{ label }}
-      <slot name="required-text" />
+      <slot v-if="required" name="required-text" />
     </label>
     <input
-      :id="inputId"
+      :id="id"
       :value="value"
       :required="required"
       :aria-invalid="validation.$error.toString()"
-      :aria-describedby="validation.$error ? feedbackId : null"
+      :aria-describedby="ariaDescribedby"
       v-bind="$attrs"
       class="v-a11y-input__input"
       @input="updateValue"
     />
+    <p v-if="description" :id="`${id}__desc`" class="v-a11y-input__description">
+      {{ description }}
+    </p>
     <div
       v-show="validation.$error"
-      :id="feedbackId"
+      :id="`${id}__feedback`"
       class="v-a11y-input__feedback"
     >
       <slot name="feedback" />
@@ -43,6 +46,10 @@ export default {
       type: Boolean,
       default: false
     },
+    description: {
+      type: String,
+      default: ''
+    },
     validation: {
       type: Object,
       required: true
@@ -50,11 +57,21 @@ export default {
   },
   data() {
     return {
-      feedbackId: uuid(this.label, 'VueA11yFeedback'),
-      inputId: uuid(this.label, 'VA11yInput')
+      id: uuid(this.label, 'VA11yInput')
     }
   },
   computed: {
+    ariaDescribedby() {
+      if (this.validation.$error && this.description) {
+        return `${this.id}__feedback ${this.id}__desc`
+      } else if (this.description) {
+        return `${this.id}__desc`
+      } else if (this.validation.$error) {
+        return `${this.id}__feedback`
+      }
+
+      return null
+    },
     listeners() {
       return {
         ...this.$listeners,
