@@ -29,7 +29,8 @@
     "eslint-plugin-vue": "^5.2.2",
     "lint-staged": "^8.1.5",
     "prettier": "^1.17.0",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.21",
+    "vuelidate": "^0.7.4"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
