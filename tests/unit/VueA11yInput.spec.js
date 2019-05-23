@@ -31,14 +31,6 @@ describe('VueA11yInput', () => {
       expect(wrapper.vm.$options.props.label.required).toBeTruthy()
     })
 
-    it('has a `inputType` prop', () => {
-      expect(wrapper.vm.$options.props.inputType).toBeDefined()
-    })
-
-    it('has a `required` prop', () => {
-      expect(wrapper.vm.$options.props.required).toBeDefined()
-    })
-
     it('renders the `required` attribute if `required` prop is set', () => {
       wrapper.setProps({ required: true })
 
@@ -154,13 +146,6 @@ describe('VueA11yInput', () => {
       const labelText = label.text()
 
       expect(labelText.includes('required')).toBeTruthy()
-    })
-
-    it('does not render required text if input isn’t required', () => {
-      const label = wrapper.find('label')
-      const labelText = label.text()
-
-      expect(labelText.includes('required')).toBeFalsy()
     })
 
     it('hides the input messages if valid', () => {

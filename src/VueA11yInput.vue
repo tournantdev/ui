@@ -2,12 +2,11 @@
   <div class="v-a11y-input">
     <label :for="id" class="v-a11y-input__label">
       {{ label }}
-      <slot v-if="required" name="required-text" />
+      <slot name="required-text" />
     </label>
     <input
       :id="id"
       :value="value"
-      :required="required"
       :aria-invalid="validation.$error.toString()"
       :aria-describedby="ariaDescribedby"
       v-bind="$attrs"
@@ -41,10 +40,6 @@ export default {
     value: {
       type: [String, Number],
       required: true
-    },
-    required: {
-      type: Boolean,
-      default: false
     },
     description: {
       type: String,
