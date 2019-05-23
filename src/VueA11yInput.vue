@@ -7,7 +7,6 @@
     <input
       :id="inputId"
       :value="value"
-      :type="inputType"
       :required="required"
       :aria-invalid="validation.$error.toString()"
       :aria-describedby="validation.$error ? feedbackId : null"
@@ -39,10 +38,6 @@ export default {
     value: {
       type: [String, Number],
       required: true
-    },
-    inputType: {
-      type: String,
-      default: 'text'
     },
     required: {
       type: Boolean,

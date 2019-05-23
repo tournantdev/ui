@@ -5,6 +5,7 @@ import VueA11yInput from '@/VueA11yInput.vue'
 const defaultProps = {
   label: 'Test label',
   value: 'Say hello',
+  type: 'password',
   validation: {
     $error: true,
     $dirty: false
@@ -51,6 +52,22 @@ describe('VueA11yInput', () => {
     })
   })
 
+  it('links the label to the input', () => {
+    const label = wrapper.find('label')
+    const input = wrapper.find('input')
+    const id = input.attributes('id')
+    const labelFor = label.attributes('for')
+
+    expect(labelFor).toBe(id)
+  })
+
+  it('sets the inputType on the input element', () => {
+    const input = wrapper.find('input')
+    const type = input.attributes('type')
+
+    expect(type).toBe('password')
+  })
+
   describe('`v-model` compatibility', () => {
     it('sets the value prop on the input', () => {
       const $input = wrapper.find('input')
@@ -93,12 +110,57 @@ describe('VueA11yInput', () => {
     })
   })
 
+  describe('input description', () => {
+    it('has the ability to set a description', () => {
+      expect(wrapper.vm.$options.props.description).toBeDefined()
+    })
+
+    it('links the description in `aria-describedby` if set', () => {
+      wrapper.setProps({
+        description: 'This is a description',
+        validation: { $error: false }
+      })
+
+      const input = wrapper.find('input')
+      const descriptionMessage = wrapper.find('.v-a11y-input__description')
+      const id = descriptionMessage.attributes('id')
+
+      expect(input.attributes('aria-describedby')).toBe(id)
+    })
+
+    it('links to description and feedback message if an error is present', () => {
+      wrapper.setProps({
+        description: 'This is a description',
+        validation: { $error: true }
+      })
+
+      const input = wrapper.find('input')
+      const descriptionMessage = wrapper.find('.v-a11y-input__description')
+      const feedbackMessages = wrapper.find('.v-a11y-input__feedback')
+      const feedbackId = feedbackMessages.attributes('id')
+      const descId = descriptionMessage.attributes('id')
+
+      expect(input.attributes('aria-describedby')).toBe(
+        `${feedbackId} ${descId}`
+      )
+    })
+  })
+
   describe('slots', () => {
     it('renders required text inside label', () => {
+      wrapper.setProps({ required: true })
+
       const label = wrapper.find('label')
       const labelText = label.text()
 
       expect(labelText.includes('required')).toBeTruthy()
+    })
+
+    it('does not render required text if input isn’t required', () => {
+      const label = wrapper.find('label')
+      const labelText = label.text()
+
+      expect(labelText.includes('required')).toBeFalsy()
     })
 
     it('hides the input messages if valid', () => {
