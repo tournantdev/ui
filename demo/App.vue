@@ -2,12 +2,19 @@
   <div id="app">
     <vue-a11y-input
       v-model="password"
-      :required="true"
       :validation="$v.password"
       label="Your password"
       type="password"
       name="password"
-    />
+      @blur.once="$v.password.$touch()"
+    >
+      <template v-slot:feedback>
+        <p v-if="!$v.password.required">Your password is required.</p>
+        <p v-if="!$v.password.minLength">
+          Your password should have at least eight characters.
+        </p>
+      </template>
+    </vue-a11y-input>
   </div>
 </template>
 
@@ -43,5 +50,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.v-a11y-input__label {
+  display: block;
 }
 </style>
