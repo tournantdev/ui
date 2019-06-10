@@ -2,7 +2,7 @@
   <div class="v-a11y-input">
     <label :for="id" class="v-a11y-input__label">
       {{ label }}
-      <slot name="required-text" />
+      <slot name="label-text" />
     </label>
     <input
       :id="id"
