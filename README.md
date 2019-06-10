@@ -131,7 +131,6 @@ Bear in mind that the popular \* might not be enough to indicate a required fiel
 ```html
 <a11y-input
   v-model="password"
-  required
   type="password"
   name="password"
   label="Your password"
