@@ -131,19 +131,21 @@ Bear in mind that the popular \* might not be enough to indicate a required fiel
 ```html
 <a11y-input
   v-model="password"
-  :required="true"
+  required
   type="password"
   name="password"
   label="Your password"
   description="Your password has to be at least eight characters long."
 >
-  <template v-slot:required-text>
+  <template v-slot:label-text>
     <span class="aside">required</span>
   </template>
 </a11y-input>
 ```
 
 💁 _Note:_ This example uses the named slot syntax introduced in Vue 2.6. [Take a look in the docs](https://vuejs.org/v2/guide/components-slots.html#Named-Slots) for usage examples and how to use named slots in versions prior to 2.6.
+
+💁 _Note:_ You can add any text you want. If you mark optional fields instead of required ones, this is also possible.
 
 ### Validation
 
@@ -163,7 +165,9 @@ For our password example the Vuelidate config might look something like this:
 import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
+  // […]
   // Component context omitted for brevity
+  // […]
   validations: {
     password: {
       required,
@@ -185,13 +189,59 @@ You can use `$v.password` as the prop for the input component without the need t
   label="Your password"
   description="Your password has to be at least eight characters long."
 >
-  <template v-slot:required-text>
+  <template v-slot:label-text>
     <span class="aside">required</span>
   </template>
 </a11y-input>
 ```
 
-## Project setup
+`aria-invalid` is set based on `validation.$error`, to let screen readers know if the entered value is correct.
+
+This attribute could also be used to add styles based on the validated state.
+
+```css
+.a11y-input__input[aria-invalid='true'] {
+  border-color: red;
+}
+
+/** [data-untouched is set on the input while `validation.$dirty is `false``] and can be used to only apply validated styles to touched and validated inputs */
+.a11y-input__input[aria-invalid='false']:not([data-untouched]) {
+  border-color: green;
+}
+```
+
+### Feedback Messages
+
+Relying on styling is not enough to convey errors to users. `vue-a11y-input` exposes a `feedback` slot to render detailed feedback for the users.
+
+```html
+<a11y-input
+  v-model="password"
+  :required="true"
+  :validation="$v.password"
+  type="password"
+  name="password"
+  label="Your password"
+  description="Your password has to be at least eight characters long."
+>
+  <template v-slot:required-text>
+    <span class="aside">required</span>
+  </template>
+  <template v-slot:feedback>
+    <p v-if="!$v.password.required">
+      Your password is required.
+    </p>
+  </template>
+</a11y-input>
+```
+
+If `validation.$error` equals `true` the ID of the feedback container will be added to `aria-describedby` and as thus read by screen readers.
+
+## Development
+
+If you want to improve the component, follow these steps.
+
+First, you need to install the dependencies:
 
 ```
 yarn install
