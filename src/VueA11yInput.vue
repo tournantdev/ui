@@ -11,6 +11,7 @@
       :aria-describedby="ariaDescribedby"
       v-bind="$attrs"
       class="v-a11y-input__input"
+      v-on="listeners"
       @input="updateValue"
     />
     <p v-if="description" :id="`${id}__desc`" class="v-a11y-input__description">
@@ -33,10 +34,6 @@ export default {
   name: 'VueA11yInput',
   inheritAttrs: false,
   props: {
-    label: {
-      type: String,
-      required: true
-    },
     value: {
       type: [String, Number],
       required: true
@@ -44,6 +41,10 @@ export default {
     description: {
       type: String,
       default: ''
+    },
+    label: {
+      type: String,
+      required: true
     },
     validation: {
       type: Object,
