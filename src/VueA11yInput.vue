@@ -52,7 +52,7 @@ export default {
   },
   data() {
     return {
-      id: uuid(this.label, 'VA11yInput')
+      id: uuid()
     }
   },
   computed: {
