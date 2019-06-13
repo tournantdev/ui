@@ -20,7 +20,7 @@ describe('VueA11yInput', () => {
     wrapper = shallowMount(VueA11yInput, {
       propsData: defaultProps,
       slots: {
-        'required-text': ' required',
+        'label-text': ' required',
         feedback: '<p>Input is required</p>'
       }
     })
