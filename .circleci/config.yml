@@ -39,6 +39,10 @@ jobs:
       - run:
           name: 'JavaScript Test Suite'
           command: yarn run test:ci
+      - run:
+          name: report coverage stats for non-PRs
+          command: |
+            ./node_modules/.bin/codecov
 
 workflows:
   version: 2
