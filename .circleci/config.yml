@@ -1,0 +1,54 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/a11y/input
+  docker:
+    - image: vuejs/ci
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-a11y-input-{{ .Branch }}-{{ checksum "package.json" }}
+
+            - v1-a11y-input-{{ .Branch }}-
+            - v1-a11y-input-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-a11y-input-{{ .Branch }}-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: ~/a11y
+          paths:
+            - input
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/a11y
+      - run:
+          name: 'JavaScript Test Suite'
+          command: yarn run test:ci
+      - run:
+          name: report coverage stats for non-PRs
+          command: |
+            ./node_modules/.bin/codecov
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - install
+      - test:
+          requires:
+            - install
