@@ -37,8 +37,12 @@ jobs:
       - attach_workspace:
           at: ~/a11y
       - run:
-          name: "JavaScript Test Suite"
+          name: 'JavaScript Test Suite'
           command: yarn run test:ci
+      - run:
+          name: report coverage stats for non-PRs
+          command: |
+            ./node_modules/.bin/codecov
 
 workflows:
   version: 2
