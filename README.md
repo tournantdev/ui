@@ -2,11 +2,17 @@
 
 A component for text-like inputs. Accessible and versatile.
 
+---
+
+[![NPM version](https://img.shields.io/npm/v/vue-a11y-input.svg?style=flat)](https://www.npmjs.com/package/vue-a11y-input)
+[![CircleCI](https://circleci.com/gh/ovlb/vue-a11y-combobox.svg?style=svg)](https://circleci.com/gh/ovlb/vue-a11y-combobox)
+[![codecov](https://codecov.io/gh/ovlb/vue-a11y-input/branch/master/graph/badge.svg)](https://codecov.io/gh/ovlb/vue-a11y-input)
+[![GitHub license](https://img.shields.io/github/license/ovlb/vue-a11y-input.svg)](https://github.com/ovlb/vue-a11y-input/blob/master/LICENSE)
 [![Greenkeeper badge](https://badges.greenkeeper.io/ovlb/vue-a11y-input.svg)](https://greenkeeper.io/)
 
 ## Installation
 
-You can install the componnent using NPM or Yarn.
+You can install the component using NPM or Yarn.
 
 ```
 npm install vue-a11y-input --save
@@ -259,6 +265,8 @@ yarn run serve
 ```
 yarn run build
 ```
+
+💁 _Note:_ This builds the bundles that are published to NPM. If you want to build the demo implementation in `./demo` use `yarn run build:demo`
 
 ### Run your tests
 
