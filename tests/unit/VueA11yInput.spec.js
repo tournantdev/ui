@@ -139,7 +139,7 @@ describe('VueA11yInput', () => {
   })
 
   describe('slots', () => {
-    it('renders required text inside label', () => {
+    it('renders label text', () => {
       wrapper.setProps({ required: true })
 
       const label = wrapper.find('label')
