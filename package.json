@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "uuid": "^3.3.2",
+    "uuid-browser": "^3.1.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -35,6 +35,7 @@
     "rollup-plugin-buble": "^0.19.6",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-filesize": "^6.1.0",
+    "rollup-plugin-node-resolve": "^5.0.2",
     "rollup-plugin-terser": "^5.0.0",
     "rollup-plugin-vue": "^5.0.0",
     "vue-template-compiler": "^2.5.21",
