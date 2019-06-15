@@ -56,6 +56,9 @@ workflows:
   build_and_test:
     jobs:
       - install
+      - build:
+        requires:
+          - install
       - test:
           requires:
             - install
