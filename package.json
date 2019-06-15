@@ -1,11 +1,36 @@
 {
   "name": "vue-a11y-input",
   "version": "0.1.0",
-  "private": true,
+  "description": "An accessible implementation for text-like HTML input elements.",
+  "keywords": [
+    "vue",
+    "component",
+    "accessibility",
+    "ui",
+    "a11y",
+    "aria"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovlb/vue-a11y-input"
+  },
+  "bugs": "https://github.com/ovlb/vue-a11y-input/issues",
+  "author": {
+    "name": "Oscar Braunert",
+    "email": "o@ovl.design",
+    "url": "https://www.ovl.design"
+  },
+  "main": "./dist/VueA11yInput.js",
+  "module": "./dist/VueA11yInput.esm.js",
+  "browser": "./dist/VueA11yInput.min.js",
+  "unpkg": "./dist/VueA11yInput.min.js",
   "scripts": {
+    "build": "rollup -c --environment BUILD:production",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:demo": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit",
     "test:unit": "vue-cli-service test:unit",
     "test:ci": "yarn run test:unit --ci --coverage"
   },
