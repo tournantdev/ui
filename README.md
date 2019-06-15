@@ -2,11 +2,17 @@
 
 A component for text-like inputs. Accessible and versatile.
 
+---
+
+[![NPM version](https://img.shields.io/npm/v/vue-a11y-input.svg?style=flat)](https://www.npmjs.com/package/vue-a11y-input)
+[![CircleCI](https://circleci.com/gh/ovlb/vue-a11y-combobox.svg?style=svg)](https://circleci.com/gh/ovlb/vue-a11y-combobox)
+[![codecov](https://codecov.io/gh/ovlb/vue-a11y-input/branch/master/graph/badge.svg)](https://codecov.io/gh/ovlb/vue-a11y-input)
+[![GitHub license](https://img.shields.io/github/license/ovlb/vue-a11y-input.svg)](https://github.com/ovlb/vue-a11y-input/blob/master/LICENSE)
 [![Greenkeeper badge](https://badges.greenkeeper.io/ovlb/vue-a11y-input.svg)](https://greenkeeper.io/)
 
 ## Installation
 
-You can install the componnent using NPM or Yarn.
+You can install the component using NPM or Yarn.
 
 ```
 npm install vue-a11y-input --save
@@ -238,6 +244,18 @@ Relying on styling is not enough to convey errors to users. `vue-a11y-input` exp
 
 If `validation.$error` equals `true` the ID of the feedback container will be added to `aria-describedby` and as thus read by screen readers.
 
+## Feedback & Contributions
+
+Contributions are always welcome.
+
+If you found a bug or want to request a feature, please open an [issue](https://github.com/ovlb/vue-a11y-combobox/issues/new 'New issue form of this project').
+
+If you wrote an enhancement or fixed a bug, open a Pull Request. Please follow the _Fork & Pull Request_ workflow, as [explained here](https://gist.github.com/Chaser324/ce0505fbed06b947d962 'GitHub Standard Fork & Pull Request Workflow by Chaser134').
+
+Pull Requests _should_ contain unit tests. However, if you are not sure how to write these tests, please do not hesitate to open a request. We can figure out how to add necessary tests together.
+
+Thanks. 💞
+
 ## Development
 
 If you want to improve the component, follow these steps.
@@ -259,6 +277,8 @@ yarn run serve
 ```
 yarn run build
 ```
+
+💁 _Note:_ This builds the bundles that are published to NPM. If you want to build the demo implementation in `./demo` use `yarn run build:demo`
 
 ### Run your tests
 
