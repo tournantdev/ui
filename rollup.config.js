@@ -1,3 +1,4 @@
+import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import vue from 'rollup-plugin-vue'
 import filesize from 'rollup-plugin-filesize'
@@ -5,21 +6,30 @@ import buble from 'rollup-plugin-buble'
 import { terser } from 'rollup-plugin-terser'
 
 export default [
-  // ESM build to be used with webpack/rollup.
+  // Main build to be used with webpack/rollup.
   {
-    input: 'src/A11yCombobox.vue',
+    input: 'src/VueA11yInput.vue',
     output: {
       format: 'esm',
-      file: 'dist/A11yCombobox.esm.js'
+      file: 'dist/VueA11yInput.js'
     },
-    plugins: [commonjs(), vue(), buble(), terser(), filesize()]
+    plugins: [commonjs(), resolve(), vue(), buble(), terser(), filesize()]
+  },
+  // ESM build to be used with webpack/rollup.
+  {
+    input: 'src/VueA11yInput.vue',
+    output: {
+      format: 'esm',
+      file: 'dist/VueA11yInput.esm.js'
+    },
+    plugins: [commonjs(), vue(), filesize()]
   },
   // SSR build.
   {
-    input: 'src/A11yCombobox.vue',
+    input: 'src/VueA11yInput.vue',
     output: {
       format: 'cjs',
-      file: 'dist/A11yCombobox.ssr.js'
+      file: 'dist/VueA11yInput.ssr.js'
     },
     plugins: [commonjs(), vue({ template: { optimizeSSR: true } }), filesize()]
   },
@@ -28,10 +38,17 @@ export default [
     input: 'src/wrapper.js',
     output: {
       format: 'iife',
-      file: 'dist/A11yCombobox.min.js',
+      file: 'dist/VueA11yInput.min.js',
       exports: 'named',
-      name: 'A11yCombobox.vue'
+      name: 'VueA11yInput.vue'
     },
-    plugins: [commonjs(), vue(), buble(), terser(), filesize()]
+    plugins: [
+      resolve(),
+      commonjs(),
+      vue(),
+      buble({ objectAssign: 'Object.assign' }),
+      terser(),
+      filesize()
+    ]
   }
 ]
