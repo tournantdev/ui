@@ -30,7 +30,14 @@ jobs:
           root: ~/a11y
           paths:
             - input
-
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/a11y
+      - run:
+          name: 'Building component instances'
+          command: yarn build
   test:
     <<: *defaults
     steps:
@@ -49,6 +56,9 @@ workflows:
   build_and_test:
     jobs:
       - install
+      - build:
+          requires:
+            - install
       - test:
           requires:
             - install
