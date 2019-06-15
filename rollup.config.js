@@ -13,7 +13,14 @@ export default [
       format: 'esm',
       file: 'dist/VueA11yInput.js'
     },
-    plugins: [commonjs(), resolve(), vue(), buble(), terser(), filesize()]
+    plugins: [
+      commonjs(),
+      resolve(),
+      vue(),
+      buble({ objectAssign: 'Object.assign' }),
+      terser(),
+      filesize()
+    ]
   },
   // ESM build to be used with webpack/rollup.
   {
