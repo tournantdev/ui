@@ -1,5 +1,7 @@
 # vue-a11y-input
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ovlb/vue-a11y-input.svg)](https://greenkeeper.io/)
+
 A component for text-like inputs. Built with accessibility in mind.
 
 ## Installation
