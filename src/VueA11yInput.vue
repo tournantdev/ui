@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import uuid from 'uuid/v4'
+import uuid from 'uuid-browser/v4'
 
 export default {
   name: 'VueA11yInput',
