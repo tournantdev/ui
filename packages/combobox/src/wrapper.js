@@ -1,10 +1,10 @@
-import A11yCombobox from './A11yCombobox.vue'
+import Combobox from './index.vue'
 
 // Declare install function executed by Vue.use()
-export function install (Vue) {
+export function install(Vue) {
   if (install.installed) return
   install.installed = true
-  Vue.component('A11yCombobox', A11yCombobox)
+  Vue.component('TournantCombobox', Combobox)
 }
 
 // Create module definition for Vue.use()
@@ -24,4 +24,4 @@ if (GlobalVue) {
 }
 
 // To allow use as module (npm/webpack/etc.) export component
-export default A11yCombobox
+export default Combobox

@@ -1,10 +1,10 @@
-import A11yInput from './VueA11yInput.vue'
+import TournantInput from './index.vue'
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {
   if (install.installed) return
   install.installed = true
-  Vue.component('VueA11yInput', A11yInput)
+  Vue.component('TournantInput', TournantInput)
 }
 
 // Create module definition for Vue.use()
@@ -24,4 +24,4 @@ if (GlobalVue) {
 }
 
 // To allow use as module (npm/webpack/etc.) export component
-export default A11yInput
+export default TournantInput

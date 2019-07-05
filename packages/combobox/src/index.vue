@@ -7,11 +7,7 @@
     aria-owns="vCbResultList"
     aria-haspopup="listbox"
   >
-    <label
-      :class="cbClasses.label"
-      class="v-a11y-combobox__label"
-      for="cbInput"
-    > {{ inputLabel }}</label>
+    <label :class="cbClasses.label" class="v-a11y-combobox__label" for="cbInput">{{ inputLabel }}</label>
     <input
       id="cbInput"
       ref="input"
@@ -31,9 +27,9 @@
       @keyup.up="onKeyUp"
       @keyup.enter="onEnter"
       @keyup.esc="onEscape"
-    >
+    />
     <transition name="fade-up">
-      <a11y-combobox-list
+      <combobox-list
         v-show="showsList"
         :items="items"
         :active-item="arrowPosition"
@@ -47,11 +43,11 @@
 </template>
 
 <script>
-import A11yComboboxList from './A11yComboboxList.vue'
+import ComboboxList from './ComboboxList.vue'
 
 export default {
   components: {
-    A11yComboboxList
+    ComboboxList
   },
   props: {
     items: {
@@ -71,7 +67,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       inputValue: '',
       hasFocus: false,
@@ -79,44 +75,44 @@ export default {
     }
   },
   computed: {
-    showsList () {
+    showsList() {
       return Boolean(this.inputValue && this.hasFocus)
     },
-    cbClasses () {
+    cbClasses() {
       return this.isStyled
         ? {
-          base: 'v-a11y-combobox--is-styled',
-          label: 'v-a11y-combobox__label--is-styled',
-          input: 'v-a11y-combobox__input--is-styled'
-        }
+            base: 'v-a11y-combobox--is-styled',
+            label: 'v-a11y-combobox__label--is-styled',
+            input: 'v-a11y-combobox__input--is-styled'
+          }
         : ''
     }
   },
-  mounted () {
+  mounted() {
     document.addEventListener('click', this.handleClick, false)
   },
-  destroyed () {
+  destroyed() {
     document.removeEventListener('click', this.handleClick, false)
   },
   methods: {
-    onChange () {
+    onChange() {
       this.$emit('input', this.inputValue)
       this.hasFocus = true
       this.arrowPosition = -1
     },
-    onKeyDown () {
-      if (this.showsList && (this.arrowPosition < this.items.length - 1)) {
+    onKeyDown() {
+      if (this.showsList && this.arrowPosition < this.items.length - 1) {
         this.arrowPosition++
       }
     },
-    onKeyUp () {
+    onKeyUp() {
       if (this.showsList) {
         this.arrowPosition === -1
-          ? this.arrowPosition = this.items.length - 1
-          : this.arrowPosition = this.arrowPosition - 1
+          ? (this.arrowPosition = this.items.length - 1)
+          : (this.arrowPosition = this.arrowPosition - 1)
       }
     },
-    onEnter () {
+    onEnter() {
       if (this.arrowPosition > -1) {
         this.$emit('foundResult', this.items[this.arrowPosition].id)
         this.inputValue = this.items[this.arrowPosition].title
@@ -124,25 +120,25 @@ export default {
         this.arrowPosition = -1
       }
     },
-    onEscape () {
+    onEscape() {
       this.arrowPosition = -1
       this.inputValue = ''
     },
-    onResultClick (id) {
+    onResultClick(id) {
       this.$emit('foundResult', this.items[id].id)
       this.hasFocus = false
       this.arrowPosition = -1
     },
-    handleClick (evt) {
+    handleClick(evt) {
       if (!this.$el.contains(evt.target)) {
         this.hasFocus = false
       }
     },
-    getId (id) {
+    getId(id) {
       return id < 0 ? false : `vCbItem_${id}`
     }
   },
-  provide () {
+  provide() {
     return {
       isStyled: this.isStyled,
       getId: this.getId
