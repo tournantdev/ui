@@ -2,36 +2,63 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/a11y/input
+  docker:
+    - image: vuejs/ci
+
 jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.12
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+  install:
+    <<: *defaults
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            - v1-a11y-input-{{ .Branch }}-{{ checksum "package.json" }}
 
+            - v1-a11y-input-{{ .Branch }}-
+            - v1-a11y-input-
       - run: yarn install
-
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-a11y-input-{{ .Branch }}-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: ~/a11y
+          paths:
+            - input
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/a11y
+      - run:
+          name: 'Building component instances'
+          command: yarn build
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/a11y
+      - run:
+          name: 'JavaScript Test Suite'
+          command: yarn run test:ci
+      - run:
+          name: report coverage stats for non-PRs
+          command: |
+            ./node_modules/.bin/codecov
 
-      # run tests!
-      - run: yarn test:unit
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - install
+      - build:
+          requires:
+            - install
+      - test:
+          requires:
+            - install
