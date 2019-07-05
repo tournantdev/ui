@@ -2,7 +2,8 @@
   "name": "@tournant/ui",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c --environment BUILD:production",
+    "build": "lerna run build --parallel",
+    "bootstrap": "lerna bootstrap",
     "serve": "vue-cli-service serve",
     "build:demo": "vue-cli-service build",
     "lint": "vue-cli-service lint",
