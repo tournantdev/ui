@@ -1,0 +1,66 @@
+@mixin v-a11y-combobox__list {
+  background-color: #fff;
+  border: 1px solid rgb(206, 206, 206);
+  border-color: var(--v-a11y-cb-clr-light);
+  border-radius: 0.25rem;
+  box-shadow: (
+    0 0.1em 0.14em rgba(0, 0, 0, 0.12),
+    0 0.1em 0.18em rgba(0, 0, 0, 0.24)
+  );
+  left: 2vmin;
+  list-style: none;
+  margin: 0;
+  max-height: 20rem;
+  overflow: scroll;
+  padding: 0.5rem;
+  padding: var(--v-a11y-cb-space);
+  position: absolute;
+  right: 2vmin;
+  text-align: left;
+  z-index: 10;
+  z-index: var(--v-a11y-cb-z-index);
+}
+
+@mixin v-a11y-combobox__list-item {
+  border-bottom: 2px solid rgb(206, 206, 206);
+  border-bottom-color: var(--v-a11y-cb-clr-light);
+  padding: 0.25rem 0 0.125rem;
+  padding: calc(var(--v-a11y-cb-space) / 2) 0 calc(var(--v-a11y-cb-space / 4));
+  position: relative;
+
+  // Need to add content inside a span to allow the hover/active underline
+  // to appear while simultaneously allow for text clipping
+  & span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  &::after {
+    background-color: darkblue;
+    background-color: var(--v-a11y-cb-clr-dark);
+    bottom: -2px;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
+    width: 100%;
+  }
+
+  &[aria-selected='true'],
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+    margin-bottom: var(--v-a11y-cb-space);
+  }
+}

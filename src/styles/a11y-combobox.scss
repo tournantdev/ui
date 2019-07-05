@@ -1,0 +1,31 @@
+@mixin v-a11y-combobox {
+  margin: 0 auto;
+  max-width: 30rem;
+  padding: 1rem;
+  padding: calc(var(--v-a11y-cb-space) * 2);
+  position: relative;
+  width: 100%;
+}
+
+@mixin v-a11y-combobox__label {
+  display: block;
+  padding-bottom: 0.25rem;
+  padding-bottom: calc(var(--v-a11y-cb-space) / 2);
+}
+
+@mixin v-a11y-combobox__input {
+  border-radius: 0.25rem 0.25rem 0 0;
+  border: 1px solid rgb(206, 206, 206);
+  border-bottom: 2px solid rgb(206, 206, 206);
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0.25rem 0.5rem;
+  padding: calc(var(--v-a11y-cb-space) / 2) var(--v-a11y-cb-space);
+  width: 100%;
+
+  &:focus {
+    border-bottom-color: darkblue;
+    border-bottom-color: var(--v-a11y-cb-clr-dark);
+    outline: 0;
+  }
+}
