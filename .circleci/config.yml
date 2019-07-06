@@ -72,3 +72,4 @@ workflows:
       - test:
           requires:
             - install
+            - bootstrap
