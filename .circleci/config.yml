@@ -64,7 +64,9 @@ workflows:
   build_and_test:
     jobs:
       - install
-      - bootstrap
+      - bootstrap:
+          requires:
+            - install
       - build:
           requires:
             - install
