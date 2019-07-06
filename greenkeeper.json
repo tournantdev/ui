@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/combobox/package.json",
+        "packages/input/package.json"
+      ]
+    }
+  }
+}
