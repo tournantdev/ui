@@ -2,7 +2,7 @@
 	<transition-group
 		id="vCbResultList"
 		:class="listClasses.listClass"
-		class="v-a11y-combobox__list"
+		class="t-ui-combobox__list"
 		name="list"
 		mode="out-in"
 		tag="ul"
@@ -11,7 +11,7 @@
 		<li
 			v-if="!items.length"
 			key="vCbNoResults"
-			class="v-a11y-combobox__list-item"
+			class="t-ui-combobox__list-item"
 		>
 			<span>{{ noResultsMessage }}</span>
 		</li>
@@ -22,7 +22,7 @@
 			:id="getId(index)"
 			:class="listClasses.itemClass"
 			:aria-selected="(activeItem === index).toString()"
-			class="v-a11y-combobox__list-item"
+			class="t-ui-combobox__list-item"
 			role="option"
 			@click="$emit('resultClick', index)"
 		>
@@ -51,8 +51,8 @@ export default {
 		listClasses() {
 			return this.isStyled
 				? {
-						listClass: 'v-a11y-combobox__list--is-styled',
-						itemClass: 'v-a11y-combobox__list-item--is-styled'
+						listClass: 't-ui-combobox__list--is-styled',
+						itemClass: 't-ui-combobox__list-item--is-styled'
 				  }
 				: ''
 		}
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import './styles/a11y-combobox-list.scss';
+@import './styles/combobox-list.scss';
 
 .list-enter-active,
 .list-leave-active,
@@ -83,11 +83,11 @@ export default {
 	position: absolute;
 }
 
-.v-a11y-combobox__list--is-styled {
-	@include v-a11y-combobox__list;
+.t-ui-combobox__list--is-styled {
+	@include t-ui-combobox__list;
 }
 
-.v-a11y-combobox__list-item--is-styled {
-	@include v-a11y-combobox__list-item;
+.t-ui-combobox__list-item--is-styled {
+	@include t-ui-combobox__list-item;
 }
 </style>

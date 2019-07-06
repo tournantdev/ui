@@ -1,7 +1,7 @@
-@mixin v-a11y-combobox__list {
+@mixin t-ui-combobox__list {
   background-color: #fff;
   border: 1px solid rgb(206, 206, 206);
-  border-color: var(--v-a11y-cb-clr-light);
+  border-color: var(--t-ui-cb-clr-light);
   border-radius: 0.25rem;
   box-shadow: (
     0 0.1em 0.14em rgba(0, 0, 0, 0.12),
@@ -13,19 +13,19 @@
   max-height: 20rem;
   overflow: scroll;
   padding: 0.5rem;
-  padding: var(--v-a11y-cb-space);
+  padding: var(--t-ui-cb-space);
   position: absolute;
   right: 2vmin;
   text-align: left;
   z-index: 10;
-  z-index: var(--v-a11y-cb-z-index);
+  z-index: var(--t-ui-cb-z-index);
 }
 
-@mixin v-a11y-combobox__list-item {
+@mixin t-ui-combobox__list-item {
   border-bottom: 2px solid rgb(206, 206, 206);
-  border-bottom-color: var(--v-a11y-cb-clr-light);
+  border-bottom-color: var(--t-ui-cb-clr-light);
   padding: 0.25rem 0 0.125rem;
-  padding: calc(var(--v-a11y-cb-space) / 2) 0 calc(var(--v-a11y-cb-space / 4));
+  padding: calc(var(--t-ui-cb-space) / 2) 0 calc(var(--t-ui-cb-space / 4));
   position: relative;
 
   // Need to add content inside a span to allow the hover/active underline
@@ -40,7 +40,7 @@
 
   &::after {
     background-color: darkblue;
-    background-color: var(--v-a11y-cb-clr-dark);
+    background-color: var(--t-ui-cb-clr-dark);
     bottom: -2px;
     content: '';
     height: 2px;
@@ -61,6 +61,6 @@
 
   &:not(:last-child) {
     margin-bottom: 0.5rem;
-    margin-bottom: var(--v-a11y-cb-space);
+    margin-bottom: var(--t-ui-cb-space);
   }
 }

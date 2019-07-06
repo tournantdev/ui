@@ -1,6 +1,6 @@
 <template>
-	<div class="v-a11y-input">
-		<label :for="id" class="v-a11y-input__label">
+	<div class="t-ui-input">
+		<label :for="id" class="t-ui-input__label">
 			{{ label }}
 			<slot name="label-text" />
 		</label>
@@ -10,17 +10,17 @@
 			:aria-invalid="validation.$error.toString()"
 			:aria-describedby="ariaDescribedby"
 			v-bind="$attrs"
-			class="v-a11y-input__input"
+			class="t-ui-input__input"
 			v-on="listeners"
 			@input="updateValue"
 		/>
-		<p v-if="description" :id="`${id}__desc`" class="v-a11y-input__description">
+		<p v-if="description" :id="`${id}__desc`" class="t-ui-input__description">
 			{{ description }}
 		</p>
 		<div
 			v-show="validation.$error"
 			:id="`${id}__feedback`"
-			class="v-a11y-input__feedback"
+			class="t-ui-input__feedback"
 		>
 			<slot name="feedback" />
 		</div>

@@ -2,14 +2,14 @@
 	<div
 		:class="cbClasses.base"
 		:aria-expanded="showsList.toString()"
-		class="v-a11y-combobox"
+		class="t-ui-combobox"
 		role="combobox"
 		aria-owns="vCbResultList"
 		aria-haspopup="listbox"
 	>
 		<label
 			:class="cbClasses.label"
-			class="v-a11y-combobox__label"
+			class="t-ui-combobox__label"
 			for="cbInput"
 			>{{ inputLabel }}</label
 		>
@@ -19,7 +19,7 @@
 			v-model.trim="inputValue"
 			:class="cbClasses.input"
 			:aria-activedescendant="getId(arrowPosition)"
-			class="v-a11y-combobox__input"
+			class="t-ui-combobox__input"
 			type="text"
 			name="cbInput"
 			role="searchbox"
@@ -87,9 +87,9 @@ export default {
 		cbClasses() {
 			return this.isStyled
 				? {
-						base: 'v-a11y-combobox--is-styled',
-						label: 'v-a11y-combobox__label--is-styled',
-						input: 'v-a11y-combobox__input--is-styled'
+						base: 't-ui-combobox--is-styled',
+						label: 't-ui-combobox__label--is-styled',
+						input: 't-ui-combobox__input--is-styled'
 				  }
 				: ''
 		}
@@ -154,7 +154,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import './styles/a11y-combobox.scss';
+@import './styles/combobox.scss';
 
 .fade-up-enter-active,
 .fade-up-move {
@@ -177,21 +177,21 @@ export default {
 }
 
 :root {
-	--v-a11y-cb-space: 0.5rem;
-	--v-a11y-cb-clr-light: rgb(206, 206, 206);
-	--v-a11y-cb-clr-dark: darkblue;
-	--v-a11y-cb-z-index: 10;
+	--t-ui-cb-space: 0.5rem;
+	--t-ui-cb-clr-light: rgb(206, 206, 206);
+	--t-ui-cb-clr-dark: darkblue;
+	--t-ui-cb-z-index: 10;
 }
 
-.v-a11y-combobox--is-styled {
-	@include v-a11y-combobox;
+.t-ui-combobox--is-styled {
+	@include t-ui-combobox;
 }
 
-.v-a11y-combobox__label--is-styled {
-	@include v-a11y-combobox__label;
+.t-ui-combobox__label--is-styled {
+	@include t-ui-combobox__label;
 }
 
-.v-a11y-combobox__input--is-styled {
-	@include v-a11y-combobox__input;
+.t-ui-combobox__input--is-styled {
+	@include t-ui-combobox__input;
 }
 </style>

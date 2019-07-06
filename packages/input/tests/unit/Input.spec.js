@@ -95,7 +95,7 @@ describe('Input', () => {
 
 		it('sets `aria-describedby` to the id of the feedback message container', () => {
 			const input = wrapper.find('input')
-			const feedbackMessages = wrapper.find('.v-a11y-input__feedback')
+			const feedbackMessages = wrapper.find('.t-ui-input__feedback')
 			const feedbackId = feedbackMessages.attributes('id')
 
 			expect(input.attributes('aria-describedby')).toBe(feedbackId)
@@ -114,7 +114,7 @@ describe('Input', () => {
 			})
 
 			const input = wrapper.find('input')
-			const descriptionMessage = wrapper.find('.v-a11y-input__description')
+			const descriptionMessage = wrapper.find('.t-ui-input__description')
 			const id = descriptionMessage.attributes('id')
 
 			expect(input.attributes('aria-describedby')).toBe(id)
@@ -127,8 +127,8 @@ describe('Input', () => {
 			})
 
 			const input = wrapper.find('input')
-			const descriptionMessage = wrapper.find('.v-a11y-input__description')
-			const feedbackMessages = wrapper.find('.v-a11y-input__feedback')
+			const descriptionMessage = wrapper.find('.t-ui-input__description')
+			const feedbackMessages = wrapper.find('.t-ui-input__feedback')
 			const feedbackId = feedbackMessages.attributes('id')
 			const descId = descriptionMessage.attributes('id')
 
@@ -149,7 +149,7 @@ describe('Input', () => {
 		})
 
 		it('hides the input messages if valid', () => {
-			const feedbackMessages = wrapper.find('.v-a11y-input__feedback')
+			const feedbackMessages = wrapper.find('.t-ui-input__feedback')
 
 			wrapper.setProps({ validation: { $error: false, $dirty: true } })
 
@@ -157,7 +157,7 @@ describe('Input', () => {
 		})
 
 		it('renders feedback messages if value is invalid', () => {
-			const feedbackMessages = wrapper.find('.v-a11y-input__feedback')
+			const feedbackMessages = wrapper.find('.t-ui-input__feedback')
 
 			wrapper.setProps({ validation: { $error: true, $dirty: true } })
 

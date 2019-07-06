@@ -34,7 +34,7 @@ export default {
 	margin-top: 60px;
 }
 
-.v-a11y-input__label {
+.t-ui-input__label {
 	display: block;
 }
 </style>
