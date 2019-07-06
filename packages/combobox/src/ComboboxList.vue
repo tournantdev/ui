@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'Styles/a11y-combobox-list.scss';
+@import './styles/a11y-combobox-list.scss';
 
 .list-enter-active,
 .list-leave-active,

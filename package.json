@@ -3,7 +3,8 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "lerna run build --parallel",
-		"bootstrap": "lerna bootstrap",
+		"build:changed": "lerna run build --parallel --since origin/master",
+		"bootstrap": "lerna bootstrap --hoist",
 		"serve": "vue-cli-service serve",
 		"build:ui": "vue-cli-service build",
 		"lint": "vue-cli-service lint",
