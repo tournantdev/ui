@@ -5,15 +5,11 @@
 </template>
 
 <script>
-import VueA11yInput from '@/VueA11yInput.vue'
-
 import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
 	name: 'App',
-	components: {
-		VueA11yInput
-	},
+	components: {},
 	data() {
 		return {
 			password: ''
