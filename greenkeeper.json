@@ -1,0 +1,13 @@
+{
+	"groups": {
+		"root": {
+			"packages": ["package.json"]
+		},
+		"packages": {
+			"packages": [
+				"packages/combobox/package.json",
+				"packages/input/package.json"
+			]
+		}
+	}
+}
