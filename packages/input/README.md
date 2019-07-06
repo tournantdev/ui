@@ -1,40 +1,37 @@
-# vue-a11y-input
+# @tournant/input
 
 A component for text-like inputs. Accessible and versatile.
 
 ---
 
-[![NPM version](https://img.shields.io/npm/v/vue-a11y-input.svg?style=flat)](https://www.npmjs.com/package/vue-a11y-input)
-[![CircleCI](https://circleci.com/gh/ovlb/vue-a11y-combobox.svg?style=svg)](https://circleci.com/gh/ovlb/vue-a11y-combobox)
-[![codecov](https://codecov.io/gh/ovlb/vue-a11y-input/branch/master/graph/badge.svg)](https://codecov.io/gh/ovlb/vue-a11y-input)
-[![GitHub license](https://img.shields.io/github/license/ovlb/vue-a11y-input.svg)](https://github.com/ovlb/vue-a11y-input/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/ovlb/vue-a11y-input.svg)](https://greenkeeper.io/)
+[![NPM version](https://img.shields.io/npm/v/@tournant/input.svg?style=flat)](https://www.npmjs.com/package/@tournant/input)
+[![GitHub license](https://img.shields.io/github/license/ovlb/@tournant/input.svg)](https://github.com/ovlb/@tournant/input/blob/master/LICENSE)
 
 ## Installation
 
 You can install the component using NPM or Yarn.
 
 ```
-npm install vue-a11y-input --save
+npm install @tournant/input --save
 ```
 
 If you use Yarn:
 
 ```
-yarn add vue-a11y-input
+yarn add @tournant/input
 ```
 
 Once the component is installed you need to import wherever you want to use it.
 
 ```js
-import A11yInput from 'vue-a11y-input'
+import TournantInput from '@tournant/input'
 ```
 
 Don’t forget to add it to the registered components (been there, done that):
 
 ```js
 components: {
-  A11yInput,
+  TournantInput,
   // ... all the other amazing components
 }
 ```
@@ -54,12 +51,12 @@ This is just a quick overview. For an in-depth guide how to use the component ch
 
 The component exposes the following CSS classes for its parts:
 
-| Classname                   | Element                             |
-| --------------------------- | ----------------------------------- |
-| v-a11y-input                | Root                                |
-| v-a11y-input\_\_input       | Text field                          |
-| v-a11y-input\_\_description | Descriptive text                    |
-| v-a11y-input\_\_feedback    | Container to show feedback messages |
+| Classname                 | Element                             |
+| ------------------------- | ----------------------------------- |
+| t-ui-input                | Root                                |
+| t-ui-input\_\_input       | Text field                          |
+| t-ui-input\_\_description | Descriptive text                    |
+| t-ui-input\_\_feedback    | Container to show feedback messages |
 
 By default no styles will be attached to these classes.
 
@@ -72,13 +69,13 @@ Attributes you add when adding the component to your template are bound to the i
 Say you want to add a password input to a form. If you add `type="password"` the component will take the type and apply it to the input element.
 
 ```html
-<a11y-input type="password" />
+<tournant-input type="password" />
 ```
 
-`vue-a11y-input` is [v-model](https://vuejs.org/v2/guide/forms.html) compliant.
+`@tournant/input` is [v-model](https://vuejs.org/v2/guide/forms.html) compliant.
 
 ```html
-<a11y-input v-model="password" type="password" name="password" />
+<tournant-input v-model="password" type="password" name="password" />
 ```
 
 Ths will result in the following input:
@@ -89,7 +86,7 @@ Ths will result in the following input:
 	aria-invalid="false"
 	type="password"
 	name="password"
-	class="v-a11y-input__input"
+	class="t-ui-input__input"
 />
 ```
 
@@ -102,7 +99,7 @@ Input elements [must have a linked label](https://www.w3.org/TR/WCAG20-TECHS/H44
 To do so, pass in the `label` prop when using the component.
 
 ```html
-<a11y-input
+<tournant-input
 	v-model="password"
 	type="password"
 	name="password"
@@ -119,7 +116,7 @@ Sometimes it is useful to describe expected conditions. For example, a user has 
 To add a description, pass in the prop named, you might have guessed it, `description`.
 
 ```html
-<a11y-input
+<tournant-input
 	v-model="password"
 	type="password"
 	name="password"
@@ -137,7 +134,7 @@ In addition to binding the `required` attribute on the input element the compone
 Bear in mind that the popular \* might not be enough to indicate a required field. For further reading I recommend the article [Required Fields](https://a11y-101.com/development/required) on a11y-101.com
 
 ```html
-<a11y-input
+<tournant-input
 	v-model="password"
 	type="password"
 	name="password"
@@ -147,7 +144,7 @@ Bear in mind that the popular \* might not be enough to indicate a required fiel
 	<template v-slot:label-text>
 		<span class="aside">required</span>
 	</template>
-</a11y-input>
+</tournant-input>
 ```
 
 💁 _Note:_ This example uses the named slot syntax introduced in Vue 2.6. [Take a look in the docs](https://vuejs.org/v2/guide/components-slots.html#Named-Slots) for usage examples and how to use named slots in versions prior to 2.6.
@@ -164,7 +161,7 @@ Nonetheless, I tried to make it as easy as possible to use the component along e
 
 In fact, if you are already using Vuelidate, you are good to go.
 
-`vue-a11y-input` expects a vuelidate-like validation object. Namely the properties `$error` and `$dirty`.
+`@tournant/input` expects a vuelidate-like validation object. Namely the properties `$error` and `$dirty`.
 
 For our password example the Vuelidate config might look something like this:
 
@@ -172,9 +169,7 @@ For our password example the Vuelidate config might look something like this:
 import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
-	// […]
-	// Component context omitted for brevity
-	// […]
+	// […] Component context omitted for brevity
 	validations: {
 		password: {
 			required,
@@ -187,7 +182,7 @@ export default {
 You can use `$v.password` as the prop for the input component without the need to change anything.
 
 ```html
-<a11y-input
+<tournant-input
 	v-model="password"
 	:required="true"
 	:validation="$v.password"
@@ -199,7 +194,7 @@ You can use `$v.password` as the prop for the input component without the need t
 	<template v-slot:label-text>
 		<span class="aside">required</span>
 	</template>
-</a11y-input>
+</tournant-input>
 ```
 
 `aria-invalid` is set based on `validation.$error`, to let screen readers know if the entered value is correct.
@@ -207,22 +202,22 @@ You can use `$v.password` as the prop for the input component without the need t
 This attribute could also be used to add styles based on the validated state.
 
 ```css
-.a11y-input__input[aria-invalid='true'] {
+.tournant-input__input[aria-invalid='true'] {
 	border-color: red;
 }
 
 /** [data-untouched is set on the input while `validation.$dirty is `false``] and can be used to only apply validated styles to touched and validated inputs */
-.a11y-input__input[aria-invalid='false']:not([data-untouched]) {
+.tournant-input__input[aria-invalid='false']:not([data-untouched]) {
 	border-color: green;
 }
 ```
 
 ### Feedback Messages
 
-Relying on styling is not enough to convey errors to users. `vue-a11y-input` exposes a `feedback` slot to render detailed feedback for the users.
+Relying on styling is not enough to convey errors to users. `@tournant/input` exposes a `feedback` slot to render detailed feedback for the users.
 
 ```html
-<a11y-input
+<tournant-input
 	v-model="password"
 	:required="true"
 	:validation="$v.password"
@@ -239,65 +234,7 @@ Relying on styling is not enough to convey errors to users. `vue-a11y-input` exp
 			Your password is required.
 		</p>
 	</template>
-</a11y-input>
+</tournant-input>
 ```
 
 If `validation.$error` equals `true` the ID of the feedback container will be added to `aria-describedby` and as thus read by screen readers.
-
-## Feedback & Contributions
-
-Contributions are always welcome.
-
-If you found a bug or want to request a feature, please open an [issue](https://github.com/ovlb/vue-a11y-combobox/issues/new 'New issue form of this project').
-
-If you wrote an enhancement or fixed a bug, open a Pull Request. Please follow the _Fork & Pull Request_ workflow, as [explained here](https://gist.github.com/Chaser324/ce0505fbed06b947d962 'GitHub Standard Fork & Pull Request Workflow by Chaser134').
-
-Pull Requests _should_ contain unit tests. However, if you are not sure how to write these tests, please do not hesitate to open a request. We can figure out how to add necessary tests together.
-
-Thanks. 💞
-
-## Development
-
-If you want to improve the component, follow these steps.
-
-First, you need to install the dependencies:
-
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-
-```
-yarn run build
-```
-
-💁 _Note:_ This builds the bundles that are published to NPM. If you want to build the demo implementation in `./demo` use `yarn run build:demo`
-
-### Run your tests
-
-```
-yarn run test
-```
-
-### Lints and fixes files
-
-```
-yarn run lint
-```
-
-### Run your unit tests
-
-```
-yarn run test:unit
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
