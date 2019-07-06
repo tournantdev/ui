@@ -44,7 +44,7 @@ jobs:
       - attach_workspace:
           at: ~/tournant
       - run:
-          name: 'JavaScript Test Suite'
+          name: 'Run Unit Tests'
           command: yarn run test:ci
       - run:
           name: report coverage stats for non-PRs
