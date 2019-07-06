@@ -36,8 +36,8 @@ jobs:
       - attach_workspace:
           at: ~/tournant
       - run:
-        name: 'Bootstrapping packages'
-        command: yarn bootstrap
+          name: 'Bootstrapping packages'
+          command: yarn bootstrap
   build:
     <<: *defaults
     steps:
@@ -64,6 +64,7 @@ workflows:
   build_and_test:
     jobs:
       - install
+      - bootstrap
       - build:
           requires:
             - install
