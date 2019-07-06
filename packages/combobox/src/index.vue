@@ -51,6 +51,7 @@
 import ComboboxList from './ComboboxList.vue'
 
 export default {
+	name: 'TournantCombobox',
 	components: {
 		ComboboxList
 	},
