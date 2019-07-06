@@ -85,11 +85,11 @@ Ths will result in the following input:
 
 ```html
 <input
-  id="6ac26f8f-930c-4dc4-a098-b00094b56906"
-  aria-invalid="false"
-  type="password"
-  name="password"
-  class="v-a11y-input__input"
+	id="6ac26f8f-930c-4dc4-a098-b00094b56906"
+	aria-invalid="false"
+	type="password"
+	name="password"
+	class="v-a11y-input__input"
 />
 ```
 
@@ -103,10 +103,10 @@ To do so, pass in the `label` prop when using the component.
 
 ```html
 <a11y-input
-  v-model="password"
-  type="password"
-  name="password"
-  label="Your password"
+	v-model="password"
+	type="password"
+	name="password"
+	label="Your password"
 />
 ```
 
@@ -120,11 +120,11 @@ To add a description, pass in the prop named, you might have guessed it, `descri
 
 ```html
 <a11y-input
-  v-model="password"
-  type="password"
-  name="password"
-  label="Your password"
-  description="Your password has to be at least eight characters long."
+	v-model="password"
+	type="password"
+	name="password"
+	label="Your password"
+	description="Your password has to be at least eight characters long."
 />
 ```
 
@@ -138,15 +138,15 @@ Bear in mind that the popular \* might not be enough to indicate a required fiel
 
 ```html
 <a11y-input
-  v-model="password"
-  type="password"
-  name="password"
-  label="Your password"
-  description="Your password has to be at least eight characters long."
+	v-model="password"
+	type="password"
+	name="password"
+	label="Your password"
+	description="Your password has to be at least eight characters long."
 >
-  <template v-slot:label-text>
-    <span class="aside">required</span>
-  </template>
+	<template v-slot:label-text>
+		<span class="aside">required</span>
+	</template>
 </a11y-input>
 ```
 
@@ -172,15 +172,15 @@ For our password example the Vuelidate config might look something like this:
 import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
-  // […]
-  // Component context omitted for brevity
-  // […]
-  validations: {
-    password: {
-      required,
-      minLength: minLength(8)
-    }
-  }
+	// […]
+	// Component context omitted for brevity
+	// […]
+	validations: {
+		password: {
+			required,
+			minLength: minLength(8)
+		}
+	}
 }
 ```
 
@@ -188,17 +188,17 @@ You can use `$v.password` as the prop for the input component without the need t
 
 ```html
 <a11y-input
-  v-model="password"
-  :required="true"
-  :validation="$v.password"
-  type="password"
-  name="password"
-  label="Your password"
-  description="Your password has to be at least eight characters long."
+	v-model="password"
+	:required="true"
+	:validation="$v.password"
+	type="password"
+	name="password"
+	label="Your password"
+	description="Your password has to be at least eight characters long."
 >
-  <template v-slot:label-text>
-    <span class="aside">required</span>
-  </template>
+	<template v-slot:label-text>
+		<span class="aside">required</span>
+	</template>
 </a11y-input>
 ```
 
@@ -208,12 +208,12 @@ This attribute could also be used to add styles based on the validated state.
 
 ```css
 .a11y-input__input[aria-invalid='true'] {
-  border-color: red;
+	border-color: red;
 }
 
 /** [data-untouched is set on the input while `validation.$dirty is `false``] and can be used to only apply validated styles to touched and validated inputs */
 .a11y-input__input[aria-invalid='false']:not([data-untouched]) {
-  border-color: green;
+	border-color: green;
 }
 ```
 
@@ -223,22 +223,22 @@ Relying on styling is not enough to convey errors to users. `vue-a11y-input` exp
 
 ```html
 <a11y-input
-  v-model="password"
-  :required="true"
-  :validation="$v.password"
-  type="password"
-  name="password"
-  label="Your password"
-  description="Your password has to be at least eight characters long."
+	v-model="password"
+	:required="true"
+	:validation="$v.password"
+	type="password"
+	name="password"
+	label="Your password"
+	description="Your password has to be at least eight characters long."
 >
-  <template v-slot:required-text>
-    <span class="aside">required</span>
-  </template>
-  <template v-slot:feedback>
-    <p v-if="!$v.password.required">
-      Your password is required.
-    </p>
-  </template>
+	<template v-slot:required-text>
+		<span class="aside">required</span>
+	</template>
+	<template v-slot:feedback>
+		<p v-if="!$v.password.required">
+			Your password is required.
+		</p>
+	</template>
 </a11y-input>
 ```
 

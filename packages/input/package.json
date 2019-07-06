@@ -1,50 +1,50 @@
 {
-  "name": "@tournant/input",
-  "version": "0.4.0",
-  "description": "An accessible implementation for text-like HTML input elements.",
-  "keywords": [
-    "vue",
-    "component",
-    "accessibility",
-    "ui",
-    "a11y",
-    "aria"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tournantdev/ui"
-  },
-  "bugs": "https://github.com/tournantdev/ui/issues",
-  "author": {
-    "name": "Oscar Braunert",
-    "email": "o@ovl.design",
-    "url": "https://www.ovl.design"
-  },
-  "main": "./dist/input.js",
-  "module": "./dist/input.esm.js",
-  "browser": "./dist/browser.min.js",
-  "unpkg": "./dist/browser.min.js",
-  "scripts": {
-    "build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
-    "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit"
-  },
-  "dependencies": {
-    "core-js": "^3.1.4",
-    "uuid-browser": "^3.1.0",
-    "vue": "^2.6.10"
-  },
-  "peerDependencies": {
-    "vue": "^2.6.10"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  }
+	"name": "@tournant/input",
+	"version": "0.4.0",
+	"description": "An accessible implementation for text-like HTML input elements.",
+	"keywords": [
+		"vue",
+		"component",
+		"accessibility",
+		"ui",
+		"a11y",
+		"aria"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tournantdev/ui"
+	},
+	"bugs": "https://github.com/tournantdev/ui/issues",
+	"author": {
+		"name": "Oscar Braunert",
+		"email": "o@ovl.design",
+		"url": "https://www.ovl.design"
+	},
+	"main": "./dist/input.js",
+	"module": "./dist/input.esm.js",
+	"browser": "./dist/browser.min.js",
+	"unpkg": "./dist/browser.min.js",
+	"scripts": {
+		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
+		"lint": "vue-cli-service lint",
+		"test": "vue-cli-service test:unit"
+	},
+	"dependencies": {
+		"core-js": "^3.1.4",
+		"uuid-browser": "^3.1.0",
+		"vue": "^2.6.10"
+	},
+	"peerDependencies": {
+		"vue": "^2.6.10"
+	},
+	"gitHooks": {
+		"pre-commit": "lint-staged"
+	},
+	"lint-staged": {
+		"*.{js,vue}": [
+			"vue-cli-service lint",
+			"git add"
+		]
+	}
 }
