@@ -5,7 +5,7 @@
 version: 2.1
 
 defaults: &defaults
-  working_directory: ~/a11y/input
+  working_directory: ~/tournant/ui
   docker:
     - image: vuejs/ci
 
@@ -17,35 +17,43 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-a11y-input-{{ .Branch }}-{{ checksum "package.json" }}
+            - tournant-ui-{{ .Branch }}-{{ checksum "package.json" }}
 
-            - v1-a11y-input-{{ .Branch }}-
-            - v1-a11y-input-
+            - tournant-ui-{{ .Branch }}-
+            - tournant-ui-
       - run: yarn install
       - save_cache:
           paths:
             - node_modules
-          key: v1-a11y-input-{{ .Branch }}-{{ checksum "package.json" }}
+          key: tournant-ui-{{ .Branch }}-{{ checksum "package.json" }}
       - persist_to_workspace:
-          root: ~/a11y
+          root: ~/tournant
           paths:
-            - input
+            - ui
+  bootstrap:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tournant
+      - run:
+          name: 'Bootstrapping packages'
+          command: yarn bootstrap
   build:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/a11y
+          at: ~/tournant
       - run:
           name: 'Building component instances'
-          command: yarn build
+          command: yarn build:changed
   test:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/a11y
+          at: ~/tournant
       - run:
-          name: 'JavaScript Test Suite'
-          command: yarn run test:ci
+          name: 'Run Unit Tests'
+          command: yarn run test
       - run:
           name: report coverage stats for non-PRs
           command: |
@@ -56,9 +64,14 @@ workflows:
   build_and_test:
     jobs:
       - install
+      - bootstrap:
+          requires:
+            - install
       - build:
           requires:
             - install
-      - test:
-          requires:
-            - install
+            - bootstrap
+      # - test:
+      #     requires:
+      #       - install
+      #       - bootstrap

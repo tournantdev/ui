@@ -31,7 +31,7 @@
 import uuid from 'uuid-browser/v4'
 
 export default {
-	name: 'VueA11yInput',
+	name: 'TournantInput',
 	inheritAttrs: false,
 	props: {
 		value: {
