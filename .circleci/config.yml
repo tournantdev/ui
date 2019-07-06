@@ -31,14 +31,13 @@ jobs:
           paths:
             - ui
   bootstrap:
-      <<: *defaults
-      steps:
-        - attach_workspace:
-            at: ~/tournant
-        -run:
-          name: 'Bootstrapping packages'
-          command: yarn bootstrap
-
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tournant
+      - run:
+        name: 'Bootstrapping packages'
+        command: yarn bootstrap
   build:
     <<: *defaults
     steps:
