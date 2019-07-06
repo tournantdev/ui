@@ -1,9 +1,10 @@
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
 	outputDir: path.resolve(__dirname, 'ui/dist'),
 	configureWebpack: {
-		/* plugins: [
+		plugins: [
 			new CopyWebpackPlugin([
 				{
 					from: path.join(__dirname, 'ui/public'),
@@ -12,7 +13,7 @@ module.exports = {
 					ignore: ['index.html', '.DS_Store']
 				}
 			])
-		] */
+		]
 	},
 	chainWebpack: config => {
 		config.plugin('html').tap(args => {
