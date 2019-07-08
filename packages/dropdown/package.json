@@ -1,0 +1,13 @@
+{
+	"name": "@tournant/dropdown",
+	"version": "0.0.0",
+	"description": "Accessible dropdown menu",
+	"main": "index.js",
+	"repository": "https://github.com/tournantdev/ui",
+	"author": "Oscar Braunert",
+	"license": "MIT",
+	"private": false,
+	"peerDependencies": {
+		"vue": "^2.6.10"
+	}
+}
