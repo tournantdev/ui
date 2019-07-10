@@ -7,7 +7,8 @@
 			</p>
 		</div>
 		<h1 class="main-headline">
-			<span style="font-weight: 300">tournant</span>ui
+			<span style="font-weight: 300">tournant</span
+			><span class="sr-only"> </span>ui
 		</h1>
 		<section class="intro">
 			<p>
