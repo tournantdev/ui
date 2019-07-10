@@ -81,45 +81,48 @@ export default {
 
 			await this.$nextTick()
 
-			if (this.$refs.menu) {
-				this.buttons = Array.from(
-					this.$refs.menu.querySelectorAll(':not([disabled])')
-				)
+			this.buttons = Array.from(
+				this.$refs.menu.querySelectorAll('[role=menuitem]:not([disabled])')
+			)
 
-				this.buttons.forEach(button => {
-					button.addEventListener('click', this.onMenuButtonClick)
-				})
+			this.buttons.forEach(button => {
+				button.addEventListener('click', this.onMenuButtonClick)
+			})
 
-				this.buttons[0].focus()
-			}
+			if (this.buttons) this.buttons[this.index].focus()
 		},
 		close() {
 			// Method will be called from the `clickaway` directive on every component instance
 			// Limit work and ensure correct handling of focus by having an additional check for visibility
 			if (this.isVisible) {
 				this.isVisible = false
-				this.buttons = undefined
-				this.index = 0
+				// this.index = 0
 				this.$refs.toggle.focus()
 			}
 		},
+		onTab(e) {
+			console.log(e)
+		},
 		onDownArrowPress(e) {
 			e.preventDefault()
+
 			if (this.index < this.buttons.length - 1) {
 				this.index++
 			} else {
 				this.index = 0
 			}
+
 			this.buttons[this.index].focus()
 		},
 		onUpArrowPress(e) {
 			e.preventDefault()
-			console.log(e)
+
 			if (this.index === 0) {
 				this.index = this.buttons.length - 1
 			} else {
 				this.index--
 			}
+
 			this.buttons[this.index].focus()
 		}
 	}
@@ -128,7 +131,8 @@ export default {
 
 <style lang="scss">
 .t-ui-dropdown-menu {
-	display: block;
+	display: inline;
+	position: relative;
 	z-index: 50;
 
 	--t-ui-space-half: 0.5rem;
@@ -141,7 +145,6 @@ export default {
 	box-shadow: 2px 4px 6px rgba(142, 142, 142, 0.4);
 	padding: var(--t-ui-space-half) var(--t-ui-space-full);
 	position: absolute;
-	right: 0;
 	text-align: left;
 	z-index: 100;
 
