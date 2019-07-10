@@ -130,13 +130,16 @@ export default {
 .t-ui-dropdown-menu {
 	display: block;
 	z-index: 50;
+
+	--t-ui-space-half: 0.5rem;
+	--t-ui-space-full: 1rem;
 }
 
 .t-ui-dropdown-menu__dropdown {
 	background-color: white;
 	border-radius: 0.25rem;
 	box-shadow: 2px 4px 6px rgba(142, 142, 142, 0.4);
-	padding: space(half, relative) space(full, relative);
+	padding: var(--t-ui-space-half) var(--t-ui-space-full);
 	position: absolute;
 	right: 0;
 	text-align: left;
@@ -149,7 +152,7 @@ export default {
 		width: 100%;
 
 		&:not(:last-child) {
-			margin-bottom: space(half, relative);
+			margin-bottom: var(--t-ui-space-half);
 		}
 	}
 
