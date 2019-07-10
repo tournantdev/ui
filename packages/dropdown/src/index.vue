@@ -1,5 +1,5 @@
 <template>
-	<div v-clickaway="close" class="t-ui-dropdown-menu">
+	<div class="t-ui-dropdown-menu">
 		<button
 			ref="toggle"
 			:aria-label="'Dropdown Menu'"
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import isOutsidePath from '@h/isOutsidePath.js'
+
 export default {
 	name: 'TournantDropdown',
 	props: {
@@ -49,8 +51,24 @@ export default {
 			index: 0
 		}
 	},
+	mounted() {
+		const firstDiv = document.querySelector('div')
+
+		if (!firstDiv.onclick) {
+			this.setUpCatchEvent()
+		}
+
+		document.addEventListener('keyup', this.handleGlobalKeyup)
+		document.documentElement.addEventListener('click', this.handleGlobalClick)
+	},
 	beforeDestroy() {
-		if (this.buttons && this.buttons.length) {
+		document.removeEventListener('keyup', this.handleGlobalKeyup)
+		document.documentElement.removeEventListener(
+			'click',
+			this.handleGlobalClick
+		)
+
+		if (this.buttons.length) {
 			this.buttons.forEach(button => {
 				button.removeEventListener('click', this.onMenuButtonClick)
 			})
@@ -73,6 +91,16 @@ export default {
 				this.open()
 			}
 		},
+		handleGlobalKeyup(evt) {
+			if (evt.keyCode === 9 && isOutsidePath(evt, this.$el)) {
+				this.close(false)
+			}
+		},
+		handleGlobalClick(evt) {
+			if (isOutsidePath(evt, this.$el)) {
+				this.close()
+			}
+		},
 		onMenuButtonClick() {
 			this.close()
 		},
@@ -91,17 +119,16 @@ export default {
 
 			if (this.buttons) this.buttons[this.index].focus()
 		},
-		close() {
+		close(setFocus = true) {
 			// Method will be called from the `clickaway` directive on every component instance
 			// Limit work and ensure correct handling of focus by having an additional check for visibility
 			if (this.isVisible) {
 				this.isVisible = false
 				// this.index = 0
-				this.$refs.toggle.focus()
+				if (setFocus) {
+					this.$refs.toggle.focus()
+				}
 			}
-		},
-		onTab(e) {
-			console.log(e)
 		},
 		onDownArrowPress(e) {
 			e.preventDefault()
@@ -124,6 +151,18 @@ export default {
 			}
 
 			this.buttons[this.index].focus()
+		},
+		/**
+		 * Clicking outside of an element is buggy on iOS. To fix that, we need an (empty) click handler
+		 * somewhere between the target element and the document root. The first div should do
+		 * See: https://www.quirksmode.org/blog/archives/2010/09/click_event_del.html
+		 */
+		setUpCatchEvent() {
+			const f = () => {
+				void 0
+			}
+
+			document.querySelector('div').onclick = f
 		}
 	}
 }
