@@ -32,7 +32,6 @@
 <script>
 export default {
 	name: 'TournantDropdown',
-	components: {},
 	props: {
 		yPosition: {
 			type: String,
