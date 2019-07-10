@@ -15,6 +15,7 @@
 			<div
 				v-if="isVisible"
 				ref="menu"
+				:class="positioningClasses()"
 				role="menu"
 				class="t-ui-dropdown-menu__dropdown"
 				@keyup.down="onDownArrowPress"
