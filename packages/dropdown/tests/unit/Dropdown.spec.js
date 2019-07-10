@@ -14,7 +14,7 @@ describe('Dropdown', () => {
 		wrapper = shallowMount(Dropdown, {
 			slots: {
 				buttons:
-					'<button role="menuitem" tabindex="-1">Rename</button> <button role="menuitem" tabindex="-1">Delete Cookbook</button>'
+					'<button role="menuitem" tabindex="-1">Rename</button> <button role="menuitem" tabindex="-1">Delete</button>'
 			},
 			localVue
 		})
@@ -64,6 +64,52 @@ describe('Dropdown', () => {
 			button.trigger('click')
 
 			expect(button.attributes('aria-expanded')).toBe('false')
+		})
+	})
+
+	describe('element classes', () => {
+		test('root', () => {
+			const root = wrapper.find('div')
+
+			expect(root.classes()).toContain('t-ui-dropdown-menu')
+		})
+
+		test('toggle', () => {
+			console.log(button.classes())
+			expect(button.classes()).toContain('t-ui-dropdown-menu__toggle')
+		})
+
+		describe('menu', () => {
+			let menu
+
+			beforeEach(() => {
+				// open the menu to be able to find it
+				button.trigger('click')
+				menu = wrapper.find('.t-ui-dropdown-menu__dropdown')
+			})
+
+			test('base class', () => {
+				expect(menu).toBeDefined()
+			})
+
+			test('default positioning', () => {
+				expect(menu.classes()).toContain('-is-left')
+				expect(menu.classes()).toContain('-is-bottom')
+			})
+
+			test('change y position', () => {
+				wrapper.setProps({ yPosition: 'top' })
+
+				expect(menu.classes()).not.toContain('-is-bottom')
+				expect(menu.classes()).toContain('-is-top')
+			})
+
+			test('change x position', () => {
+				wrapper.setProps({ xPosition: 'right' })
+
+				expect(menu.classes()).not.toContain('-is-left')
+				expect(menu.classes()).toContain('-is-right')
+			})
 		})
 	})
 })
