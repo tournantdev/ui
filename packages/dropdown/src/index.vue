@@ -31,6 +31,16 @@
 export default {
 	name: 'TournantDropdown',
 	components: {},
+	props: {
+		yPosition: {
+			type: String,
+			default: 'bottom'
+		},
+		xPosition: {
+			type: String,
+			default: 'left'
+		}
+	},
 	data() {
 		return {
 			isVisible: false,
@@ -46,6 +56,15 @@ export default {
 		}
 	},
 	methods: {
+		positioningClasses() {
+			const x = this.xPosition === 'left' ? '-is-left' : '-is-right'
+			const y = this.yPosition === 'bottom' ? '-is-bottom' : '-is-top'
+
+			return {
+				[x]: true,
+				[y]: true
+			}
+		},
 		onClick() {
 			if (this.isVisible) {
 				this.close()
@@ -131,6 +150,26 @@ export default {
 		&:not(:last-child) {
 			margin-bottom: space(half, relative);
 		}
+	}
+
+	&.-is-left {
+		left: 0;
+	}
+
+	&.-is-right {
+		right: 0;
+	}
+
+	&.-is-top {
+		// `top: 0` aligns it at top edge of the root element, which would basically hide it
+		// as `transform` is relative to the element height, we can move it over the top. magic.
+		top: 0;
+		transform: translateY(-100%);
+	}
+
+	&.-is-bottom {
+		bottom: 0;
+		transform: translateY(100%);
 	}
 }
 </style>
