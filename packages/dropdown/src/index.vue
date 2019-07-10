@@ -5,6 +5,7 @@
 			:aria-label="'Dropdown Menu'"
 			:aria-expanded="isVisible.toString()"
 			aria-haspopup="true"
+			class="t-ui-dropdown-menu__toggle"
 			@click="onClick"
 			@keyup.down="open"
 			@keyup.up="close"
