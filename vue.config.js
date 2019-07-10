@@ -25,6 +25,7 @@ module.exports = {
 			.clear()
 			.add('./ui/src/main.js')
 		config.resolve.alias
+			.set('@h', path.resolve(__dirname, 'helper'))
 			.set('@p', path.resolve(__dirname, 'packages'))
 			.set('Styles', path.resolve(__dirname, 'src/styles'))
 			.set('Demo', path.resolve(__dirname, 'demo'))

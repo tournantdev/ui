@@ -4,12 +4,27 @@ import vue from 'rollup-plugin-vue'
 import filesize from 'rollup-plugin-filesize'
 import buble from 'rollup-plugin-buble'
 import { terser } from 'rollup-plugin-terser'
+import alias from 'rollup-plugin-alias'
 import path from 'path'
 
 const pkg = path.basename(process.env.PWD || process.cwd())
 const name = `Tournant${pkg.charAt(0).toUpperCase()}`
 
 const input = 'src/index.vue'
+
+const aliasPlugin = alias({
+	'@h': path.join(__dirname, '..', 'helper')
+})
+
+const fullPlugins = [
+	aliasPlugin,
+	commonjs(),
+	resolve(),
+	vue(),
+	buble({ objectAssign: 'Object.assign' }),
+	terser(),
+	filesize()
+]
 
 export default [
 	// Main build to be used with webpack/rollup.
@@ -21,14 +36,7 @@ export default [
 			exports: 'named',
 			name
 		},
-		plugins: [
-			commonjs(),
-			resolve(),
-			vue(),
-			buble({ objectAssign: 'Object.assign' }),
-			terser(),
-			filesize()
-		]
+		plugins: fullPlugins
 	},
 	// ESM build to be used with webpack/rollup.
 	{
@@ -37,7 +45,7 @@ export default [
 			format: 'esm',
 			file: `dist/${pkg}.esm.js`
 		},
-		plugins: [commonjs(), vue(), filesize()]
+		plugins: [aliasPlugin, commonjs(), vue(), filesize()]
 	},
 	// SSR build.
 	{
@@ -57,13 +65,6 @@ export default [
 			exports: 'named',
 			name
 		},
-		plugins: [
-			resolve(),
-			commonjs(),
-			vue(),
-			buble({ objectAssign: 'Object.assign' }),
-			terser(),
-			filesize()
-		]
+		plugins: fullPlugins
 	}
 ]
