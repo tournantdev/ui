@@ -37,11 +37,13 @@ export default {
 	props: {
 		yPosition: {
 			type: String,
-			default: 'bottom'
+			default: 'bottom',
+			validator: val => val === 'top' || val === 'bottom'
 		},
 		xPosition: {
 			type: String,
-			default: 'left'
+			default: 'left',
+			validator: val => val === 'left' || val === 'right'
 		}
 	},
 	data() {
