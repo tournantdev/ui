@@ -1,4 +1,4 @@
-global.console = { warn: jest.fn() }
+// global.console = { warn: jest.fn() }
 
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 
@@ -116,18 +116,25 @@ describe('Dropdown', () => {
 	})
 
 	describe('accessible name', () => {
+		let spy
 		let wrapperNoName
 
-		beforeEach(() => {})
+		beforeEach(() => {
+			spy = jest.spyOn(console, 'warn').mockImplementation()
 
-		test('warns if button has no name', () => {
 			wrapperNoName = shallowMount(Dropdown, {
 				slots: {
 					'button-text': ''
 				}
 			})
+		})
 
-			expect(console.warn).toHaveBeenCalled()
+		afterEach(() => {
+			spy.mockRestore()
+		})
+
+		test('warns if button has no name', () => {
+			expect(spy).toHaveBeenCalled()
 		})
 	})
 })
