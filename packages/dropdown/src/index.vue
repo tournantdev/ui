@@ -60,7 +60,7 @@ export default {
 	mounted() {
 		const firstDiv = document.querySelector('div')
 
-		if (!firstDiv.onclick) {
+		if (firstDiv && !firstDiv.onclick) {
 			this.setUpCatchEvent()
 		}
 
