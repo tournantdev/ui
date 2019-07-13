@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/dropdown",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Accessible dropdown menu",
 	"main": "index.js",
 	"repository": "https://github.com/tournantdev/ui",
