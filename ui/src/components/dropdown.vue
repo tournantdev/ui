@@ -24,7 +24,7 @@
 		<div class="implementation-example">
 			<tournant-dropdown>
 				<template v-slot:button-text>
-					…
+					Options
 				</template>
 				<template v-slot:items>
 					<button tabindex="-1" role="menuitem">Rename</button>
