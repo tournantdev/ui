@@ -1,3 +1,5 @@
+global.console = { warn: jest.fn() }
+
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 
 import Dropdown from '@p/dropdown/src/index.vue'
@@ -110,6 +112,22 @@ describe('Dropdown', () => {
 				expect(menu.classes()).not.toContain('-is-left')
 				expect(menu.classes()).toContain('-is-right')
 			})
+		})
+	})
+
+	describe('accessible name', () => {
+		let wrapperNoName
+
+		beforeEach(() => {})
+
+		test('warns if button has no name', () => {
+			wrapperNoName = shallowMount(Dropdown, {
+				slots: {
+					'button-text': ''
+				}
+			})
+
+			expect(console.warn).toHaveBeenCalled()
 		})
 	})
 })
