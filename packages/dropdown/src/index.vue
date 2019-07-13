@@ -2,7 +2,7 @@
 	<div class="t-ui-dropdown">
 		<button
 			ref="toggle"
-			:aria-label="'Dropdown Menu'"
+			:aria-label="ariaLabel ? ariaLabel : null"
 			:aria-expanded="isVisible.toString()"
 			aria-haspopup="true"
 			class="t-ui-dropdown__toggle"
@@ -44,6 +44,10 @@ export default {
 			type: String,
 			default: 'left',
 			validator: val => val === 'left' || val === 'right'
+		},
+		ariaLabel: {
+			type: String,
+			default: ''
 		}
 	},
 	data() {
