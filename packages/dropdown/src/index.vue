@@ -7,8 +7,8 @@
 			aria-haspopup="true"
 			class="t-ui-dropdown__toggle"
 			@click="onClick"
-			@keyup.down="open"
-			@keyup.up="close"
+			@keydown.prevent.down="open"
+			@keydown.prevent.up="close"
 		>
 			<slot name="button-text" />
 		</button>
@@ -19,9 +19,9 @@
 				:class="positioningClasses()"
 				role="menu"
 				class="t-ui-dropdown__menu"
-				@keyup.down="onDownArrowPress"
-				@keyup.up="onUpArrowPress"
-				@keyup.esc="close"
+				@keydown.down="onMenuDownArrow"
+				@keydown.up="onMenuUpArrow"
+				@keydown.esc="close"
 			>
 				<slot name="items" />
 			</div>
@@ -60,11 +60,11 @@ export default {
 			this.setUpCatchEvent()
 		}
 
-		document.addEventListener('keyup', this.handleGlobalKeyup)
+		document.addEventListener('keydown', this.handleGlobalKeyDown)
 		document.documentElement.addEventListener('click', this.handleGlobalClick)
 	},
 	beforeDestroy() {
-		document.removeEventListener('keyup', this.handleGlobalKeyup)
+		document.removeEventListener('keydown', this.handleGlobalKeyDown)
 		document.documentElement.removeEventListener(
 			'click',
 			this.handleGlobalClick
@@ -93,7 +93,7 @@ export default {
 				this.open()
 			}
 		},
-		handleGlobalKeyup(evt) {
+		handleGlobalKeyDown(evt) {
 			if (evt.keyCode === 9 && isOutsidePath(evt, this.$el)) {
 				this.close(false)
 			}
@@ -132,7 +132,7 @@ export default {
 				}
 			}
 		},
-		onDownArrowPress(e) {
+		onMenuDownArrow(e) {
 			e.preventDefault()
 
 			if (this.index < this.items.length - 1) {
@@ -143,7 +143,7 @@ export default {
 
 			this.items[this.index].focus()
 		},
-		onUpArrowPress(e) {
+		onMenuUpArrow(e) {
 			e.preventDefault()
 
 			if (this.index === 0) {

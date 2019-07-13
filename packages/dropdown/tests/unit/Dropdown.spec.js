@@ -32,17 +32,17 @@ describe('Dropdown', () => {
 			expect(wrapper.vm.isVisible).toBeFalsy()
 		})
 
-		it('@keyup.down - open menu', () => {
-			button.trigger('keyup.down')
+		it('@keydown.down - open menu', () => {
+			button.trigger('keydown.down')
 
 			expect(wrapper.vm.$refs.menu).toBeDefined()
 		})
 
-		it('@keyup.down > @keyup.up - opens and closes the menu', async () => {
-			await button.trigger('keyup.down')
+		it('@keydown.down > @keydown.up - opens and closes the menu', async () => {
+			await button.trigger('keydown.down')
 			expect(wrapper.vm.$refs.menu).toBeDefined()
 
-			button.trigger('keyup.up')
+			button.trigger('keydown.up')
 			expect(wrapper.vm.$refs.menu).toBeUndefined()
 		})
 	})
