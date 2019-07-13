@@ -2,11 +2,28 @@
 	"name": "@tournant/dropdown",
 	"version": "1.0.0",
 	"description": "Accessible dropdown menu",
-	"main": "index.js",
+	"keywords": [
+		"Vue",
+		"components",
+		"a11y",
+		"accessibility",
+		"dropdown",
+		"menu",
+		"ui"
+	],
+	"main": "./dist/dropdown.ssr.js",
+	"module": "./dist/dropdown.esm.js",
+	"browser": "./dist/browser.min.js",
+	"unpkg": "./dist/browser.min.js",
+	"files": [
+		"dist",
+		"src"
+	],
 	"repository": "https://github.com/tournantdev/ui",
+	"bugs": "https://github.com/tournantdev/ui/issues",
+	"homepage": "https://ui.tournant.dev",
 	"author": "Oscar Braunert",
 	"license": "MIT",
-	"private": false,
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
