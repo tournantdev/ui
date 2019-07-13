@@ -1,37 +1,43 @@
-# @tournant/input
+# @tournant/dropdown
 
-A component for text-like inputs. Accessible and versatile.
+A flexible, accessible dropdown menu.
 
 ---
 
-[![NPM version](https://img.shields.io/npm/v/@tournant/input.svg?style=flat)](https://www.npmjs.com/package/@tournant/input)
-[![GitHub license](https://img.shields.io/github/license/ovlb/@tournant/input.svg)](https://github.com/ovlb/@tournant/input/blob/master/LICENSE)
+[![NPM version](https://img.shields.io/npm/v/@tournant/dropdown.svg?style=flat)](https://www.npmjs.com/package/@tournant/dropdown)
+[![GitHub license](https://img.shields.io/github/license/ovlb/@tournant/dropdown.svg)](https://github.com/ovlb/@tournant/dropdown/blob/master/LICENSE)
+
+## 💁‍ Read Before Use
+
+This component implements a dropdown menu using the ARIA `menu` role. It’s a a dropdown menu.
+
+«Fine,» you might think, «I need to implement a nested navigation and need a dropdown.» If so, this component is not the right choice. Technically speaking, a `menu` is no `navigation`. I highly encourage reading [Menu & Menu Buttons](https://inclusive-components.design/menus-menu-buttons/) of Heydon Pickering’s [Inclusive Components blog](https://inclusive-components.design/) or Adrian Roselli’s post [Don’t Use ARIA Menu Roles for Site Nav](http://adrianroselli.com/2017/10/dont-use-aria-menu-roles-for-site-nav.html).
 
 ## Installation
 
 You can install the component using NPM or Yarn.
 
 ```
-npm install @tournant/input --save
+npm install @tournant/dropdown --save
 ```
 
 If you use Yarn:
 
 ```
-yarn add @tournant/input
+yarn add @tournant/dropdown
 ```
 
-Once the component is installed you need to import wherever you want to use it.
+Once the component is installed you need to import it wherever you want to use it.
 
 ```js
-import TournantInput from '@tournant/input'
+import TournantDropdown from '@tournant/dropdown'
 ```
 
 Don’t forget to add it to the registered components (been there, done that):
 
 ```js
 components: {
-  TournantInput,
+  TournantDropdown,
   // ... all the other amazing components
 }
 ```
@@ -42,199 +48,75 @@ This is just a quick overview. For an in-depth guide how to use the component ch
 
 ### Props
 
-- `value`: The value shown inside of the input.
-- `label`: The label text of the input. Required.
-- `validation`: A vuelidate-like object, must contain properties named `$error` and `$dirty`. Required.
-- `description`: Descriptive text giving a user more context on what form their input has to have. Optional.
+- `yPosition`: Default: `bottom`. Must be `top` or `bottom`. Controls vertical positioning.
+- `xPosition`: Default: `left`. Must be `left` or `right`. Controls horizontal positioning.
+- `ariaLabel`: Optional. Add the `aria-label` attribute on a button. Can be used if it not viable to put text inside of the button. For other options see the article [Accessible Icon Buttons](https://www.sarasoueidan.com/blog/accessible-icon-buttons/) from Sara Soueidan.
+
+### Slots
+
+- `button-text`: Text inside of the button. If you just add an icon, ensure to give the button an accessible name. Either via the `ariaLabel` prop or one of the other techniques explained by Sara Soueidan.
+- `items`: Items of the menu. All elements in here must have a role of `menuitem` and a `tabindex="-1"`.
 
 ### Styles
 
 The component exposes the following CSS classes for its parts:
 
-| Classname                 | Element                             |
-| ------------------------- | ----------------------------------- |
-| t-ui-input                | Root                                |
-| t-ui-input\_\_input       | Text field                          |
-| t-ui-input\_\_description | Descriptive text                    |
-| t-ui-input\_\_feedback    | Container to show feedback messages |
+| Classname               | Element                           |
+| ----------------------- | --------------------------------- |
+| t-ui-dropdown           | Root                              |
+| t-ui-dropdown\_\_toggle | The button to open/close the menu |
+| t-ui-dropdown\_\_menu   | `div` containing the menu buttons |
 
-By default no styles will be attached to these classes.
+The component comes with some default styles, e.g. it is setting `position: absolute` on the menu container as well as `z-index: 10`.
+
+#### Positioning
+
+Depending on use the menu might have to appear in different places. This happens through the `yPosition` and `xPosition` props. Depending on the respective value, a modifier class is added. You can use these classes to apply more styling and adapt the positioning further.
+
+The following table shows an overview of these:
+
+| Position | Modifier Class |
+| -------- | -------------- |
+| left     | -is-left       |
+| right    | -is-right      |
+| bottom   | -is-bottom     |
+| top      | -is-top        |
 
 ## Usage
 
-This component was built to accept all text-like input formats. These are, for example, `password`, `email` or `date`.
+### Labeling the Toggle Button
 
-Attributes you add when adding the component to your template are bound to the input element.
-
-Say you want to add a password input to a form. If you add `type="password"` the component will take the type and apply it to the input element.
+Text can be added inside of the menu using the `button-text` slot:
 
 ```html
-<tournant-input type="password" />
+<template v-slot:button-text>
+	Options
+</template>
 ```
 
-`@tournant/input` is [v-model](https://vuejs.org/v2/guide/forms.html) compliant.
+If it isn’t possible to add a word inside of the button read the article [Accessible Icon Buttons](https://www.sarasoueidan.com/blog/accessible-icon-buttons/) from Sara Soueidan. In it she describes multiple options to ensure that Icon Buttons are accessible. If you opt for using `aria-label` you can use the `ariaLabel` prop to add it to the element.
+
+💁‍ Once the component is mounted, it will check some values to determine if the button has accessible text. It will warn you in the browser console if it couldn’t detect any.
+
+### Opening and Closing the Menu
+
+The menu gets toggled between open and closed state by triggering a click event on the button. As it uses a `button` element, this can also happen via the <kbd>ENTER</kbd> or <kbd>SPACE</kbd> keys. Additionally, <kbd>↓</kbd> can be used.
+
+To close the menu, the user can click outside of it, <kbd>Tab↹</kbd> away or use the <kbd>ESC</kbd> key. While the menu button is focussed <kbd>↑</kbd> will close the menu, too.
+
+### Menu Items
+
+Items inside of the menu can be added via the `items` slot.
 
 ```html
-<tournant-input v-model="password" type="password" name="password" />
+<template v-slot:items>
+	<button tabindex="-1" role="menuitem">Rename</button>
+	<button tabindex="-1" role="menuitem">Delete</button>
+</template>
 ```
 
-Ths will result in the following input:
+Make sure to add `role="menuitem"` and `tabindex="-1"` to the items you add. The `role` helps assistive technology to make sense of the items and override any native role the elements might have. Since keyboard navigation inside of the menu happens with <kbd>↓</kbd> and <kbd>↑</kbd> the items need to be taken out of the focus order.
 
-```html
-<input
-	id="6ac26f8f-930c-4dc4-a098-b00094b56906"
-	aria-invalid="false"
-	type="password"
-	name="password"
-	class="t-ui-input__input"
-/>
-```
+#### Querying for Menu Items
 
-💁‍ _Note:_ You do not need to pass in a `id`. A unique ID for every instance of the component is automatically generated.
-
-### Label
-
-Input elements [must have a linked label](https://www.w3.org/TR/WCAG20-TECHS/H44.html) to give the input an accessible name.
-
-To do so, pass in the `label` prop when using the component.
-
-```html
-<tournant-input
-	v-model="password"
-	type="password"
-	name="password"
-	label="Your password"
-/>
-```
-
-💁 _Note:_ `label` is required.
-
-### Description
-
-Sometimes it is useful to describe expected conditions. For example, a user has to enter a password that is at least eight characters long.
-
-To add a description, pass in the prop named, you might have guessed it, `description`.
-
-```html
-<tournant-input
-	v-model="password"
-	type="password"
-	name="password"
-	label="Your password"
-	description="Your password has to be at least eight characters long."
-/>
-```
-
-This will render the description in a `p` element which is linked to the `input` via the [`aria-describedby` attribute](https://www.w3.org/TR/WCAG20-TECHS/ARIA1.html).
-
-### Required inputs
-
-In addition to binding the `required` attribute on the input element the component exposes a slot inside of its `label` element to add a visual clue that the user has to fill in data.
-
-Bear in mind that the popular \* might not be enough to indicate a required field. For further reading I recommend the article [Required Fields](https://a11y-101.com/development/required) on a11y-101.com
-
-```html
-<tournant-input
-	v-model="password"
-	type="password"
-	name="password"
-	label="Your password"
-	description="Your password has to be at least eight characters long."
->
-	<template v-slot:label-text>
-		<span class="aside">required</span>
-	</template>
-</tournant-input>
-```
-
-💁 _Note:_ This example uses the named slot syntax introduced in Vue 2.6. [Take a look in the docs](https://vuejs.org/v2/guide/components-slots.html#Named-Slots) for usage examples and how to use named slots in versions prior to 2.6.
-
-💁 _Note:_ You can add any text you want. If you mark optional fields instead of required ones, this is also possible.
-
-### Validation
-
-No input without validation, right?
-
-You will have to take care of this yourself, though. The component can and should not know what value is expected inside of it.
-
-Nonetheless, I tried to make it as easy as possible to use the component along existing solutions like [Vuelidate](https://vuelidate.netlify.com/).
-
-In fact, if you are already using Vuelidate, you are good to go.
-
-`@tournant/input` expects a vuelidate-like validation object. Namely the properties `$error` and `$dirty`.
-
-For our password example the Vuelidate config might look something like this:
-
-```js
-import { required, minLength } from 'vuelidate/lib/validators'
-
-export default {
-	// […] Component context omitted for brevity
-	validations: {
-		password: {
-			required,
-			minLength: minLength(8)
-		}
-	}
-}
-```
-
-You can use `$v.password` as the prop for the input component without the need to change anything.
-
-```html
-<tournant-input
-	v-model="password"
-	:required="true"
-	:validation="$v.password"
-	type="password"
-	name="password"
-	label="Your password"
-	description="Your password has to be at least eight characters long."
->
-	<template v-slot:label-text>
-		<span class="aside">required</span>
-	</template>
-</tournant-input>
-```
-
-`aria-invalid` is set based on `validation.$error`, to let screen readers know if the entered value is correct.
-
-This attribute could also be used to add styles based on the validated state.
-
-```css
-.tournant-input__input[aria-invalid='true'] {
-	border-color: red;
-}
-
-/** [data-untouched is set on the input while `validation.$dirty is `false``] and can be used to only apply validated styles to touched and validated inputs */
-.tournant-input__input[aria-invalid='false']:not([data-untouched]) {
-	border-color: green;
-}
-```
-
-### Feedback Messages
-
-Relying on styling is not enough to convey errors to users. `@tournant/input` exposes a `feedback` slot to render detailed feedback for the users.
-
-```html
-<tournant-input
-	v-model="password"
-	:required="true"
-	:validation="$v.password"
-	type="password"
-	name="password"
-	label="Your password"
-	description="Your password has to be at least eight characters long."
->
-	<template v-slot:required-text>
-		<span class="aside">required</span>
-	</template>
-	<template v-slot:feedback>
-		<p v-if="!$v.password.required">
-			Your password is required.
-		</p>
-	</template>
-</tournant-input>
-```
-
-If `validation.$error` equals `true` the ID of the feedback container will be added to `aria-describedby` and as thus read by screen readers.
+Once the menu opens the component uses `querySelectorAll('[role=menuitem]:not([disabled])')` to construct an Array of all enabled items in the menu.
