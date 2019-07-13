@@ -71,12 +71,12 @@ describe('Dropdown', () => {
 		test('root', () => {
 			const root = wrapper.find('div')
 
-			expect(root.classes()).toContain('t-ui-dropdown-menu')
+			expect(root.classes()).toContain('t-ui-dropdown')
 		})
 
 		test('toggle', () => {
 			console.log(button.classes())
-			expect(button.classes()).toContain('t-ui-dropdown-menu__toggle')
+			expect(button.classes()).toContain('t-ui-dropdown__toggle')
 		})
 
 		describe('menu', () => {
@@ -85,7 +85,7 @@ describe('Dropdown', () => {
 			beforeEach(() => {
 				// open the menu to be able to find it
 				button.trigger('click')
-				menu = wrapper.find('.t-ui-dropdown-menu__dropdown')
+				menu = wrapper.find('.t-ui-dropdown__menu')
 			})
 
 			test('base class', () => {

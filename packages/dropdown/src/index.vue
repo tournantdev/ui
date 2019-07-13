@@ -1,11 +1,11 @@
 <template>
-	<div class="t-ui-dropdown-menu">
+	<div class="t-ui-dropdown">
 		<button
 			ref="toggle"
 			:aria-label="'Dropdown Menu'"
 			:aria-expanded="isVisible.toString()"
 			aria-haspopup="true"
-			class="t-ui-dropdown-menu__toggle"
+			class="t-ui-dropdown__toggle"
 			@click="onClick"
 			@keyup.down="open"
 			@keyup.up="close"
@@ -18,7 +18,7 @@
 				ref="menu"
 				:class="positioningClasses()"
 				role="menu"
-				class="t-ui-dropdown-menu__dropdown"
+				class="t-ui-dropdown__menu"
 				@keyup.down="onDownArrowPress"
 				@keyup.up="onUpArrowPress"
 				@keyup.esc="close"
@@ -169,8 +169,8 @@ export default {
 </script>
 
 <style lang="scss">
-.t-ui-dropdown-menu {
 	display: inline;
+.t-ui-dropdown {
 	position: relative;
 	z-index: 50;
 
@@ -178,7 +178,7 @@ export default {
 	--t-ui-space-full: 1rem;
 }
 
-.t-ui-dropdown-menu__dropdown {
+.t-ui-dropdown__menu {
 	background-color: white;
 	border-radius: 0.25rem;
 	box-shadow: 2px 4px 6px rgba(142, 142, 142, 0.4);
