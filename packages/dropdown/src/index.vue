@@ -112,20 +112,20 @@ export default {
 		onMenuButtonClick() {
 			this.close()
 		},
-		async open() {
+		open() {
 			this.isVisible = true
 
-			await this.$nextTick()
+			this.$nextTick().then(() => {
+				this.items = Array.from(
+					this.$refs.menu.querySelectorAll('[role=menuitem]:not([disabled])')
+				)
 
-			this.items = Array.from(
-				this.$refs.menu.querySelectorAll('[role=menuitem]:not([disabled])')
-			)
+				this.items.forEach(button => {
+					button.addEventListener('click', this.onMenuButtonClick)
+				})
 
-			this.items.forEach(button => {
-				button.addEventListener('click', this.onMenuButtonClick)
+				if (this.items) this.items[this.index].focus()
 			})
-
-			if (this.items) this.items[this.index].focus()
 		},
 		close(setFocus = true) {
 			// Method will be called from the `clickaway` directive on every component instance
