@@ -75,7 +75,6 @@ describe('Dropdown', () => {
 		})
 
 		test('toggle', () => {
-			console.log(button.classes())
 			expect(button.classes()).toContain('t-ui-dropdown__toggle')
 		})
 
