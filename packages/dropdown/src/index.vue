@@ -174,13 +174,15 @@ export default {
 		},
 		checkForAccessibleName() {
 			const { toggle } = this.$refs
+			const { innerHTML, innerText } = toggle
 			const img = toggle.querySelector('img')
 			const svg = toggle.querySelector('svg')
 			const svgTitle = svg ? svg.querySelector('title') : null
 
 			const hasAccessibleText =
-				toggle.innerText.trim() !== '' ||
-				toggle.name.trim() ||
+				(innerHTML && innerHTML.trim() !== '') ||
+				(innerText && innerText.trim() !== '') ||
+				(toggle.name && toggle.name.trim()) ||
 				toggle.attributes['aria-label'] ||
 				(img && img.alt) ||
 				(svgTitle && svgTitle.innerHTML)
