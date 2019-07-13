@@ -64,6 +64,8 @@ export default {
 			this.setUpCatchEvent()
 		}
 
+		this.checkForAccessibleName()
+
 		document.addEventListener('keydown', this.handleGlobalKeyDown)
 		document.documentElement.addEventListener('click', this.handleGlobalClick)
 	},
@@ -169,6 +171,25 @@ export default {
 			}
 
 			document.querySelector('div').onclick = f
+		},
+		checkForAccessibleName() {
+			const { toggle } = this.$refs
+			const img = toggle.querySelector('img')
+			const svg = toggle.querySelector('svg')
+			const svgTitle = svg ? svg.querySelector('title') : null
+
+			const hasAccessibleText =
+				toggle.innerText.trim() !== '' ||
+				toggle.name.trim() ||
+				toggle.attributes['aria-label'] ||
+				(img && img.alt) ||
+				(svgTitle && svgTitle.innerHTML)
+
+			if (!hasAccessibleText) {
+				console.warn(
+					'TournantDropdown: It appears like the dropdown menu has no accessible text. Please make sure to add textual content to the button.'
+				)
+			}
 		}
 	}
 }
