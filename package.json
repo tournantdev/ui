@@ -2,15 +2,16 @@
 	"name": "@tournant/ui",
 	"license": "MIT",
 	"scripts": {
-		"build": "lerna run build --parallel",
-		"build:changed": "lerna run build --parallel --since origin/master",
 		"bootstrap": "lerna bootstrap",
-		"serve": "vue-cli-service serve",
+		"build:changed": "lerna run build --parallel --since origin/master",
 		"build:ui": "vue-cli-service build",
+		"build": "lerna run build --parallel",
 		"lint": "vue-cli-service lint",
-		"test": "vue-cli-service test:unit",
+		"publish:packages": "lerna publish",
+		"serve": "vue-cli-service serve",
+		"test:ci": "yarn run test:unit --ci --coverage",
 		"test:unit": "vue-cli-service test:unit",
-		"test:ci": "yarn run test:unit --ci --coverage"
+		"test": "vue-cli-service test:unit"
 	},
 	"dependencies": {
 		"@vue/cli-plugin-babel": "^3.7.0",
