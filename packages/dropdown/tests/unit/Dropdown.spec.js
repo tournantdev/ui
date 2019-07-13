@@ -13,7 +13,7 @@ describe('Dropdown', () => {
 	beforeEach(() => {
 		wrapper = shallowMount(Dropdown, {
 			slots: {
-				buttons:
+				items:
 					'<button role="menuitem" tabindex="-1">Rename</button> <button role="menuitem" tabindex="-1">Delete</button>'
 			},
 			localVue

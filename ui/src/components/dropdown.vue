@@ -26,7 +26,7 @@
 				<template v-slot:button-text>
 					…
 				</template>
-				<template v-slot:buttons>
+				<template v-slot:items>
 					<button tabindex="-1" role="menuitem">Rename</button>
 					<button tabindex="-1" role="menuitem">Delete</button>
 				</template>

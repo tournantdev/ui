@@ -23,7 +23,7 @@
 				@keyup.up="onUpArrowPress"
 				@keyup.esc="close"
 			>
-				<slot name="buttons" />
+				<slot name="items" />
 			</div>
 		</transition>
 	</div>
@@ -49,7 +49,7 @@ export default {
 	data() {
 		return {
 			isVisible: false,
-			buttons: [],
+			items: [],
 			index: 0
 		}
 	},
@@ -70,8 +70,8 @@ export default {
 			this.handleGlobalClick
 		)
 
-		if (this.buttons.length) {
-			this.buttons.forEach(button => {
+		if (this.items.length) {
+			this.items.forEach(button => {
 				button.removeEventListener('click', this.onMenuButtonClick)
 			})
 		}
@@ -111,15 +111,15 @@ export default {
 
 			await this.$nextTick()
 
-			this.buttons = Array.from(
+			this.items = Array.from(
 				this.$refs.menu.querySelectorAll('[role=menuitem]:not([disabled])')
 			)
 
-			this.buttons.forEach(button => {
+			this.items.forEach(button => {
 				button.addEventListener('click', this.onMenuButtonClick)
 			})
 
-			if (this.buttons) this.buttons[this.index].focus()
+			if (this.items) this.items[this.index].focus()
 		},
 		close(setFocus = true) {
 			// Method will be called from the `clickaway` directive on every component instance
@@ -135,24 +135,24 @@ export default {
 		onDownArrowPress(e) {
 			e.preventDefault()
 
-			if (this.index < this.buttons.length - 1) {
+			if (this.index < this.items.length - 1) {
 				this.index++
 			} else {
 				this.index = 0
 			}
 
-			this.buttons[this.index].focus()
+			this.items[this.index].focus()
 		},
 		onUpArrowPress(e) {
 			e.preventDefault()
 
 			if (this.index === 0) {
-				this.index = this.buttons.length - 1
+				this.index = this.items.length - 1
 			} else {
 				this.index--
 			}
 
-			this.buttons[this.index].focus()
+			this.items[this.index].focus()
 		},
 		/**
 		 * Clicking outside of an element is buggy on iOS. To fix that, we need an (empty) click handler
@@ -171,8 +171,8 @@ export default {
 </script>
 
 <style lang="scss">
-	display: inline;
 .t-ui-dropdown {
+	display: inline-block;
 	position: relative;
 	z-index: 50;
 
@@ -187,7 +187,7 @@ export default {
 	padding: var(--t-ui-space-half) var(--t-ui-space-full);
 	position: absolute;
 	text-align: left;
-	z-index: 100;
+	z-index: 10;
 
 	& > button {
 		display: block;
