@@ -4,7 +4,7 @@
 	"scripts": {
 		"build": "lerna run build --parallel",
 		"build:changed": "lerna run build --parallel --since origin/master",
-		"bootstrap": "lerna bootstrap --hoist",
+		"bootstrap": "lerna bootstrap",
 		"serve": "vue-cli-service serve",
 		"build:ui": "vue-cli-service build",
 		"lint": "vue-cli-service lint",
