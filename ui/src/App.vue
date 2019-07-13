@@ -7,7 +7,8 @@
 			</p>
 		</div>
 		<h1 class="main-headline">
-			<span style="font-weight: 300">tournant</span>ui
+			<span style="font-weight: 300">tournant</span
+			><span class="sr-only"> </span>ui
 		</h1>
 		<section class="intro">
 			<p>
@@ -26,18 +27,18 @@
 		<section class="components">
 			<h2 class="small-headline">Components</h2>
 			<ul class="component-list">
-				<li>
-					<a
-						href="https://github.com/tournantdev/ui/tree/master/packages/combobox"
-						>Combobox</a
+				<li v-for="(component, index) in components" :key="index">
+					<button
+						:aria-label="`Show demo for ${component.name}`"
+						@click="showDemo(index)"
 					>
-				</li>
-				<li>
-					<a href="https://github.com/tournantdev/ui/tree/master/packages/input"
-						>Input</a
-					>
+						{{ component.name }}
+					</button>
 				</li>
 			</ul>
+		</section>
+		<section v-if="currentDemo" class="demo">
+			<component :is="currentDemo" />
 		</section>
 		<section class="links">
 			<a href="https://github.com/tournantdev/ui" class="icon-link">
@@ -58,14 +59,41 @@
 </template>
 
 <script>
+import DropdownDemo from './components/dropdown.vue'
+import ComboboxDemo from './components/combobox.vue'
+import InputDemo from './components/input.vue'
 import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
 	name: 'App',
-	components: {},
+	components: {
+		DropdownDemo,
+		ComboboxDemo,
+		InputDemo
+	},
 	data() {
 		return {
-			password: ''
+			currentDemo: null,
+			password: '',
+			components: [
+				{
+					name: 'Combobox',
+					component: ComboboxDemo
+				},
+				{
+					name: 'Input',
+					component: InputDemo
+				},
+				{
+					name: 'Dropdown',
+					component: DropdownDemo
+				}
+			]
+		}
+	},
+	methods: {
+		showDemo(index) {
+			this.currentDemo = this.components[index].component
 		}
 	},
 	validations: {
@@ -142,8 +170,13 @@ a {
 }
 
 .component-list {
+	display: flex;
 	list-style: none;
-	padding-left: 1rem;
+	padding-left: 0;
+
+	& > *:not(:last-child) {
+		margin-right: 0.5rem;
+	}
 }
 
 .intro {

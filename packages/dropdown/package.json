@@ -1,0 +1,19 @@
+{
+	"name": "@tournant/dropdown",
+	"version": "0.0.0",
+	"description": "Accessible dropdown menu",
+	"main": "index.js",
+	"repository": "https://github.com/tournantdev/ui",
+	"author": "Oscar Braunert",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
+		"lint": "vue-cli-service lint",
+		"test": "vue-cli-service test:unit"
+	},
+	"peerDependencies": {
+		"vue": "^2.6.10"
+	}
+}
