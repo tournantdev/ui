@@ -38,21 +38,15 @@ export default [
 		},
 		plugins: fullPlugins
 	},
-	// ESM build to be used with webpack/rollup.
-	{
-		input,
-		output: {
-			format: 'esm',
-			file: `dist/${pkg}.esm.js`
-		},
-		plugins: [aliasPlugin, commonjs(), vue(), filesize()]
-	},
 	// SSR build.
 	{
 		input,
 		output: {
+			compact: true,
 			format: 'cjs',
-			file: `dist/${pkg}.ssr.js`
+			name,
+			file: `dist/${pkg}.ssr.js`,
+			exports: 'named'
 		},
 		plugins: [commonjs(), vue({ template: { optimizeSSR: true } }), filesize()]
 	},
@@ -61,7 +55,7 @@ export default [
 		input: 'src/wrapper.js',
 		output: {
 			format: 'iife',
-			file: 'dist/browser.js',
+			file: 'dist/browser.min.js',
 			exports: 'named',
 			name
 		},
