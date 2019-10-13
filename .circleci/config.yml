@@ -71,7 +71,8 @@ workflows:
           requires:
             - install
             - bootstrap
-      # - test:
-      #     requires:
-      #       - install
-      #       - bootstrap
+      - test:
+          requires:
+            - install
+            - bootstrap
+            - build
