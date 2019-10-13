@@ -12,6 +12,7 @@ module.exports = {
 		'^@h/(.*)$': '<rootDir>/helper/$1',
 		'^@p/(.*)$': '<rootDir>/packages/$1'
 	},
+	moduleDirectories: ['node_modules'],
 	snapshotSerializers: ['jest-serializer-vue'],
 	testMatch: ['**/tests/unit/**/*.spec.js'],
 	collectCoverage: true,
