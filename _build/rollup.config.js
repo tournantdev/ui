@@ -13,12 +13,14 @@ const name = `Tournant${pkg.charAt(0).toUpperCase()}`
 
 const input = 'src/index.vue'
 
-const aliasPlugin = alias({
-	entries: [{ find: '@h', replacement: path.join(__dirname, '..', 'helper') }]
-})
+const aliasPlugin = () => {
+	return alias({
+		entries: [{ find: '@h', replacement: path.join(__dirname, '..', 'helper') }]
+	})
+}
 
-const fullPlugins = [
-	aliasPlugin,
+const fullPlugins = () => [
+	aliasPlugin(),
 	commonjs(),
 	resolve(),
 	vue({ css: true }),
@@ -37,7 +39,7 @@ export default [
 			exports: 'named',
 			name
 		},
-		plugins: [del({ targets: 'dist/*' }), ...fullPlugins]
+		plugins: [del({ targets: 'dist/*' }), ...fullPlugins()]
 	},
 	// SSR build.
 	{
@@ -50,9 +52,9 @@ export default [
 			exports: 'named'
 		},
 		plugins: [
+			aliasPlugin(),
 			resolve(),
 			commonjs(),
-			aliasPlugin,
 			vue({ template: { optimizeSSR: true } }),
 			filesize()
 		]
@@ -66,6 +68,6 @@ export default [
 			exports: 'named',
 			name
 		},
-		plugins: fullPlugins
+		plugins: fullPlugins()
 	}
 ]
