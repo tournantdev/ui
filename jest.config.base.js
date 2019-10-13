@@ -3,7 +3,8 @@ module.exports = {
 	transform: {
 		'^.+\\.vue$': 'vue-jest',
 		'.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
-			'jest-transform-stub'
+			'jest-transform-stub',
+		'^.+\\.jsx?$': 'babel-jest'
 	},
 	transformIgnorePatterns: ['/node_modules/'],
 	moduleNameMapper: {
@@ -15,6 +16,7 @@ module.exports = {
 	testMatch: ['**/tests/unit/**/*.spec.js'],
 	collectCoverage: true,
 	collectCoverageFrom: ['<rootDir>/packages/**/src/**/*.vue'],
+	coveragePathIgnorePatterns: ['/node_modules/'],
 	testURL: 'http://localhost/',
 	watchPlugins: [
 		'jest-watch-typeahead/filename',
