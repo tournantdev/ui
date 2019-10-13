@@ -53,7 +53,7 @@ jobs:
           at: ~/tournant
       - run:
           name: 'Run Unit Tests'
-          command: yarn run test
+          command: yarn run test:ci
       - run:
           name: report coverage stats for non-PRs
           command: |
