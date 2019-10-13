@@ -2,7 +2,7 @@
 	<div class="t-ui-dropdown">
 		<button
 			ref="toggle"
-			:aria-label="ariaLabel ? ariaLabel : null"
+			:aria-label="ariaLabel || null"
 			:aria-expanded="isVisible.toString()"
 			aria-haspopup="true"
 			class="t-ui-dropdown__toggle"
@@ -132,7 +132,7 @@ export default {
 			// Limit work and ensure correct handling of focus by having an additional check for visibility
 			if (this.isVisible) {
 				this.isVisible = false
-				// this.index = 0
+
 				if (setFocus) {
 					this.$refs.toggle.focus()
 				}
