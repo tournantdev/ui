@@ -30,18 +30,24 @@ const fullPlugins = () => [
 ]
 
 export default [
-	// Main build to be used with webpack/rollup.
 	{
 		input,
-		output: {
-			format: 'esm',
-			file: `dist/${pkg}.js`,
-			exports: 'named',
-			name
-		},
+		output: [
+			{
+				format: 'esm',
+				file: `dist/${pkg}.js`,
+				exports: 'named',
+				name
+			},
+			{
+				format: 'iife',
+				file: 'dist/browser.min.js',
+				exports: 'named',
+				name
+			}
+		],
 		plugins: [del({ targets: 'dist/*' }), ...fullPlugins()]
 	},
-	// SSR build.
 	{
 		input,
 		output: {
@@ -58,16 +64,5 @@ export default [
 			vue({ template: { optimizeSSR: true } }),
 			filesize()
 		]
-	},
-	// Browser build.
-	{
-		input: 'src/wrapper.js',
-		output: {
-			format: 'iife',
-			file: 'dist/browser.min.js',
-			exports: 'named',
-			name
-		},
-		plugins: fullPlugins()
 	}
 ]
