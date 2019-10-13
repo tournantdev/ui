@@ -13,7 +13,7 @@ const name = `Tournant${pkg.charAt(0).toUpperCase()}`
 const input = 'src/index.vue'
 
 const aliasPlugin = alias({
-	'@h': path.join(__dirname, '..', 'helper')
+	entries: [{ find: '@h', replacement: path.join(__dirname, '..', 'helper') }]
 })
 
 const fullPlugins = [
