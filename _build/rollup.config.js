@@ -5,6 +5,7 @@ import filesize from 'rollup-plugin-filesize'
 import buble from 'rollup-plugin-buble'
 import { terser } from 'rollup-plugin-terser'
 import alias from 'rollup-plugin-alias'
+import del from 'rollup-plugin-delete'
 import path from 'path'
 
 const pkg = path.basename(process.env.PWD || process.cwd())
@@ -20,7 +21,7 @@ const fullPlugins = [
 	aliasPlugin,
 	commonjs(),
 	resolve(),
-	vue(),
+	vue({ css: true }),
 	buble({ objectAssign: 'Object.assign' }),
 	terser(),
 	filesize()
@@ -36,7 +37,7 @@ export default [
 			exports: 'named',
 			name
 		},
-		plugins: fullPlugins
+		plugins: [del({ targets: 'dist/*' }), ...fullPlugins]
 	},
 	// SSR build.
 	{
@@ -48,7 +49,13 @@ export default [
 			file: `dist/${pkg}.ssr.js`,
 			exports: 'named'
 		},
-		plugins: [commonjs(), vue({ template: { optimizeSSR: true } }), filesize()]
+		plugins: [
+			resolve(),
+			commonjs(),
+			aliasPlugin,
+			vue({ template: { optimizeSSR: true } }),
+			filesize()
+		]
 	},
 	// Browser build.
 	{
