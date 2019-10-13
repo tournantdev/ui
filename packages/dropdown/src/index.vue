@@ -1,32 +1,32 @@
 <template>
-  <div class="t-ui-dropdown">
-    <button
-      ref="toggle"
-      :aria-label="ariaLabel ? ariaLabel : null"
-      :aria-expanded="isVisible.toString()"
-      aria-haspopup="true"
-      class="t-ui-dropdown__toggle"
-      @click="onClick"
-      @keydown.prevent.down="open"
-      @keydown.prevent.up="close"
-    >
-      <slot name="button-text" />
-    </button>
-    <transition name="fade-up">
-      <div
-        v-if="isVisible"
-        ref="menu"
-        :class="positioningClasses()"
-        role="menu"
-        class="t-ui-dropdown__menu"
-        @keydown.down="onMenuDownArrow"
-        @keydown.up="onMenuUpArrow"
-        @keydown.esc="close"
-      >
-        <slot name="items" />
-      </div>
-    </transition>
-  </div>
+	<div class="t-ui-dropdown">
+		<button
+			ref="toggle"
+			:aria-label="ariaLabel || null"
+			:aria-expanded="isVisible.toString()"
+			aria-haspopup="true"
+			class="t-ui-dropdown__toggle"
+			@click="onClick"
+			@keydown.prevent.down="open"
+			@keydown.prevent.up="close"
+		>
+			<slot name="button-text" />
+		</button>
+		<transition name="fade-up">
+			<div
+				v-if="isVisible"
+				ref="menu"
+				:class="positioningClasses()"
+				role="menu"
+				class="t-ui-dropdown__menu"
+				@keydown.down="onMenuDownArrow"
+				@keydown.up="onMenuUpArrow"
+				@keydown.esc="close"
+			>
+				<slot name="items" />
+			</div>
+		</transition>
+	</div>
 </template>
 
 <script>
