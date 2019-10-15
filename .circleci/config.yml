@@ -18,9 +18,8 @@ jobs:
       - restore_cache:
           keys:
             - v3-tournant-ui-{{ .Branch }}-{{ checksum "package.json" }}
-      - run:
-          - yarn install
-          - yarn run bootstrap
+      - run: yarn install
+      - run: yarn run bootstrap
       - save_cache:
           paths:
             - node_modules
