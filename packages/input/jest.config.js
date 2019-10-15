@@ -12,6 +12,5 @@ module.exports = {
 	displayName: name,
 	name,
 	rootDir: '../..',
-	modulePaths: [`<rootDir>/packages/${folderName}`],
-	moduleDirectories: [`<rootDir>/packages/${folderName}/node_modules`]
+	modulePaths: [`<rootDir>/packages/${folderName}`]
 }
