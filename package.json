@@ -2,7 +2,7 @@
 	"name": "@tournant/ui",
 	"license": "MIT",
 	"scripts": {
-		"bootstrap": "lerna bootstrap",
+		"bootstrap": "lerna bootstrap --hoist",
 		"build:changed": "lerna run build --parallel --since origin/master",
 		"build:ui": "vue-cli-service build",
 		"build": "lerna run build --parallel",
