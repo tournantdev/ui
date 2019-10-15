@@ -17,7 +17,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v3-tournant-ui-{{ .Branch }}-{{ checksum "package.json" }}
+            - v3-tournant-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run: yarn install
       - run: yarn run bootstrap
       - save_cache:
@@ -26,7 +26,7 @@ jobs:
             - packages/combobox/node_modules
             - packages/dropdown/node_modules
             - packages/input/node_modules
-          key: v3-tournant-ui-{{ .Branch }}-{{ checksum "package.json" }}
+          key: v3-tournant-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - persist_to_workspace:
           root: ~/tournant
           paths:
