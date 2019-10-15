@@ -6,7 +6,7 @@ module.exports = {
 			'jest-transform-stub',
 		'^.+\\.jsx?$': 'babel-jest'
 	},
-	transformIgnorePatterns: ['/node_modules/'],
+	transformIgnorePatterns: ['node_modules'],
 	moduleNameMapper: {
 		'^@/(.*)$': '<rootDir>/src/$1',
 		'^@h/(.*)$': '<rootDir>/helper/$1',
@@ -17,7 +17,7 @@ module.exports = {
 	testMatch: ['**/tests/unit/**/*.spec.js'],
 	collectCoverage: true,
 	collectCoverageFrom: ['<rootDir>/packages/**/src/**/*.vue'],
-	coveragePathIgnorePatterns: ['/node_modules/'],
+	coveragePathIgnorePatterns: ['node_modules'],
 	testURL: 'http://localhost/',
 	watchPlugins: [
 		'jest-watch-typeahead/filename',
