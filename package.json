@@ -9,7 +9,7 @@
 		"lint": "vue-cli-service lint",
 		"publish:packages": "lerna publish",
 		"serve": "vue-cli-service serve",
-		"test:ci": "yarn run test:unit --ci --coverage",
+		"test:ci": "jest --ci --coverage",
 		"test:unit": "vue-cli-service test:unit",
 		"test": "vue-cli-service test:unit"
 	},
