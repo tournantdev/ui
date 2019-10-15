@@ -26,7 +26,7 @@
 	"scripts": {
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
 		"lint": "vue-cli-service lint",
-		"test": "vue-cli-service test:unit"
+		"test": "cd ../.. && jest packages/dropdown --color"
 	},
 	"peerDependencies": {
 		"vue": "^2.6.10"

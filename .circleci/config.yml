@@ -17,27 +17,39 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - tournant-ui-{{ .Branch }}-{{ checksum "package.json" }}
-
-            - tournant-ui-{{ .Branch }}-
-            - tournant-ui-
+            - v3-tournant-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run: yarn install
+      - run: yarn run bootstrap
       - save_cache:
           paths:
             - node_modules
-          key: tournant-ui-{{ .Branch }}-{{ checksum "package.json" }}
+            - packages/combobox/node_modules
+            - packages/dropdown/node_modules
+            - packages/input/node_modules
+          key: v3-tournant-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - persist_to_workspace:
           root: ~/tournant
           paths:
             - ui
-  bootstrap:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/tournant
-      - run:
-          name: 'Bootstrapping packages'
-          command: yarn bootstrap
+  # bootstrap:
+  #   <<: *defaults
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/tournant
+  #     - restore_cache:
+  #         keys:
+  #           - tournant-lerna-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+  #           - tournant-lerna-v1-{{ .Branch }}-
+  #           - tournant-lerna-v1-
+  #     - run:
+  #         name: 'Bootstrapping packages'
+  #         command: yarn bootstrap
+  #     - save_cache:
+  #         key: tournant-lerna-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+  #         paths:
+  #           - packages/combobox/node_modules
+  #           - packages/dropdown/node_modules
+  #           - packages/input/node_modules
   build:
     <<: *defaults
     steps:
@@ -53,7 +65,7 @@ jobs:
           at: ~/tournant
       - run:
           name: 'Run Unit Tests'
-          command: yarn run test
+          command: yarn run test:ci
       - run:
           name: report coverage stats for non-PRs
           command: |
@@ -64,14 +76,15 @@ workflows:
   build_and_test:
     jobs:
       - install
-      - bootstrap:
-          requires:
-            - install
+      # - bootstrap:
+      #     requires:
+      #       - install
       - build:
           requires:
             - install
-            - bootstrap
-      # - test:
-      #     requires:
-      #       - install
-      #       - bootstrap
+            # - bootstrap
+      - test:
+          requires:
+            - install
+            # - bootstrap
+            - build

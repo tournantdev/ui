@@ -5,5 +5,6 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"npmClient": "yarn"
+	"npmClient": "yarn",
+	"useWorkspaces": true
 }
