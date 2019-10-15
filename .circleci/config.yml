@@ -9,6 +9,13 @@ defaults: &defaults
   docker:
     - image: vuejs/ci
 
+dependencies:
+  cache_directories:
+    - node_modules
+    - packages/combobox/node_modules
+    - packages/dropdown/node_modules
+    - packages/input/node_modules
+
 jobs:
   install:
     <<: *defaults
@@ -25,6 +32,9 @@ jobs:
       - save_cache:
           paths:
             - node_modules
+            - packages/combobox/node_modules
+            - packages/dropdown/node_modules
+            - packages/input/node_modules
           key: tournant-ui-{{ .Branch }}-{{ checksum "package.json" }}
       - persist_to_workspace:
           root: ~/tournant
@@ -35,9 +45,20 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/tournant
+      - restore_cache:
+          keys:
+            - tournant-lerna-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - tournant-lerna-v1-{{ .Branch }}-
+            - tournant-lerna-v1-
       - run:
           name: 'Bootstrapping packages'
           command: yarn bootstrap
+      - save_cache:
+          key: tournant-lerna-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - packages/combobox/node_modules
+            - packages/dropdown/node_modules
+            - packages/input/node_modules
   build:
     <<: *defaults
     steps:
