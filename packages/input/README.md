@@ -238,3 +238,9 @@ Relying on styling is not enough to convey errors to users. `@tournant/input` ex
 ```
 
 If `validation.$error` equals `true` the ID of the feedback container will be added to `aria-describedby` and as thus read by screen readers.
+
+## Bugs & Enhancements
+
+If you found a bug, please create a [bug ticket](https://github.com/tournantdev/ui/issues/new?assignees=&labels=component:input&template=bug_report.md&title=).
+
+For enhancements please refer to the [contributing guidelines](https://github.com/tournantdev/ui/blob/master/CONTRIBUTING.md).

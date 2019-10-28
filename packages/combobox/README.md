@@ -80,6 +80,12 @@ You can adapt spacing and color of the component by accessing the following Cust
 | --t-ui-cb-clr-dark  | darkblue           |
 | --t-ui-cb-z-index   | 10                 |
 
+## Bugs & Enhancements
+
+If you found a bug, please create a [bug ticket](https://github.com/tournantdev/ui/issues/new?assignees=&labels=component:combobox&template=bug_report.md&title=).
+
+For enhancements please refer to the [contributing guidelines](https://github.com/tournantdev/ui/blob/master/CONTRIBUTING.md).
+
 ## License
 
 This project is licensed under the [MIT license](LICENSE).
