@@ -120,3 +120,9 @@ Make sure to add `role="menuitem"` and `tabindex="-1"` to the items you add. The
 #### Querying for Menu Items
 
 Once the menu opens the component uses `querySelectorAll('[role=menuitem]:not([disabled])')` to construct an Array of all enabled items in the menu.
+
+## Bugs & Enhancements
+
+If you found a bug, please create a [bug ticket](https://github.com/tournantdev/ui/issues/new?assignees=&labels=component:dropdown&template=bug_report.md&title=).
+
+For enhancements please refer to the [contributing guidelines](https://github.com/tournantdev/ui/blob/master/CONTRIBUTING.md).
