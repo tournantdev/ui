@@ -117,6 +117,8 @@ describe('Dropdown', () => {
 
 	describe('accessible name', () => {
 		let spy
+		// this asserts that the no text warning gets printed. as it is called from the mounted hook, we don't need to use the var
+		// eslint-disable-next-line no-unused-vars
 		let wrapperNoName
 
 		beforeEach(() => {

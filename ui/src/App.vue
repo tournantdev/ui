@@ -64,17 +64,8 @@
 </template>
 
 <script>
-import DropdownDemo from './components/dropdown.vue'
-import ComboboxDemo from './components/combobox.vue'
-import InputDemo from './components/input.vue'
-import { required, minLength } from 'vuelidate/lib/validators'
-
 export default {
 	name: 'App',
-	components: {
-		DropdownDemo,
-		ComboboxDemo
-	},
 	data() {
 		return {
 			currentDemo: null,
@@ -96,17 +87,6 @@ export default {
 					link: 'https://www.npmjs.com/package/@tournant/input'
 				}
 			]
-		}
-	},
-	methods: {
-		showDemo(index) {
-			this.currentDemo = this.components[index].component
-		}
-	},
-	validations: {
-		password: {
-			required,
-			minLength: minLength(8)
 		}
 	}
 }
