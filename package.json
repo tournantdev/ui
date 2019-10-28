@@ -8,7 +8,7 @@
 		"build:ui": "vue-cli-service build",
 		"build": "lerna run build --parallel",
 		"create": "tournant-scaffold",
-		"lint": "vue-cli-service lint",
+		"lint": "eslint '**/*.{vue,js}' --fix",
 		"publish:packages": "lerna publish",
 		"serve": "vue-cli-service serve",
 		"test:ci": "jest --ci --coverage",
@@ -32,6 +32,7 @@
 		"eslint-config-prettier": "^6.0.0",
 		"eslint-plugin-prettier": "^3.0.1",
 		"eslint-plugin-vue": "^5.2.2",
+		"husky": "^3.0.9",
 		"lerna": "^3.18.0",
 		"lint-staged": "^9.0.2",
 		"prettier": "^1.17.0",
@@ -49,12 +50,15 @@
 		"vue-template-compiler": "^2.5.21",
 		"vuelidate": "^0.7.4"
 	},
-	"gitHooks": {
-		"pre-commit": "lint-staged"
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"pre-push": "yarn lint && yarn test:unit"
+		}
 	},
 	"lint-staged": {
 		"*.{js,vue}": [
-			"vue-cli-service lint",
+			"yarn lint",
 			"git add"
 		]
 	},
