@@ -18,8 +18,8 @@
 		<li
 			v-for="(item, index) in items"
 			v-else
-			:key="index"
 			:id="getId(index)"
+			:key="index"
 			:class="listClasses.itemClass"
 			:aria-selected="(activeItem === index).toString()"
 			class="t-ui-combobox__list-item"

@@ -27,20 +27,25 @@
 		<section class="components">
 			<h2 class="small-headline">Components</h2>
 			<ul class="component-list">
-				<li v-for="(component, index) in components" :key="index">
-					<button
-						:aria-label="`Show demo for ${component.name}`"
-						@click="showDemo(index)"
-					>
-						{{ component.name }}
-					</button>
+				<li
+					v-for="component in components"
+					:key="component.name"
+					class="component-card"
+				>
+					<article>
+						<h3 class="component-card__title">
+							<span style="font-weight:300">@tournant/</span
+							>{{ component.name }}
+						</h3>
+						<p>{{ component.description }}</p>
+						<a :href="component.link" class="component-card__link"
+							><span class="sr-only">{{ component.name }}</span> package link</a
+						>
+					</article>
 				</li>
 			</ul>
 		</section>
-		<section v-if="currentDemo" class="demo">
-			<component :is="currentDemo" />
-		</section>
-		<section class="links">
+		<footer class="links">
 			<a href="https://github.com/tournantdev/ui" class="icon-link">
 				<svg
 					id="Layer_1"
@@ -54,52 +59,34 @@
 						d="M31.3,0a31.31,31.31,0,0,0-9.89,61c1.56.28,2.13-.68,2.13-1.51s0-2.72,0-5.33C14.79,56.06,13,50,13,50c-1.43-3.62-3.48-4.58-3.48-4.58-2.84-1.94.22-1.91.22-1.91,3.14.23,4.79,3.23,4.79,3.23,2.79,4.78,7.33,3.4,9.11,2.6a6.68,6.68,0,0,1,2-4.18c-6.95-.79-14.26-3.48-14.26-15.47a12.09,12.09,0,0,1,3.22-8.4A11.31,11.31,0,0,1,14.86,13s2.63-.84,8.61,3.21a29.76,29.76,0,0,1,15.67,0c6-4.05,8.6-3.21,8.6-3.21a11.26,11.26,0,0,1,.31,8.29,12,12,0,0,1,3.22,8.4c0,12-7.32,14.67-14.29,15.44,1.12,1,2.12,2.88,2.12,5.8,0,4.18,0,7.56,0,8.59,0,.83.57,1.81,2.16,1.5A31.31,31.31,0,0,0,31.3,0Z"
 					/></svg
 			></a>
-		</section>
+		</footer>
 	</div>
 </template>
 
 <script>
-import DropdownDemo from './components/dropdown.vue'
-import ComboboxDemo from './components/combobox.vue'
-import InputDemo from './components/input.vue'
-import { required, minLength } from 'vuelidate/lib/validators'
-
 export default {
 	name: 'App',
-	components: {
-		DropdownDemo,
-		ComboboxDemo,
-		InputDemo
-	},
 	data() {
 		return {
 			currentDemo: null,
 			password: '',
 			components: [
 				{
-					name: 'Combobox',
-					component: ComboboxDemo
+					name: 'combobox',
+					description: 'List autocomplete with manual selection',
+					link: 'https://www.npmjs.com/package/@tournant/combobox'
 				},
 				{
-					name: 'Input',
-					component: InputDemo
+					name: 'dropdown',
+					description: 'A flexible, accessible dropdown menu.',
+					link: 'https://www.npmjs.com/package/@tournant/dropdown'
 				},
 				{
-					name: 'Dropdown',
-					component: DropdownDemo
+					name: 'input',
+					description: 'A component for text-like inputs.',
+					link: 'https://www.npmjs.com/package/@tournant/input'
 				}
 			]
-		}
-	},
-	methods: {
-		showDemo(index) {
-			this.currentDemo = this.components[index].component
-		}
-	},
-	validations: {
-		password: {
-			required,
-			minLength: minLength(8)
 		}
 	}
 }
@@ -141,8 +128,9 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	min-height: 100vh;
-	min-width: 100vw;
 	padding: 5vmin;
+	max-width: 1000px;
+	margin-left: 5vmin;
 }
 
 a {
@@ -171,8 +159,19 @@ a {
 
 .component-list {
 	display: flex;
+	flex-flow: row wrap;
 	list-style: none;
 	padding-left: 0;
+
+	@supports (display: grid) {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+		grid-gap: 4vmin;
+
+		& > * {
+			margin: 0 !important;
+		}
+	}
 
 	& > *:not(:last-child) {
 		margin-right: 0.5rem;
@@ -183,10 +182,22 @@ a {
 	max-width: 50ch;
 }
 
-.t-ui-input__label {
-	display: block;
+.component-card {
+	background-color: #f2f2f2;
+	background-image: linear-gradient(
+		176deg,
+		rgba(240, 247, 237, 1) 0%,
+		rgba(240, 247, 237, 1) 35%,
+		rgba(242, 242, 242, 1) 35%,
+		rgba(242, 242, 242, 1) 100%
+	);
+	box-shadow: -2px -3px 0 1px white;
+	flex: 0 0 20rem;
+	margin-bottom: 1rem;
+	overflow: hidden;
+	padding: 2vmin;
+	position: relative;
 }
-
 section {
 	margin-bottom: 2rem;
 }
