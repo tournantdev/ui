@@ -1,0 +1,205 @@
+@font-face {
+ font-family:Fabrikat-Light;
+ font-weight:300;
+ src:url(https://static.tournant.dev/webfonts/30BB69_6_0.eot);
+ src:url(https://static.tournant.dev/webfonts/30BB69_6_0.eot#iefix) format("embedded-opentype"),
+ url(https://static.tournant.dev/webfonts/30BB69_6_0.woff2) format("woff2"),
+ url(https://static.tournant.dev/webfonts/30BB69_6_0.woff) format("woff"),
+ url(https://static.tournant.dev/webfonts/30BB69_6_0.ttf) format("truetype")
+}
+@font-face {
+ font-family:Fabrikat-LightItalic;
+ font-weight:300;
+ font-style:italic;
+ src:url(https://static.tournant.dev/webfonts/30BB69_7_0.eot);
+ src:url(https://static.tournant.dev/webfonts/30BB69_7_0.eot#iefix) format("embedded-opentype"),
+ url(https://static.tournant.dev/webfonts/30BB69_7_0.woff2) format("woff2"),
+ url(https://static.tournant.dev/webfonts/30BB69_7_0.woff) format("woff"),
+ url(https://static.tournant.dev/webfonts/30BB69_7_0.ttf) format("truetype")
+}
+@font-face {
+ font-family:Fabrikat;
+ font-weight:400;
+ font-style:normal;
+ src:url(https://static.tournant.dev/webfonts/30BB69_8_0.eot);
+ src:url(https://static.tournant.dev/webfonts/30BB69_8_0.eot#iefix) format("embedded-opentype"),
+ url(https://static.tournant.dev/webfonts/30BB69_8_0.woff2) format("woff2"),
+ url(https://static.tournant.dev/webfonts/30BB69_8_0.woff) format("woff"),
+ url(https://static.tournant.dev/webfonts/30BB69_8_0.ttf) format("truetype")
+}
+@font-face {
+ font-family:Fabrikat;
+ font-weight:400;
+ font-style:italic;
+ src:url(https://static.tournant.dev/webfonts/30BB69_9_0.eot);
+ src:url(https://static.tournant.dev/webfonts/30BB69_9_0.eot#iefix) format("embedded-opentype"),
+ url(https://static.tournant.dev/webfonts/30BB69_9_0.woff2) format("woff2"),
+ url(https://static.tournant.dev/webfonts/30BB69_9_0.woff) format("woff"),
+ url(https://static.tournant.dev/webfonts/30BB69_9_0.ttf) format("truetype")
+}
+@font-face {
+ font-family:Fabrikat;
+ font-weight:700;
+ src:url(https://static.tournant.dev/webfonts/30BB69_0_0.eot);
+ src:url(https://static.tournant.dev/webfonts/30BB69_0_0.eot#iefix) format("embedded-opentype"),
+ url(https://static.tournant.dev/webfonts/30BB69_0_0.woff2) format("woff2"),
+ url(https://static.tournant.dev/webfonts/30BB69_0_0.woff) format("woff"),
+ url(https://static.tournant.dev/webfonts/30BB69_0_0.ttf) format("truetype")
+}
+@font-face {
+ font-family:Fabrikat;
+ font-style:italic;
+ font-weight:700;
+ src:url(https://static.tournant.dev/webfonts/30BB69_5_0.eot);
+ src:url(https://static.tournant.dev/webfonts/30BB69_5_0.eot#iefix) format("embedded-opentype"),
+ url(https://static.tournant.dev/webfonts/30BB69_5_0.woff2) format("woff2"),
+ url(https://static.tournant.dev/webfonts/30BB69_5_0.woff) format("woff"),
+ url(https://static.tournant.dev/webfonts/30BB69_5_0.ttf) format("truetype")
+}
+body {
+ line-height:1.6
+}
+p {
+ margin-top:0
+}
+.main-headline {
+ font-size:300%
+}
+.small-headline {
+ font-size:92%;
+ text-transform:uppercase;
+ letter-spacing:.1em
+}
+.sr-only {
+ -webkit-clip-path:inset(100%);
+ clip-path:inset(100%);
+ clip:rect(0 0 0 0);
+ height:1px;
+ overflow:hidden;
+ position:absolute;
+ white-space:nowrap;
+ width:1px
+}
+button {
+ font-size:inherit;
+ font-family:inherit
+}
+*,
+:after,
+:before {
+ -webkit-box-sizing:border-box;
+ box-sizing:border-box
+}
+:root {
+ --tournant-color-dark:#007a7c;
+ --tournant-color-light:#f0f7ed
+}
+html {
+ font-family:Fabrikat,sans-serif;
+ font-size:100%
+}
+@media(min-width:600px) {
+ html {
+  font-size:105%
+ }
+}
+@media(min-width:900px) {
+ html {
+  font-size:111%
+ }
+}
+body {
+ background-color:var(--tournant-color-light);
+ color:var(--tournant-color-dark)
+}
+#app {
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale;
+ min-height:100vh;
+ padding:5vmin;
+ max-width:1000px;
+ margin-left:5vmin
+}
+a {
+ color:#000
+}
+a:focus {
+ outline:2px solid var(--tournant-color-dark)
+}
+.banner {
+ background-color:#fff;
+ border:2px solid var(--tournant-color-dark);
+ border-radius:.25em;
+ padding:.75rem .5rem;
+ display:-webkit-box;
+ display:-ms-flexbox;
+ display:flex;
+ -webkit-box-pack:center;
+ -ms-flex-pack:center;
+ justify-content:center;
+ -webkit-box-align:center;
+ -ms-flex-align:center;
+ align-items:center;
+ max-width:100ch;
+ margin:0 auto
+}
+.banner p {
+ margin:0
+}
+.component-list {
+ display:-webkit-box;
+ display:-ms-flexbox;
+ display:flex;
+ -webkit-box-orient:horizontal;
+ -webkit-box-direction:normal;
+ -ms-flex-flow:row wrap;
+ flex-flow:row wrap;
+ list-style:none;
+ padding-left:0
+}
+@supports(display:grid) {
+ .component-list {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(20rem,1fr));
+  grid-gap:4vmin
+ }
+ .component-list>* {
+  margin:0!important
+ }
+}
+.component-list>:not(:last-child) {
+ margin-right:.5rem
+}
+.intro {
+ max-width:50ch
+}
+.component-card {
+ background-color:#f2f2f2;
+ background-image:linear-gradient(176deg,#f0f7ed,#f0f7ed 35%,#f2f2f2 0,#f2f2f2);
+ -webkit-box-shadow:-2px -3px 0 1px #fff;
+ box-shadow:-2px -3px 0 1px #fff;
+ -webkit-box-flex:0;
+ -ms-flex:0 0 20rem;
+ flex:0 0 20rem;
+ margin-bottom:1rem;
+ overflow:hidden;
+ padding:2vmin;
+ position:relative
+}
+section {
+ margin-bottom:2rem
+}
+.icon-link {
+ display:block;
+ max-width:2rem
+}
+.icon-link svg {
+ fill:currentColor;
+ width:100%
+}
+:first-child {
+ margin-top:0
+}
+:last-child {
+ margin-bottom:0
+}
