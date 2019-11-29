@@ -19,7 +19,7 @@
 	"dependencies": {
 		"@tournant/scaffold": "^1.0.1",
 		"@vue/cli-plugin-babel": "^4.1.1",
-		"@vue/cli-plugin-eslint": "^4.0.0",
+		"@vue/cli-plugin-eslint": "^4.1.1",
 		"@vue/cli-plugin-unit-jest": "^4.0.0",
 		"@vue/cli-service": "^4.1.1",
 		"@vue/eslint-config-standard": "^4.0.0",
