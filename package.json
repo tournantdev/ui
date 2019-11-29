@@ -8,6 +8,7 @@
 		"build:ui": "vue-cli-service build",
 		"build": "lerna run build --parallel",
 		"create": "tournant-scaffold",
+		"integrity": "yarn lint && yarn test",
 		"lint": "eslint '**/*.{vue,js}' --fix",
 		"publish:packages": "lerna publish",
 		"serve": "vue-cli-service serve",
