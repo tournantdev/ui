@@ -7,7 +7,7 @@
 		"build:changed": "lerna run build --parallel --since origin/master",
 		"build:ui": "vue-cli-service build",
 		"build": "lerna run build --parallel",
-		"create": "tournant-scaffold",
+		"create": "communard",
 		"integrity": "yarn lint && yarn test",
 		"lint": "eslint '**/*.{vue,js}' --fix",
 		"publish:packages": "lerna publish",
@@ -17,7 +17,7 @@
 		"test": "vue-cli-service test:unit"
 	},
 	"dependencies": {
-		"@tournant/scaffold": "^1.0.1",
+		"@tournant/communard": "^2.0.0",
 		"@vue/cli-plugin-babel": "^4.1.1",
 		"@vue/cli-plugin-eslint": "^4.1.1",
 		"@vue/cli-plugin-unit-jest": "^4.0.0",
