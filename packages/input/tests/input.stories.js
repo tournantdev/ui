@@ -22,6 +22,19 @@ export const typePassword = () => ({
 	template: `<tournant-input label="password" :validation="validation" value="" v-model="password" type="password" />`
 })
 
+export const withError = () => ({
+	components: { TournantInput },
+	data: () => ({
+		validation: { $error: true, $dirty: true },
+		name: ''
+	}),
+	template: `<tournant-input label="Name" :validation="validation" value="" v-model="name" type="password">
+		<template v-slot:feedback>
+			<p>Please enter your name</p>
+		</template>
+	</tournant-input>`
+})
+
 export const withDescription = () => ({
 	components: { TournantInput },
 	data: () => ({
