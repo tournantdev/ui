@@ -2352,10 +2352,10 @@
     regenerator-runtime "^0.12.1"
     webpack "^4.33.0"
 
-"@tournant/communard@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@tournant/communard/-/communard-2.0.0.tgz#6c0488b004eff779c1df6071f326eb4afdd7a41d"
-  integrity sha512-4ztVyWuBemiATSjQUzuDh96JGXHb3htPLy8gkD1c5CGxlIfdc3Nua8FM4v4RLHTa9T4wK8iGCmywaGJB4J5DWQ==
+"@tournant/communard@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@tournant/communard/-/communard-2.1.0.tgz#46a8913c5c0d923915cd5654afa299dbd9d5301d"
+  integrity sha512-4KPycA/pRUOSLYW2hL3kcUOYhuYU5gY2DTGYTZHeeKsTiPrQ3DgCO471y15qsQZFs2GPg/Ad0Xpi09e3FJc8uA==
   dependencies:
     arg "^4.1.1"
     chalk "^2.4.2"
