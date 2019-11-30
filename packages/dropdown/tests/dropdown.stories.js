@@ -1,7 +1,7 @@
 // import Vue from 'vue'
-import TournantDropdown from './src/index.vue'
+import TournantDropdown from '../src/index.vue'
 
-export default { title: 'Dropdown' }
+export default { title: '@tournant/dropdown' }
 
 const items = `<template v-slot:items>
 			<button role="menuitem" tabindex="-1">Rename</button>
