@@ -8,13 +8,9 @@ module.exports = ({ config }) => {
 	// 'PRODUCTION' is used when building the static version of storybook.
 
 	config.module.rules.push({
-    test: /\.scss$/,
-    use: [
-      'vue-style-loader',
-      'css-loader',
-      'sass-loader'
-    ],
-  })
+		test: /\.scss$/,
+		use: ['vue-style-loader', 'css-loader', 'sass-loader']
+	})
 
 	config.resolve.alias = {
 		...(config.resolve.alias || {}),
