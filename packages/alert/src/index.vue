@@ -46,6 +46,8 @@ export default {
 	mounted() {
 		this.timeout = setTimeout(() => {
 			this.ariaHidden = true
+
+			this.$emit('messageTimeout')
 		}, this.hideAfterSeconds * 1000)
 	},
 	beforeDestroy() {
