@@ -226,7 +226,7 @@ Relying on styling is not enough to convey errors to users. `@tournant/input` ex
 	label="Your password"
 	description="Your password has to be at least eight characters long."
 >
-	<template v-slot:required-text>
+	<template v-slot:label-text>
 		<span class="aside">required</span>
 	</template>
 	<template v-slot:feedback>

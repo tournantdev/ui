@@ -4,8 +4,6 @@ const { name } = require('./package')
 // Package name is scoped to @tournant org, split @tournant/package-name for use in path matcher
 const folderName = name.split('/')[1]
 
-console.log(folderName)
-
 module.exports = {
 	...base,
 	roots: [`<rootDir>/packages/${folderName}`],
