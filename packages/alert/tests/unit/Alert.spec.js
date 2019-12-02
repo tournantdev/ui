@@ -81,7 +81,7 @@ describe('alert', () => {
 		})
 
 		it('emits an event once the timeout has passed', () => {
-			jest.advanceTimersByTime(5100)
+			jest.runOnlyPendingTimers()
 
 			expect(wrapper.emitted('messageTimeout')).toBeTruthy()
 		})
