@@ -14,10 +14,29 @@ export const itemData = [
 	}
 ]
 
+export const noLastLinkData = [
+	{
+		to: '/test-route',
+		exact: true,
+		text: 'Test'
+	},
+	{
+		text: 'Another test'
+	}
+]
+
 export const basic = () => ({
 	components: { TournantBreadcrumb },
 	data: () => ({
 		items: itemData
+	}),
+	template: `<tournant-breadcrumb :links="items" />`
+})
+
+export const lastItemNotLinked = () => ({
+	components: { TournantBreadcrumb },
+	data: () => ({
+		items: noLastLinkData
 	}),
 	template: `<tournant-breadcrumb :links="items" />`
 })
