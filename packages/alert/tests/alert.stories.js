@@ -44,3 +44,26 @@ export const longTimeout = () => ({
 	</div>
 		<tournant-alert v-for="message in messages" :message="message" :hideAfterSeconds="10" /></div>`
 })
+
+export const statusMessage = () => ({
+	components: { TournantAlert },
+	props: {
+		alertMessage: {
+			default: text('Status message', 'Page 4 has been loaded.')
+		}
+	},
+	data: () => ({
+		messages: []
+	}),
+	methods: {
+		addAlert() {
+			this.messages.push(this.alertMessage)
+		}
+	},
+	template: `<div>
+		<div>
+			<button @click="addAlert">Add alert</button>
+		</div>
+		<tournant-alert v-for="message in messages" :message="message" type="polite" />
+	</div>`
+})
