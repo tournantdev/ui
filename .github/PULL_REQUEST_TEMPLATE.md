@@ -7,6 +7,7 @@
 - [ ] NVDA
 - [ ] JAWS
 - [ ] VoiceOver
+- [ ] TalkBack
 
 ### In which browsers have these additions been tested
 
