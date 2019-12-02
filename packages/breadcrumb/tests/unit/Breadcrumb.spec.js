@@ -2,17 +2,16 @@ import { shallowMount } from '@vue/test-utils'
 
 import TournantBreadcrumb from '../../src/index.vue'
 
-import { itemData } from '../breadcrumb.stories'
+import { itemData, noLastLinkData } from '../breadcrumb.stories'
 
-describe('breadcrumb', () => {
+describe('@tournant/breadcrumb', () => {
 	let wrapper
 
 	beforeEach(() => {
 		wrapper = shallowMount(TournantBreadcrumb, {
 			propsData: {
 				links: itemData
-			},
-			stubs: ['router-link']
+			}
 		})
 	})
 
@@ -34,5 +33,70 @@ describe('breadcrumb', () => {
 		wrapper.find('a').trigger('click')
 
 		expect(wrapper.emitted('itemClick')).toBeTruthy()
+	})
+
+	it('renders `aria-current`', () => {
+		const $links = wrapper.findAll('a')
+		const $last = $links.at($links.length - 1)
+
+		expect($last.attributes('aria-current')).toBe('page')
+	})
+
+	it('does not render `aria-current` if the last item has no link', () => {
+		wrapper.setProps({ links: noLastLinkData })
+
+		const $links = wrapper.findAll('a')
+		const $last = $links.at($links.length - 1)
+
+		expect($last.attributes('aria-current')).toBeUndefined()
+	})
+})
+
+describe('@tournant/breadcrumb – with @vue/router', () => {
+	let wrapper
+
+	beforeEach(() => {
+		wrapper = shallowMount(TournantBreadcrumb, {
+			propsData: {
+				links: itemData
+			},
+			mocks: {
+				$router: () => ''
+			},
+			stubs: ['router-link']
+		})
+	})
+
+	it('renders `router-link`s', () => {
+		expect(wrapper.find('router-link-stub')).toBeDefined()
+	})
+})
+
+describe('@tournant/breadcrumb – with Nuxt', () => {
+	let wrapper
+
+	beforeEach(() => {
+		wrapper = shallowMount(TournantBreadcrumb, {
+			propsData: {
+				links: itemData
+			},
+			mocks: {
+				$nuxt: () => ''
+			},
+			stubs: ['nuxt-link']
+		})
+	})
+
+	it('renders `nuxt-link`s', () => {
+		expect(wrapper.find('nuxt-link-stub')).toBeDefined()
+	})
+
+	it('sets `to` attribute', () => {
+		expect(
+			wrapper
+				.findAll('nuxt-link-stub')
+				.at(0)
+				.attributes('to')
+		).toBe('/test-route')
 	})
 })
