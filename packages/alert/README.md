@@ -69,9 +69,9 @@ A status message is a message that will be announced after the current output. I
 >
 ```
 
-#### Known Bug in VoiceOver
+### TalkBack Usage Notes
 
-VoiceOver reads the output of a `status` role twice.
+From our testing it seems as if TalkBack on Android reads alert content twice.
 
 ### CSS
 
