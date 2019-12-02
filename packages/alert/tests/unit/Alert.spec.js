@@ -79,6 +79,12 @@ describe('alert', () => {
 
 			expect($root.getAttribute('aria-hidden')).toBe('true')
 		})
+
+		it('emits an event once the timeout has passed', () => {
+			jest.advanceTimersByTime(5100)
+
+			expect(wrapper.emitted('messageTimeout')).toBeTruthy()
+		})
 	})
 
 	describe('CSS', () => {
