@@ -10,7 +10,7 @@
 					:is="linkElement"
 					:to="hasNuxt || hasRouter ? item.to : null"
 					:href="hasNuxt || hasRouter ? null : item.to"
-					:aria-current="index === links.length - 1 ? 'page' : null"
+					:aria-current="index === links.length - 1 && item.to ? 'page' : null"
 					class="t-ui-breadcrumb__link"
 					@click.native="$emit('itemClick', index)"
 					>{{ item.text }}</component
