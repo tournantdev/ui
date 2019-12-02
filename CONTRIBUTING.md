@@ -30,7 +30,11 @@ Stories for single components are located in the respective `tests` folder. `@to
 
 To start Storybook run `yarn storybook`. This will open an instance with hot-reloading and so forth on port `9001`.
 
-Please note that we currently to not use the generated version of Storybook.
+We use [Knobs](https://github.com/storybookjs/storybook/tree/master/addons/knobs) for interactive stories.
+
+## Website
+
+There is none just yet. Available components are listed in [ui/index.html](ui/index.html), which is deployed to Netlify. A better site is coming soon.
 
 That’s it. If there are any open questions, please do not hesitate to contact us at [team@tournant.dev](mailto:team@tournant.dev)
 
