@@ -12,7 +12,7 @@
 					:href="hasNuxt || hasRouter ? null : item.to"
 					:aria-current="index === links.length - 1 && item.to ? 'page' : null"
 					class="t-ui-breadcrumb__link"
-					@click.native="$emit('itemClick', index)"
+					@click="$emit('itemClick', index)"
 					>{{ item.text }}</component
 				>
 			</li>
@@ -50,10 +50,6 @@ export default {
 
 			return 'a'
 		}
-	},
-	mounted() {
-		console.info(this.hasRouter)
-		console.info(this.hasNuxt)
 	}
 }
 </script>
