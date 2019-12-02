@@ -1,17 +1,25 @@
 import TournantInput from '../src/index.vue'
+import { withKnobs, text } from '@storybook/addon-knobs'
 
 // const dataNoError = { $error: false, $dirty: false }
 
-export default { title: '@tournant/input' }
+export default { title: '@tournant/input', decorators: [withKnobs] }
 
-export const withLabel = () => ({
-	components: { TournantInput },
-	data: () => ({
-		validation: { $error: false, $dirty: false },
-		name: ''
-	}),
-	template: `<tournant-input label="Test Name" :validation="validation" value="" v-model="name" type="text" />`
-})
+export const withLabel = () => {
+	return {
+		components: { TournantInput },
+		props: {
+			label: {
+				default: text('Name', 'Name')
+			}
+		},
+		data: () => ({
+			validation: { $error: false, $dirty: false },
+			name: ''
+		}),
+		template: `<tournant-input :label="label" :validation="validation" value="" v-model="name" type="text" />`
+	}
+}
 
 export const typePassword = () => ({
 	components: { TournantInput },
