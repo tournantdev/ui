@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/input",
-	"version": "0.4.2",
+	"version": "0.5.0",
 	"description": "An accessible implementation for text-like HTML input elements.",
 	"keywords": [
 		"vue",
@@ -34,9 +34,7 @@
 		"test": "cd ../.. && jest packages/input --color"
 	},
 	"dependencies": {
-		"core-js": "^3.1.4",
-		"uuid-browser": "^3.1.0",
-		"vue": "^2.6.10"
+		"uuid-browser": "^3.1.0"
 	},
 	"peerDependencies": {
 		"vue": "^2.6.10"
