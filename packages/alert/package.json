@@ -2,7 +2,12 @@
 	"name": "@tournant/alert",
 	"version": "0.0.1",
 	"description": "Screenreader friendly notification messages",
-	"keywords": [],
+	"keywords": [
+		"accessibility",
+		"vue",
+		"component",
+		"notification"
+	],
 	"main": "./dist/alert.ssr.js",
 	"module": "./dist/alert.js",
 	"unpkg": "./dist/browser.min.js",
