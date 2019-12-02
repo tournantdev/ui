@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/alert",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Screenreader friendly notification messages",
 	"keywords": [
 		"accessibility",
