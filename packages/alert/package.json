@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/alert",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Screenreader friendly notification messages",
 	"keywords": [],
 	"main": "./dist/alert.ssr.js",
@@ -22,5 +22,6 @@
 	},
 	"peerDependencies": {
 		"vue": "^2.6.10"
-	}
+	},
+	"gitHead": "43e18fdf87469cc6c1d1ff93729c5fb29ffee898"
 }
