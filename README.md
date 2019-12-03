@@ -12,6 +12,12 @@ But if you need to integrate inclusive components in your site, Tournant UI will
 
 This is still in early development. Many components needed are missing. If you are able to contribute, please do!
 
+## Components
+
+This project aims to provide common user interface patterns. It revolves around the [WAI-ARIA design patterns and examples](https://www.w3.org/TR/wai-aria-practices-1.1/#aria_ex) list. But it is not limited to it.
+
+You can track our progress and development plans in the [Component Development project](https://github.com/tournantdev/ui/projects/2). Again, if you are able to contribute one of the components, please do so. If you need one of the components but don’t feel like you can build it on your own, open a [feature request issue](https://github.com/tournantdev/ui/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=).
+
 ## Acknowledgment
 
 Tournant is heavily inspired by projects such as Reach UI, Inclusive Components and Accessible App.
@@ -38,6 +44,10 @@ yarn bootstrap
 
 This will install all packages and hoist them to the project root folder.
 
+### Create a Component
+
+We maintain a CLI helper tool named [Communard](https://github.com/tournantdev/communard) to quickly scaffold the folder structure needed to develop a new component. It is integrated into the project. You can start it by running `yarn run create`.
+
 To develop your components please use Storybook [as explained in the contribution documentation](CONTRIBUTING.md#storybook).
 
 ### Build packages
@@ -47,8 +57,6 @@ To build all packages run:
 ```
 yarn build
 ```
-
-💁 _Note:_ This builds the bundles that can be published to NPM. If you want to build the demo implementation in `./demo` use `yarn run build:ui`
 
 ### Run your tests
 
@@ -64,11 +72,15 @@ yarn run lint
 
 ### Publish Packages
 
+💁 _Note:_ You need to have access to the npm @tournant organisation to run this command.
+
+Before you are able to use the integrated Lerna publishing flow the package needs to be on NPM already. We recommend [np](https://github.com/sindresorhus/np) for doing so.
+
+To publish everything run:
+
 ```
 yarn publish:packages
 ```
-
-💁 _Note:_ You need to have access to the npm @tournant organisation to run this command.
 
 ## Authorship
 
