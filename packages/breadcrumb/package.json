@@ -1,26 +1,29 @@
 {
-  "name": "@tournant/breadcrumb",
-  "version": "0.0.1",
-  "description": "A trail of links to let users find their place within a website.",
-  "keywords": [],
-  "main": "./dist/breadcrumb.ssr.js",
-  "module": "./dist/breadcrumb.js",
-  "unpkg": "./dist/browser.min.js",
-  "files": [
-    "dist",
-    "src/**/*.vue"
-  ],
-  "repository": "https://github.com/tournantdev/ui",
-  "bugs": "https://github.com/tournantdev/ui/issues",
-  "homepage": "https://ui.tournant.dev",
-  "author": "Oscar Braunert",
-  "license": "MIT",
-  "scripts": {
-    "build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
-    "lint": "vue-cli-service lint",
-    "test": "cd ../.. && jest packages/breadcrumb --color"
-  },
-  "peerDependencies": {
-    "vue": "^2.6.10"
-  }
+	"name": "@tournant/breadcrumb",
+	"version": "0.0.1",
+	"description": "A trail of links to let users find their place within a website.",
+	"keywords": [],
+	"main": "./dist/breadcrumb.ssr.js",
+	"module": "./dist/breadcrumb.js",
+	"unpkg": "./dist/browser.min.js",
+	"files": [
+		"dist",
+		"src/**/*.vue"
+	],
+	"repository": "https://github.com/tournantdev/ui",
+	"bugs": "https://github.com/tournantdev/ui/issues",
+	"homepage": "https://ui.tournant.dev",
+	"author": "Oscar Braunert",
+	"license": "MIT",
+	"scripts": {
+		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
+		"lint": "vue-cli-service lint",
+		"test": "cd ../.. && jest packages/breadcrumb --color"
+	},
+	"peerDependencies": {
+		"vue": "^2.6.10"
+	},
+	"dependencies": {
+		"@tournant/dynamic-anchor": "^0.0.1"
+	}
 }

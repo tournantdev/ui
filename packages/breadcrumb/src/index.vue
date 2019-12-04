@@ -6,14 +6,12 @@
 				:key="item.text"
 				class="t-ui-breadcrumb__item"
 			>
-				<component
-					:is="linkElement"
-					:to="hasNuxt || hasRouter ? item.to : null"
-					:href="hasNuxt || hasRouter ? null : item.to"
+				<tournant-dynamic-anchor
+					:link="item"
 					:aria-current="index === links.length - 1 && item.to ? 'page' : null"
 					class="t-ui-breadcrumb__link"
-					@click="$emit('itemClick', index)"
-					>{{ item.text }}</component
+					@click.native="$emit('itemClick', index)"
+					>{{ item.text }}</tournant-dynamic-anchor
 				>
 			</li>
 		</ol>
@@ -21,7 +19,12 @@
 </template>
 
 <script>
+import TournantDynamicAnchor from '@tournant/dynamic-anchor'
+
 export default {
+	components: {
+		TournantDynamicAnchor
+	},
 	props: {
 		links: {
 			type: Array,
@@ -31,27 +34,6 @@ export default {
 			type: String,
 			default: 'Breadcrumb'
 		}
-	},
-	data() {
-		return {
-			hasRouter: typeof this.$router !== 'undefined',
-			hasNuxt: typeof this.$nuxt !== 'undefined'
-		}
-	},
-	computed: {
-		linkElement() {
-			if (this.hasNuxt) {
-				return 'nuxt-link'
-			}
-
-			if (this.hasRouter) {
-				return 'router-link'
-			}
-
-			return 'a'
-		}
 	}
 }
 </script>
-
-<style lang="scss"></style>

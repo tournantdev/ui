@@ -73,6 +73,8 @@ You can omit `to` for the last item. In which case `aria-current` will not be se
 
 By default, all links are rendered as simple `a` tags. However, if you use Nuxt or @vue/router this is automatically detected and the links are rendered as `nuxt-link` or `router-link` respectively.
 
+Under the hood it makes use of @tournant/dynamic-anchor.
+
 ### CSS
 
 | Classname               | Element                                   |
