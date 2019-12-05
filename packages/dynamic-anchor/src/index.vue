@@ -1,46 +1,50 @@
-<template>
-	<component
-		:is="linkElement"
-		:to="linkElement === 'a' ? null : link.to"
-		v-bind="$props"
-		:href="linkElement === 'a' ? link.to : null"
-		class="t-ui-dynamic-anchor"
-		>{{ link.text }}</component
-	>
-</template>
-
 <script>
+import Vue from 'vue'
+
+import getElementTagName from '@h/getElementTagName'
+
 export default {
+	name: 'TournantDynamicAnchor',
+	functional: true,
+	extends: Vue.component('RouterLink'),
 	props: {
-		link: {
-			type: Object,
-			required: true
+		useNativeLinkElement: {
+			type: Boolean,
+			default: false
 		}
 	},
-	data() {
-		return {
-			hasRouter: typeof this.$router !== 'undefined',
-			hasNuxt: typeof this.$nuxt !== 'undefined'
-		}
-	},
-	computed: {
-		linkElement() {
-			if (this.link.useNativeLinkElement) {
-				return 'a'
-			}
+	render(createEl, context) {
+		const { props, parent } = context
 
-			if (this.hasNuxt) {
-				return 'nuxt-link'
-			}
+		const el = getElementTagName(
+			props.useNativeLinkElement,
+			parent.$root.$options.nuxt,
+			parent.$root.$options.router
+		)
+		const isNative = el === 'a'
 
-			if (this.hasRouter) {
-				return 'router-link'
-			}
+		const data = !isNative
+			? context.data
+			: {
+					...context.data,
+					attrs: {
+						...context.data.attrs,
+						href: context.data.attrs.href || props.to || context.data.attrs.to,
+						to: null
+					}
+			  }
 
-			return 'a'
-		}
+		return createEl(
+			el,
+			{
+				...data,
+				props: {
+					...props
+				},
+				on: context.listeners
+			},
+			context.children
+		)
 	}
 }
 </script>
-
-<style lang="scss"></style>

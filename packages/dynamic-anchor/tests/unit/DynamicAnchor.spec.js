@@ -3,11 +3,6 @@ import { shallowMount } from '@vue/test-utils'
 import TournantDynamicAnchor from '../../src/index.vue'
 
 const defaultLink = { to: '/test', text: 'Test' }
-const linkNoCustomComponent = {
-	to: '/test-no-custom-component',
-	text: 'Ignore Framework',
-	useNativeLinkElement: true
-}
 
 describe('@tournant/dynamic-anchor', () => {
 	let wrapper
@@ -15,7 +10,10 @@ describe('@tournant/dynamic-anchor', () => {
 	beforeEach(() => {
 		wrapper = shallowMount(TournantDynamicAnchor, {
 			propsData: {
-				link: defaultLink
+				to: defaultLink.to
+			},
+			slots: {
+				default: defaultLink.text
 			}
 		})
 	})
@@ -37,71 +35,119 @@ describe('@tournant/dynamic-anchor', () => {
 		).toBe('/test')
 	})
 
-	describe('with @vue/router', () => {
-		beforeEach(() => {
-			wrapper = shallowMount(TournantDynamicAnchor, {
-				propsData: {
-					link: defaultLink
-				},
-				mocks: {
-					$router: () => ''
-				},
-				stubs: ['router-link']
-			})
+	it('sets `href` if href attribute is given', () => {
+		wrapper = shallowMount(TournantDynamicAnchor, {
+			propsData: {
+				href: defaultLink.to
+			},
+			slots: {
+				default: defaultLink.text
+			}
 		})
 
-		it('renders `router-link`s', () => {
-			expect(wrapper.find('router-link-stub')).toBeDefined()
-		})
+		expect(
+			wrapper
+				.findAll('a')
+				.at(0)
+				.attributes('href')
+		).toBe('/test')
+	})
+})
 
-		it('renders `a` if desired', () => {
-			wrapper.setProps({ link: linkNoCustomComponent })
+describe('@tournant/dynamic-anchor – with @vue/router', () => {
+	let wrapper
 
-			expect(wrapper.is('a')).toBe(true)
-		})
-
-		it('sets `to` attribute', () => {
-			expect(
-				wrapper
-					.findAll('router-link-stub')
-					.at(0)
-					.attributes('to')
-			).toBe('/test')
+	beforeEach(() => {
+		wrapper = shallowMount(TournantDynamicAnchor, {
+			propsData: {
+				to: defaultLink.to
+			},
+			mocks: {
+				parent: {
+					$root: {
+						router: () => ''
+					}
+				}
+			},
+			stubs: ['router-link']
 		})
 	})
 
-	describe('with Nuxt', () => {
-		let wrapper
+	it('renders `router-link`', () => {
+		expect(wrapper.find('router-link-stub')).toBeDefined()
+	})
 
-		beforeEach(() => {
-			wrapper = shallowMount(TournantDynamicAnchor, {
-				propsData: {
-					link: defaultLink
+	it('renders `a` if desired', () => {
+		wrapper = shallowMount(TournantDynamicAnchor, {
+			propsData: {
+				to: defaultLink.to,
+				useNativeLinkElement: true
+			},
+			mocks: {
+				parent: {
+					$root: {
+						router: () => ''
+					}
+				}
+			},
+			stubs: ['router-link']
+		})
+
+		expect(wrapper.is('a')).toBe(true)
+	})
+
+	it('sets `to` attribute', () => {
+		console.log(wrapper.attributes())
+
+		expect(wrapper.attributes('to')).toBe('/test')
+	})
+})
+
+describe.only('@tournant/dynamic-anchor – with Nuxt', () => {
+	let wrapper
+
+	beforeEach(() => {
+		wrapper = shallowMount(TournantDynamicAnchor, {
+			context: {
+				props: {
+					to: defaultLink.to
 				},
-				mocks: {
-					$nuxt: () => ''
-				},
-				stubs: ['nuxt-link']
-			})
+				parent: {
+					$root: {
+						$options: {
+							nuxt: () => '',
+							router: () => ''
+						}
+					}
+				}
+			},
+			stubs: ['nuxt-link']
+		})
+	})
+
+	it('renders `nuxt-link`', () => {
+		expect(wrapper.find('nuxt-link-stub')).toBeDefined()
+	})
+
+	it('renders `a` if desired', () => {
+		wrapper = shallowMount(TournantDynamicAnchor, {
+			propsData: {
+				to: defaultLink.to,
+				useNativeLinkElement: true
+			},
+			mocks: {
+				parent: {
+					$root: {
+						$options: {
+							nuxt: () => '',
+							router: () => ''
+						}
+					}
+				}
+			},
+			stubs: ['nuxt-link']
 		})
 
-		it('renders `nuxt-link`s', () => {
-			expect(wrapper.find('nuxt-link-stub')).toBeDefined()
-		})
-
-		it('renders `a` if desired', () => {
-			wrapper.setProps({ link: linkNoCustomComponent })
-
-			expect(wrapper.is('a')).toBe(true)
-		})
-
-		it('sets `to` attribute', () => {
-			expect(
-				wrapper
-					.findAll('nuxt-link-stub')
-					.at(0)
-					.attributes('to')
-			).toBe('/test')
-		})
+		expect(wrapper.is('a')).toBe(true)
 	})
 })

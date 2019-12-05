@@ -35,29 +35,23 @@ components: {
 
 ## Usage
 
-Since our packages might be used in a lot of different circumstances, we needed an agnostic component that fares well under differing circumstances.
+Since our packages might be used in a lot of different circumstances, we needed an agnostic link component that fares well under differing circumstances.
 
 This component is a wrapper around Nuxt Link and Router Link. If Nuxt or @vue/router are detected it will pass the given link to `nuxt-link` or `router-link` respectively. If not, a HTML `a` element is rendered.
 
 ### Props
 
-`@tournant/dynamic-anchor` takes a single prop: An object named `link`. A simple example will look like
+`@tournant/dynamic-anchor` extends the Router Link component. It takes one additional prop:
 
-```js
-{ to: '/example-route', text: 'Example' }
-```
+| Property             | Required | Type    | Default |
+| -------------------- | -------- | ------- | ------- |
+| useNativeLinkElement | false    | Boolean | false   |
 
-Here’s a more detailed overview:
+If `useNativeLinkElement` is set to `true` the component will skip the check for Nuxt or Vue Router and always render an `a` tag.
 
-| Property             | Required | Type                         |
-| -------------------- | -------- | ---------------------------- |
-| to                   | true     | String OR Router Link Object |
-| text                 | true     | String                       |
-| useNativeLinkElement | false    | Boolean                      |
+You can use this prop if your site is gradually moving to Vue and some routes are not yet covered by your router implementation.
 
-If `link.useNativeLinkElement` is set to `true` it will always use the `a` tag.
-
-All other added props and attributes are bound to the component.
+All other added props and attributes are bound to the component or, if a specific link component is detected, forwarded.
 
 ## Bugs & Enhancements
 
