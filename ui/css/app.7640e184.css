@@ -204,6 +204,21 @@ a:focus {
 section {
 	margin-bottom: 2rem;
 }
+
+.main-footer {
+	margin-top: 3rem;
+}
+
+.main-footer > nav ul {
+	display: flex;
+	list-style: none;
+	padding: 0;
+}
+
+.main-footer > nav li + li {
+	margin-left: 1rem;
+}
+
 .icon-link {
 	display: block;
 	max-width: 2rem;
