@@ -27,6 +27,7 @@
 	"bugs": "https://github.com/tournantdev/ui/issues",
 	"scripts": {
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
+		"watch": "rollup -c ../../_build/rollup.config.js --watch",
 		"lint": "vue-cli-service lint",
 		"test": "cd ../.. && jest packages/combobox --color"
 	},
