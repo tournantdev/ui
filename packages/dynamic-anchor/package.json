@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/dynamic-anchor",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A wrapper around nuxt-link or router-link. Or a simple <a> tag.",
 	"keywords": [],
 	"main": "./dist/dynamic-anchor.ssr.js",
