@@ -40,6 +40,7 @@ The breadcrumb renders an ordered list of links. The last item in the list is ma
 - `links`: Array. Required. The links in the path you want to render. Consisting of items which are structured as follow:
   - `item`: Object. Needs to have the properties `to` and `text`. If used with Nuxt or @vue/router `exact` can also be set.
 - `labelText`: String. Default: «Breadcrumb». A breadcrumb navigation _has_ to have an `aria-label`, you can change it with this prop.
+- `labelledBy`: You can provide the ID of an element on the page to label the navigation. If you use `labelledBy`, `aria-label` will _not_ be added.
 
 ### Basic Example
 
@@ -69,11 +70,23 @@ The breadcrumb renders an ordered list of links. The last item in the list is ma
 
 You can omit `to` for the last item. In which case `aria-current` will not be set.
 
+### Labelling
+
+A label can be either provided by passing a `labelText` or linking an element via ID using `labelledBy`. The linked element can be included in the component by using the `label` slot.
+
+```html
+<tournant-breadcrumb :links="links" :labelledBy="test-id">
+	<template v-slot:label>
+		<h2 id="test-id">Breadcrumb</h2>
+	</template>
+</tournant-breadcrumb>
+```
+
 ### Framework Detection
 
 By default, all links are rendered as simple `a` tags. However, if you use Nuxt or @vue/router this is automatically detected and the links are rendered as `nuxt-link` or `router-link` respectively.
 
-Under the hood it makes use of @tournant/dynamic-anchor.
+Under the hood it makes use of [@tournant/dynamic-anchor](https://www.npmjs.com/package/@tournant/dynamic-anchor).
 
 ### CSS
 
