@@ -73,7 +73,7 @@ describe('@tournant/breadcrumb', () => {
 		expect($last.attributes('aria-current')).toBeUndefined()
 	})
 
-	describe('Microformats', () => {
+	describe('Microdata', () => {
 		it('marks the list as BreadcrumbList', () => {
 			const $list = wrapper.find('ol')
 			const { itemscope, itemtype } = $list.attributes()
