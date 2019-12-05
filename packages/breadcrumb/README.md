@@ -84,6 +84,10 @@ Under the hood it makes use of @tournant/dynamic-anchor.
 | t-ui-breadcrumb\_\_item | `li` containing a link                    |
 | t-ui-breadcrumb\_\_link | `a` to the actual item                    |
 
+### Microdata
+
+Schema.org compatible [BreadcrumbList microdata](https://schema.org/BreadcrumbList) is embedded into the markup. Hence this breadcrumb is discoverable by third parties and they are able to use this data, e.g. in displaying it in a search results page.
+
 ### Events
 
 If a user clicks on a link in the breadcrumb it emits a custom event named `itemClick`. The payload is the `index` of the clicked item.
