@@ -8,6 +8,7 @@
 			>
 				<tournant-dynamic-anchor
 					:to="item.to"
+					:use-native-link-element="item.useNativeLinkElement"
 					:aria-current="index === links.length - 1 && item.to ? 'page' : null"
 					class="t-ui-breadcrumb__link"
 					@click.native="$emit('itemClick', index)"
