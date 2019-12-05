@@ -30,12 +30,6 @@ describe('@tournant/breadcrumb', () => {
 		expect(wrapper.attributes('aria-label')).toBe('Brotkrume')
 	})
 
-	it('emits an event if an item is clicked', () => {
-		wrapper.find(TournantDynamicAnchor).trigger('click')
-
-		expect(wrapper.emitted('itemClick')).toBeTruthy()
-	})
-
 	it('renders `aria-current`', () => {
 		const $links = wrapper.findAll(TournantDynamicAnchor)
 		const $last = $links.at($links.length - 1)

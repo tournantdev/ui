@@ -10,7 +10,7 @@
 					:to="item.to"
 					:aria-current="index === links.length - 1 && item.to ? 'page' : null"
 					class="t-ui-breadcrumb__link"
-					@click="$emit('itemClick', index)"
+					@click.native="$emit('itemClick', index)"
 					>{{ item.text }}</tournant-dynamic-anchor
 				>
 			</li>
