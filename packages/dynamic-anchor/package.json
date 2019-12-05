@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/dynamic-anchor",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "A wrapper around nuxt-link or router-link. Or a simple <a> tag.",
 	"keywords": [],
 	"main": "./dist/dynamic-anchor.ssr.js",
@@ -17,6 +17,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
+		"watch": "rollup -c ../../_build/rollup.config.js --watch",
 		"lint": "vue-cli-service lint",
 		"test": "cd ../.. && jest packages/dynamic-anchor --color"
 	},

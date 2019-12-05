@@ -30,6 +30,7 @@
 	],
 	"scripts": {
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
+		"watch": "rollup -c ../../_build/rollup.config.js --watch",
 		"lint": "vue-cli-service lint",
 		"test": "cd ../.. && jest packages/input --color"
 	},
