@@ -30,6 +30,32 @@ describe('@tournant/breadcrumb', () => {
 		expect(wrapper.attributes('aria-label')).toBe('Brotkrume')
 	})
 
+	it('allows to set `aria-labelledby`', () => {
+		wrapper = shallowMount(TournantBreadcrumb, {
+			propsData: {
+				links: itemData,
+				labelledBy: 'test-id'
+			}
+		})
+
+		expect(wrapper.attributes('aria-labelledby')).toBe('test-id')
+		expect(wrapper.attributes('aria-label')).not.toBeDefined()
+	})
+
+	it('allows to render a label inside the nav', () => {
+		wrapper = shallowMount(TournantBreadcrumb, {
+			propsData: {
+				links: itemData,
+				labelledBy: 'test-id'
+			},
+			slots: {
+				label: '<h3 id="test-id">Custom label</h3>'
+			}
+		})
+
+		expect(wrapper.find('nav>h3').text()).toBe('Custom label')
+	})
+
 	it('renders `aria-current`', () => {
 		const $links = wrapper.findAll(TournantDynamicAnchor)
 		const $last = $links.at($links.length - 1)

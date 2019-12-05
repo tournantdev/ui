@@ -1,5 +1,10 @@
 <template>
-	<nav :aria-label="labelText" class="t-ui-breadcrumb">
+	<nav
+		:aria-label="!labelledBy && labelText"
+		:aria-labelledby="labelledBy"
+		class="t-ui-breadcrumb"
+	>
+		<slot name="label" />
 		<ol class="t-ui-breadcrumb__list">
 			<li
 				v-for="(item, index) in links"
@@ -34,6 +39,10 @@ export default {
 		labelText: {
 			type: String,
 			default: 'Breadcrumb'
+		},
+		labelledBy: {
+			type: [String, Boolean],
+			default: false
 		}
 	}
 }
