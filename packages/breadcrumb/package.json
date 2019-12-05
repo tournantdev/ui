@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/breadcrumb",
-	"version": "0.0.2",
+	"version": "1.0.0",
 	"description": "A trail of links to let users find their place within a website.",
 	"keywords": [],
 	"main": "./dist/breadcrumb.ssr.js",
