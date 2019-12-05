@@ -12,7 +12,8 @@ describe('@tournant/breadcrumb', () => {
 		wrapper = shallowMount(TournantBreadcrumb, {
 			propsData: {
 				links: itemData
-			}
+			},
+			stubs: ['tournant-dynamic-anchor']
 		})
 	})
 
@@ -70,5 +71,53 @@ describe('@tournant/breadcrumb', () => {
 		const $last = $links.at($links.length - 1)
 
 		expect($last.attributes('aria-current')).toBeUndefined()
+	})
+
+	describe('Microformats', () => {
+		it('marks the list as BreadcrumbList', () => {
+			const $list = wrapper.find('ol')
+			const { itemscope, itemtype } = $list.attributes()
+
+			expect(itemscope).toBeDefined()
+			expect(itemtype).toBe('https://schema.org/BreadcrumbList')
+		})
+
+		it('marks list items as itemListElement', () => {
+			const $li = wrapper.findAll('li').at(0)
+			const { itemscope, itemtype, itemprop } = $li.attributes()
+
+			expect(itemscope).toBeDefined()
+			expect(itemtype).toBe('https://schema.org/ListItem')
+			expect(itemprop).toBe('itemListElement')
+		})
+
+		it('marks links as itemListElement', () => {
+			const $link = wrapper.findAll(TournantDynamicAnchor).at(0)
+			const { itemtype, itemprop } = $link.attributes()
+
+			expect(itemtype).toBe('https://schema.org/Thing')
+			expect(itemprop).toBe('item')
+		})
+
+		it('adds the name of list items', () => {
+			const $li = wrapper
+				.findAll(TournantDynamicAnchor)
+				.at(0)
+				.find('span')
+			const { itemprop } = $li.attributes()
+
+			expect(itemprop).toBe('name')
+		})
+
+		it('adds the position in the link element', () => {
+			const $meta = wrapper
+				.findAll('li')
+				.at(0)
+				.find('meta')
+			const { itemprop, content } = $meta.attributes()
+
+			expect(content).toBe('1')
+			expect(itemprop).toBe('position')
+		})
 	})
 })
