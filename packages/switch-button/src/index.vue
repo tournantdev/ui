@@ -1,0 +1,72 @@
+<template>
+	<div class="t-ui-switch-button">
+		<span :id="id" class="t-ui-switch-button__label"><slot></slot></span>
+		<button
+			class="t-ui-switch-button__button"
+			role="switch"
+			:aria-checked="isChecked.toString()"
+			:aria-labelledby="id"
+			@click="toggle"
+		>
+			<span class="t-ui-switch-button__text t-ui-switch-button__text--on">{{
+				onLabel
+			}}</span>
+			<span class="t-ui-switch-button__text t-ui-switch-button__text--off">{{
+				offLabel
+			}}</span>
+		</button>
+	</div>
+</template>
+
+<script>
+export default {
+	name: 'TournantSwitchButton',
+	props: {
+		value: {
+			type: Boolean,
+			default: false
+		},
+		onLabel: {
+			type: String,
+			default: 'on'
+		},
+		offLabel: {
+			type: String,
+			default: 'off'
+		}
+	},
+	data: function() {
+		return {
+			id: null,
+			isChecked: this.value
+		}
+	},
+	mounted() {
+		this.id = Math.random()
+			.toString(36)
+			.substring(2, 15)
+	},
+	methods: {
+		toggle() {
+			this.$emit('click', !this.isChecked)
+			this.isChecked = !this.isChecked
+		}
+	}
+}
+</script>
+
+<style scoped>
+.t-ui-switch-button__text {
+	font-size: 0.75rem;
+	font-weight: bold;
+	display: inline-block;
+	padding: 0.25rem;
+}
+
+[aria-checked='true'] .t-ui-switch-button__text--on,
+[aria-checked='false'] .t-ui-switch-button__text--off {
+	background-color: #000;
+	border: 2px solid transparent;
+	color: #fff;
+}
+</style>
