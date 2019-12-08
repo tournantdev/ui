@@ -56,6 +56,12 @@ export default {
 </script>
 
 <style scoped>
+.t-ui-switch-button__button {
+	-webkit-appearance: none;
+	padding: 0;
+	font: inherit;
+}
+
 .t-ui-switch-button__text {
 	font-size: 0.75rem;
 	font-weight: bold;
