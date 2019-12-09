@@ -1,0 +1,26 @@
+{
+  "name": "@tournant/switch-button",
+  "version": "0.1.0",
+  "description": "An accessible implementation of two-state switch buttons",
+  "keywords": [],
+  "main": "./dist/switch-button.ssr.js",
+  "module": "./dist/switch-button.js",
+  "unpkg": "./dist/browser.min.js",
+  "files": [
+    "dist",
+    "src/**/*.vue"
+  ],
+  "repository": "https://github.com/tournantdev/ui",
+  "bugs": "https://github.com/tournantdev/ui/issues",
+  "homepage": "https://ui.tournant.dev",
+  "author": "Marcus Herrmann",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
+    "lint": "vue-cli-service lint",
+    "test": "cd ../.. && jest packages/switch-button --color"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.10"
+  }
+}
