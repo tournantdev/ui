@@ -35,7 +35,7 @@ export default {
 			default: 'off'
 		}
 	},
-	data: function() {
+	data() {
 		return {
 			id: null,
 			isChecked: this.value
@@ -48,8 +48,8 @@ export default {
 	},
 	methods: {
 		toggle() {
-			this.$emit('click', !this.isChecked)
 			this.isChecked = !this.isChecked
+			this.$emit('click', this.isChecked)
 		}
 	}
 }
