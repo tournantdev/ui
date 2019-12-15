@@ -6,7 +6,7 @@
 		"bootstrap": "lerna bootstrap",
 		"build:changed": "lerna run build --parallel --since origin/master",
 		"build:ui": "vue-cli-service build",
-		"build:ci": "lerna run build",
+		"build:ci": "lerna run build --max-old-space-size=4096",
 		"build": "lerna run build --parallel",
 		"create": "communard",
 		"integrity": "yarn lint && yarn test",
