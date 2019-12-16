@@ -8,6 +8,8 @@ defaults: &defaults
   working_directory: ~/tournant/ui
   docker:
     - image: vuejs/ci
+      environment:
+          NODE_OPTIONS=--max_old_space_size=4096
 
 jobs:
   install:
