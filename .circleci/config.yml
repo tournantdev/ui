@@ -8,6 +8,8 @@ defaults: &defaults
   working_directory: ~/tournant/ui
   docker:
     - image: vuejs/ci
+      environment:
+          NODE_OPTIONS=--max_old_space_size=4096
 
 jobs:
   install:
@@ -56,15 +58,15 @@ jobs:
       - attach_workspace:
           at: ~/tournant
       - run:
-          name: 'Building component instances'
-          command: yarn build:changed
+          name: "Building component instances"
+          command: yarn build:ci
   test:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/tournant
       - run:
-          name: 'Run Unit Tests'
+          name: "Run Unit Tests"
           command: yarn run test:ci
       - run:
           name: report coverage stats for non-PRs
