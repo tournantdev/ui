@@ -19,6 +19,7 @@ jobs:
       - restore_cache:
           keys:
             - v3-tournant-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: yarn global add lerna
       - run: yarn run bootstrap
       - save_cache:
           paths:
