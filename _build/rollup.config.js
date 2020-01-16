@@ -25,7 +25,7 @@ const fullPlugins = () => [
 	resolve(),
 	vue({ css: true }),
 	buble({ objectAssign: 'Object.assign' }),
-	terser(),
+	terser({ numWorkers: 1 }),
 	filesize()
 ]
 
