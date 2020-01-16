@@ -2541,11 +2541,6 @@
     replace-in-files "^2.0.3"
     validate-npm-package-name "^3.0.0"
 
-"@tournant/dynamic-anchor@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@tournant/dynamic-anchor/-/dynamic-anchor-0.0.1.tgz#979e8e5a3d1b5ef74e633208f01343325dbd58ed"
-  integrity sha512-lAoxgLRto9gPZ8M4EGvy7NuYCbZ8CRcY3J9eFtG0r5uPJ/4UlzQJAWJpRgn4pnW1f+ObOTMmIRPkyhUKmpA7ZA==
-
 "@types/babel-types@*", "@types/babel-types@^7.0.0":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@types/babel-types/-/babel-types-7.0.7.tgz#667eb1640e8039436028055737d2b9986ee336e3"
@@ -16063,10 +16058,10 @@ vue@^2.6.10:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
-vuelidate@^0.7.4:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.7.4.tgz#5a0e54be09ac0192f1aa3387d74b92e0945bf8aa"
-  integrity sha512-QHZWYOL325Zo+2K7VBNEJTZ496Kd8Z31p85aQJFldKudUUGBmgw4zu4ghl4CyqPwjRCmqZ9lDdx4FSdMnu4fGg==
+vuelidate@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.7.5.tgz#ff48c75ae9d24ea24c24e9ea08065eda0a0cba0a"
+  integrity sha512-GAAG8QAFVp7BFeQlNaThpTbimq3+HypBPNwdkCkHZZeVaD5zmXXfhp357dcUJXHXTZjSln0PvP6wiwLZXkFTwg==
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"
