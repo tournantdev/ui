@@ -8,8 +8,7 @@ defaults: &defaults
   working_directory: ~/tournant/ui
   docker:
     - image: vuejs/ci
-      environment:
-          NODE_OPTIONS=--max_old_space_size=4096
+      environment: NODE_OPTIONS=--max_old_space_size=4096
 
 jobs:
   install:
@@ -25,33 +24,11 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-            - packages/combobox/node_modules
-            - packages/dropdown/node_modules
-            - packages/input/node_modules
           key: v3-tournant-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - persist_to_workspace:
           root: ~/tournant
           paths:
             - ui
-  # bootstrap:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/tournant
-  #     - restore_cache:
-  #         keys:
-  #           - tournant-lerna-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-  #           - tournant-lerna-v1-{{ .Branch }}-
-  #           - tournant-lerna-v1-
-  #     - run:
-  #         name: 'Bootstrapping packages'
-  #         command: yarn bootstrap
-  #     - save_cache:
-  #         key: tournant-lerna-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-  #         paths:
-  #           - packages/combobox/node_modules
-  #           - packages/dropdown/node_modules
-  #           - packages/input/node_modules
   test:
     <<: *defaults
     steps:
