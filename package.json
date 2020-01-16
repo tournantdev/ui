@@ -21,7 +21,7 @@
 	"dependencies": {
 		"@babel/core": "^7.7.4",
 		"@storybook/addon-knobs": "^5.3.4",
-		"@storybook/vue": "^5.2.6",
+		"@storybook/vue": "^5.3.4",
 		"@tournant/communard": "^2.2.0",
 		"@vue/cli-plugin-babel": "^4.1.1",
 		"@vue/cli-plugin-eslint": "^4.1.1",
