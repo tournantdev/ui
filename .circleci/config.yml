@@ -47,7 +47,7 @@ jobs:
           at: ~/tournant
       - run:
           name: 'Building component instances'
-          command: yarn build:ci
+          command: yarn build
 
 workflows:
   version: 2
