@@ -18,7 +18,7 @@
 		"test": "vue-cli-service test:unit"
 	},
 	"dependencies": {
-		"@babel/core": "^7.7.4",
+		"@babel/core": "^7.8.3",
 		"@storybook/addon-knobs": "^5.3.4",
 		"@storybook/vue": "^5.3.4",
 		"@tournant/communard": "^2.2.0",
