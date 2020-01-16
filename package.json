@@ -7,7 +7,7 @@
 		"build:changed": "lerna run build --parallel --since origin/master",
 		"build:ui": "vue-cli-service build",
 		"build": "lerna run build --parallel",
-		"build:ci": "lerna run build --maxWorkers=2",
+		"build:ci": "lerna run build",
 		"create": "communard",
 		"integrity": "yarn lint && yarn test",
 		"lint": "eslint '**/*.{vue,js}' --fix",
