@@ -16180,10 +16180,10 @@ vue@^2.6.10:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
-vuelidate@^0.7.4:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.7.4.tgz#5a0e54be09ac0192f1aa3387d74b92e0945bf8aa"
-  integrity sha512-QHZWYOL325Zo+2K7VBNEJTZ496Kd8Z31p85aQJFldKudUUGBmgw4zu4ghl4CyqPwjRCmqZ9lDdx4FSdMnu4fGg==
+vuelidate@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.7.5.tgz#ff48c75ae9d24ea24c24e9ea08065eda0a0cba0a"
+  integrity sha512-GAAG8QAFVp7BFeQlNaThpTbimq3+HypBPNwdkCkHZZeVaD5zmXXfhp357dcUJXHXTZjSln0PvP6wiwLZXkFTwg==
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"
