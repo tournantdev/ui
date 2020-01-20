@@ -1,7 +1,7 @@
 {
   "name": "@tournant/tabs",
   "version": "0.1.0",
-  "description": "A",
+  "description": "An accessible implementation of a tabpanel widget",
   "keywords": [],
   "main": "./dist/tabs.ssr.js",
   "module": "./dist/tabs.js",
@@ -13,7 +13,7 @@
   "repository": "https://github.com/tournantdev/ui",
   "bugs": "https://github.com/tournantdev/ui/issues",
   "homepage": "https://ui.tournant.dev",
-  "author": "Oscar Braunert",
+  "author": "Marcus Herrmann",
   "license": "MIT",
   "scripts": {
     "build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",

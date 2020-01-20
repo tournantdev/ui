@@ -17,23 +17,47 @@ yarn add @tournant/tabs
 Once the component is installed you need to import it wherever you want to use it.
 
 ```js
-import TournantTabs from '@tournant/tabs'
+import {  TournantTabsWidget, TournantTab, TournantTabpanel  } from '@tournant/tabs'
 ```
 
 Don’t forget to add it to the registered components (been there, done that):
 
 ```js
 components: {
-  TournantTabs,
+   TournantTabsWidget, 
+   TournantTab,
+   TournantTabpanel
   // ... all the other amazing components
 }
 ```
 
 ## Usage
 
-Insert usage guide here
+At first, use the wrapper  called `TournantTabsWidget`. Inside it establish two slot areas:
+- one named "tabs"
+- one named "panels".
+
+Inside them, place the triggers inside tabs, and the panel content inside panels, like this:
+
+```
+<tournant-tabs-widget initial="foo">
+    <template slot="tabs">
+        <tournant-tab name="foo">Item 1</tournant-tab>
+        <tournant-tab name="bar">Item 2</tournant-tab>
+        <tournant-tab name="baz">Item 3</tournant-tab>
+    </template>
+    <template slot="panels">
+        <tournant-tabpanel name="foo">Panel 1</tournant-tabpanel>
+        <tournant-tabpanel name="bar">Panel 2</tournant-tabpanel>
+        <tournant-tabpanel name="baz">Panel 3</tournant-tabpanel>
+    </template>
+</tournant-tabs-widget>
+```
+Finally, decide on the initial tab. Pass the tab/panel name into `<TournantTabsWidget>`'s initial prop.
 
 ## Bugs & Enhancements
+
+Note that this component follows the [WAI ARIA tabpanel Authoring Practice](https://www.w3.org/TR/wai-aria-practices-1.1/#tabpanel).
 
 If you found a bug, please create a [bug ticket](https://github.com/tournantdev/ui/issues/new?assignees=&labels=component:tabs&template=bug_report.md&title=).
 
