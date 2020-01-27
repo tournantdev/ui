@@ -13,19 +13,19 @@ The current implementation only covers the _List autocomplete with manual select
 No rocket science here. Although rockets are cool, tbh. 🚀 Just install the component from npm.
 
 ```
-npm install @tournant/ui --save-dev
+npm install @tournant/combobox --save-dev
 ```
 
 If you use Yarn:
 
 ```
-yarn add -D @tournant/ui
+yarn add -D @tournant/combobox
 ```
 
 Once the component is installed you need to import wherever you want to use it.
 
 ```js
-import TournantCombobox from '@tournant/ui'
+import TournantCombobox from '@tournant/combobox'
 ```
 
 Don’t forget to add it to the registered components (been there, done that):
