@@ -4,7 +4,7 @@ import TournantComponent from './index.vue'
 export function install(Vue) {
 	if (install.installed) return
 	install.installed = true
-	Vue.component('TournantAlert', TournantComponent)
+	Vue.component('TournantNotification', TournantComponent)
 }
 
 // Create module definition for Vue.use()
