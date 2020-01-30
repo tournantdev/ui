@@ -18,7 +18,7 @@ export default {
 		},
 		type: {
 			type: String,
-			default: 'assertive'
+			default: 'polite'
 		},
 		state: {
 			type: String,

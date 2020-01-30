@@ -37,14 +37,14 @@ describe('notification', () => {
 	})
 
 	describe('ARIA states and properties', () => {
-		it('has a role of `alert`', () => {
-			expect($root.getAttribute('role')).toBe('alert')
+		it('has a role of `status`', () => {
+			expect($root.getAttribute('role')).toBe('status')
 		})
 
-		it('changes role to status if `type` is `polite`', () => {
-			wrapper.setProps({ type: 'polite' })
+		it('changes role to `alert` if `type` is `assertive`', () => {
+			wrapper.setProps({ type: 'assertive' })
 
-			expect(wrapper.attributes('role')).toBe('status')
+			expect(wrapper.attributes('role')).toBe('alert')
 		})
 
 		it('sets `aria-hidden` to `false` if a message is present and the timeout has not passed', () => {
