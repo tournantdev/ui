@@ -72,7 +72,7 @@ An alert will be announced immdiately. It is useful if, say, a critical error ha
 
 The following props can be used to control the component:
 
-- `message`: _Required_. A string that shoudl be added to page and read out by screen readers.
+- `message`: _Required_. A string that should be added to page and read out by screen readers.
 - `state`: Default: `info`. A state level, with which you can control visual representation. See section [#css](CSS) below.
 - `type`: Default: `polite`. Controls the announcement by a screen reader. Must be either `assertive` or `polite`.
 - `hideAfterSeconds`: Default: `5`. The time which should pass before the message is hidden.
