@@ -1,15 +1,15 @@
 import { shallowMount } from '@vue/test-utils'
 
-import TournantAlert from '../../src/index.vue'
+import TournantNotification from '../../src/index.vue'
 
 jest.useFakeTimers()
 
-describe('alert', () => {
+describe('notification', () => {
 	let wrapper
 	let $root
 
 	beforeEach(() => {
-		wrapper = shallowMount(TournantAlert, {
+		wrapper = shallowMount(TournantNotification, {
 			propsData: {
 				message: 'Test message'
 			}
