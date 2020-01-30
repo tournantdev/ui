@@ -22,6 +22,12 @@ To create files for a new component use the `yarn run create` command. This will
 
 Please always use this tool for new components, as it will create all config files in a standardised manner.
 
+### Watch Mode
+
+Some components depend on each other. To keep them up-to-date when developing in sync run `yarn watch` in the respective package folders.
+
+It is, unfortunately, currently not possible to use Lerna for this. Thus, every package’s watch mode need to run in separate terminal session.
+
 ### Storybook
 
 We use [Storybook](https://storybook.js.org/) to quickly prototype new components. If you’ve never worked with it before, we recommend the [Intro to Storybook](https://www.learnstorybook.com/intro-to-storybook) guide.

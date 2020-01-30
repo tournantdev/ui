@@ -1,18 +1,10 @@
 {
-	"name": "@tournant/dropdown",
-	"version": "1.0.4",
-	"description": "Accessible dropdown menu",
-	"keywords": [
-		"Vue",
-		"components",
-		"a11y",
-		"accessibility",
-		"dropdown",
-		"menu",
-		"ui"
-	],
-	"main": "./dist/dropdown.ssr.js",
-	"module": "./dist/dropdown.js",
+	"name": "@tournant/switch-button",
+	"version": "0.1.2",
+	"description": "An accessible implementation of two-state switch buttons",
+	"keywords": [],
+	"main": "./dist/switch-button.ssr.js",
+	"module": "./dist/switch-button.js",
 	"unpkg": "./dist/browser.min.js",
 	"files": [
 		"dist",
@@ -21,13 +13,13 @@
 	"repository": "https://github.com/tournantdev/ui",
 	"bugs": "https://github.com/tournantdev/ui/issues",
 	"homepage": "https://ui.tournant.dev",
-	"author": "Oscar Braunert",
+	"author": "Marcus Herrmann",
 	"license": "MIT",
 	"scripts": {
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
 		"lint": "vue-cli-service lint",
 		"prepack": "yarn test && yarn build",
-		"test": "cd ../.. && jest packages/dropdown --color",
+		"test": "cd ../.. && jest packages/switch-button --color",
 		"watch": "rollup -c ../../_build/rollup.config.js --watch"
 	},
 	"peerDependencies": {

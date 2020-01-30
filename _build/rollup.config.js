@@ -25,12 +25,15 @@ const fullPlugins = () => [
 	resolve(),
 	vue({ css: true }),
 	buble({ objectAssign: 'Object.assign' }),
-	terser(),
+	terser({ numWorkers: 1 }),
 	filesize()
 ]
 
+const external = ['vue']
+
 export default [
 	{
+		external,
 		input,
 		output: [
 			{
@@ -49,6 +52,7 @@ export default [
 		plugins: [del({ targets: 'dist/*' }), ...fullPlugins()]
 	},
 	{
+		external,
 		input,
 		output: {
 			compact: true,

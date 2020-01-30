@@ -1,18 +1,10 @@
 {
-	"name": "@tournant/dropdown",
-	"version": "1.0.4",
-	"description": "Accessible dropdown menu",
-	"keywords": [
-		"Vue",
-		"components",
-		"a11y",
-		"accessibility",
-		"dropdown",
-		"menu",
-		"ui"
-	],
-	"main": "./dist/dropdown.ssr.js",
-	"module": "./dist/dropdown.js",
+	"name": "@tournant/breadcrumb",
+	"version": "1.0.0",
+	"description": "A trail of links to let users find their place within a website.",
+	"keywords": [],
+	"main": "./dist/breadcrumb.ssr.js",
+	"module": "./dist/breadcrumb.js",
 	"unpkg": "./dist/browser.min.js",
 	"files": [
 		"dist",
@@ -27,10 +19,13 @@
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
 		"lint": "vue-cli-service lint",
 		"prepack": "yarn test && yarn build",
-		"test": "cd ../.. && jest packages/dropdown --color",
+		"test": "cd ../.. && jest packages/breadcrumb --color",
 		"watch": "rollup -c ../../_build/rollup.config.js --watch"
 	},
 	"peerDependencies": {
 		"vue": "^2.6.10"
+	},
+	"dependencies": {
+		"@tournant/dynamic-anchor": "^0.0.1"
 	}
 }
