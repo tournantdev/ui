@@ -120,9 +120,11 @@ States can be whatever you want:
 
 These can act as a helper to style the component matching the state.
 
-#### aria-hidden
+### Hiding messages
 
 If the timeout elapsed and the message has not been removed from the outside, `aria-hidden` will be set to true. To keep the UI in sync, `display: none` is added to the root element.
+
+The component will emit the event `messageTimeout` as soon as the timeout elapses. You can use this event to run a clean-up task in your app.
 
 ## Bugs & Enhancements
 
