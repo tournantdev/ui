@@ -7,13 +7,13 @@ Notification messages that can be picked up by screenreaders. Implements the [st
 We are following standard package procedures. You can install the component using NPM or Yarn.
 
 ```
-npm install @tournant/alert --save
+npm install @tournant/notification --save
 ```
 
 If you use Yarn:
 
 ```
-yarn add @tournant/alert
+yarn add @tournant/notification
 ```
 
 Once the component is installed you need to import it wherever you want to use it.
