@@ -1,0 +1,34 @@
+{
+	"name": "@tournant/notification",
+	"version": "0.0.2",
+	"description": "Screenreader friendly notification messages",
+	"keywords": [
+		"accessibility",
+		"vue",
+		"component",
+		"notification",
+		"alert",
+		"status"
+	],
+	"main": "./dist/notification.ssr.js",
+	"module": "./dist/notification.js",
+	"unpkg": "./dist/browser.min.js",
+	"files": [
+		"dist",
+		"src/**/*.vue"
+	],
+	"repository": "https://github.com/tournantdev/ui",
+	"bugs": "https://github.com/tournantdev/ui/issues",
+	"homepage": "https://ui.tournant.dev",
+	"author": "Oscar Braunert",
+	"license": "MIT",
+	"scripts": {
+		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
+		"lint": "vue-cli-service lint",
+		"test": "cd ../.. && jest packages/notification --color"
+	},
+	"peerDependencies": {
+		"vue": "^2.6.10"
+	},
+	"gitHead": "43e18fdf87469cc6c1d1ff93729c5fb29ffee898"
+}
