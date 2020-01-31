@@ -1,6 +1,6 @@
-# @tournant/alert
+# @tournant/notification
 
-Notification messages that can be picked up by screenreaders. Implements the [status role](https://www.w3.org/TR/wai-aria-1.1/#status) by default. But can also be used an [alert widget](https://www.w3.org/TR/wai-aria-1.1/#alert).
+Notification messages that can be picked up by screenreaders. Implements the [status role](https://www.w3.org/TR/wai-aria-1.1/#status) by default. But can also be used as an [alert widget](https://www.w3.org/TR/wai-aria-1.1/#alert).
 
 ## Installation
 
