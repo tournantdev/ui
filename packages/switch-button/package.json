@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/switch-button",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "An accessible implementation of two-state switch buttons",
 	"keywords": [],
 	"main": "./dist/switch-button.ssr.js",
