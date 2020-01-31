@@ -25,7 +25,9 @@
 	"scripts": {
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
 		"lint": "vue-cli-service lint",
-		"test": "cd ../.. && jest packages/notification --color"
+		"prepack": "yarn test && yarn build",
+		"test": "cd ../.. && jest packages/notification --color",
+		"watch": "rollup -c ../../_build/rollup.config.js --watch"
 	},
 	"peerDependencies": {
 		"vue": "^2.6.10"
