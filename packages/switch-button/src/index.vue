@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .t-ui-switch-button__button {
 	-webkit-appearance: none;
 	padding: 0;
