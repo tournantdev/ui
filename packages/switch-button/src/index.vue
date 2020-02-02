@@ -1,19 +1,22 @@
 <template>
 	<div class="t-ui-switch-button">
-		<span :id="id" class="t-ui-switch-button__label"><slot></slot></span>
+		<span :id="id" class="t-ui-switch-button__label">
+			<slot></slot>
+		</span>
 		<button
 			class="t-ui-switch-button__button"
 			role="switch"
 			:aria-checked="isChecked.toString()"
+			:value="value"
 			:aria-labelledby="id"
 			@click="toggle"
 		>
-			<span class="t-ui-switch-button__text t-ui-switch-button__text--on">{{
-				onLabel
-			}}</span>
-			<span class="t-ui-switch-button__text t-ui-switch-button__text--off">{{
-				offLabel
-			}}</span>
+			<span class="t-ui-switch-button__text t-ui-switch-button__text--on">
+				{{ onLabel }}
+			</span>
+			<span class="t-ui-switch-button__text t-ui-switch-button__text--off">
+				{{ offLabel }}
+			</span>
 		</button>
 	</div>
 </template>
@@ -41,6 +44,11 @@ export default {
 			isChecked: this.value
 		}
 	},
+	watch: {
+		value(value) {
+			this.isChecked = value
+		}
+	},
 	mounted() {
 		this.id = Math.random()
 			.toString(36)
@@ -49,7 +57,7 @@ export default {
 	methods: {
 		toggle() {
 			this.isChecked = !this.isChecked
-			this.$emit('click', this.isChecked)
+			this.$emit('input', this.isChecked)
 		}
 	}
 }
