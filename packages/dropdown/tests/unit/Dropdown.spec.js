@@ -19,13 +19,16 @@ describe('Dropdown', () => {
 				items:
 					'<button role="menuitem" tabindex="-1">Rename</button> <button role="menuitem" tabindex="-1">Delete</button>'
 			},
-			localVue
+			localVue,
+			attachToDocument: true
 		})
 
 		button = wrapper.find('button')
 	})
 
 	describe('Events', () => {
+		let firstMenuItem
+
 		it('@click - open and close menu', () => {
 			button.trigger('click')
 			expect(wrapper.vm.$refs.menu).toBeDefined()
@@ -47,6 +50,13 @@ describe('Dropdown', () => {
 
 			button.trigger('keydown.up')
 			expect(wrapper.vm.$refs.menu).toBeUndefined()
+		})
+
+		it('@keydown.down - focuses first menu item', async () => {
+			button.trigger('keydown.down')
+			await wrapper.vm.$nextTick()
+			firstMenuItem = wrapper.findAll('[role="menuitem"]').at(0)
+			expect(firstMenuItem.element).toBe(document.activeElement)
 		})
 	})
 
