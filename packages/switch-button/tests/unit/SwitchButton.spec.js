@@ -43,7 +43,7 @@ describe('switch-button', () => {
 
 		it('emits click event when clicked', () => {
 			button.trigger('click')
-			expect(wrapper.emitted().click).toBeTruthy()
+			expect(wrapper.emitted().input).toBeTruthy()
 		})
 	})
 

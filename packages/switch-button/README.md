@@ -35,7 +35,7 @@ Use this switch button, or toggle button as they are sometimes called, to implem
 
 ### Props
 
-Use the `value` prop to set an initial state:
+Use the `value` prop to set the switch button's state:
 
 ```html
 <tournant-switch-button value="true">Tournant awesomeness</tournant-switch-button>
