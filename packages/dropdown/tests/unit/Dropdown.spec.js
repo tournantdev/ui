@@ -1,23 +1,21 @@
-// global.console = { warn: jest.fn() }
-
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 
 import Dropdown from '@p/dropdown/src/index.vue'
 
 const localVue = createLocalVue()
 
-localVue.directive('clickaway', {})
-
 describe('Dropdown', () => {
 	let wrapper
 	let button
+	let menu
 
 	beforeEach(() => {
 		wrapper = shallowMount(Dropdown, {
 			slots: {
 				'button-text': 'Options',
-				items:
-					'<button role="menuitem" tabindex="-1">Rename</button> <button role="menuitem" tabindex="-1">Delete</button>'
+				items: `<button role="menuitem" tabindex="-1">Rename</button>
+					<button role="menuitem" tabindex="-1">Delete</button>
+				`
 			},
 			localVue,
 			attachToDocument: true
@@ -29,34 +27,74 @@ describe('Dropdown', () => {
 	describe('Events', () => {
 		let firstMenuItem
 
-		it('@click - open and close menu', () => {
+		it('@click - open and close menu', async () => {
 			button.trigger('click')
+			await wrapper.vm.$nextTick()
 			expect(wrapper.vm.$refs.menu).toBeDefined()
 
 			button.trigger('click')
-
+			await wrapper.vm.$nextTick()
 			expect(wrapper.vm.isVisible).toBeFalsy()
 		})
 
-		it('@keydown.down - open menu', () => {
+		it('@keydown.down - open menu', async () => {
 			button.trigger('keydown.down')
+
+			await wrapper.vm.$nextTick()
 
 			expect(wrapper.vm.$refs.menu).toBeDefined()
 		})
 
 		it('@keydown.down > @keydown.up - opens and closes the menu', async () => {
 			await button.trigger('keydown.down')
+			await wrapper.vm.$nextTick()
 			expect(wrapper.vm.$refs.menu).toBeDefined()
 
 			button.trigger('keydown.up')
+			await wrapper.vm.$nextTick()
 			expect(wrapper.vm.$refs.menu).toBeUndefined()
 		})
 
 		it('@keydown.down - focuses first menu item', async () => {
 			button.trigger('keydown.down')
+
 			await wrapper.vm.$nextTick()
+
 			firstMenuItem = wrapper.findAll('[role="menuitem"]').at(0)
+
 			expect(firstMenuItem.element).toBe(document.activeElement)
+		})
+
+		it('@keydown.down - loops through items', async () => {
+			// open
+			button.trigger('keydown.down')
+
+			const { length } = wrapper.findAll('[role="menuitem"]')
+
+			for (let i = 0; i < length; i++) {
+				button.trigger('keydown.down')
+			}
+
+			firstMenuItem = wrapper.findAll('[role="menuitem"]').at(0)
+
+			await wrapper.vm.$nextTick()
+
+			expect(firstMenuItem.element).toBe(document.activeElement)
+		})
+
+		it('@keydown.up - focusses last item if at the beginning', async () => {
+			// open
+			button.trigger('keydown.down')
+
+			await wrapper.vm.$nextTick()
+
+			menu = wrapper.find('[role="menu"]')
+			menu.trigger('keydown.up')
+
+			const { length } = wrapper.findAll('[role="menuitem"]')
+			const lastItem = wrapper.findAll('[role="menuitem"]').at(length - 1)
+
+			expect(lastItem.element).toBe(document.activeElement)
 		})
 	})
 
@@ -69,13 +107,13 @@ describe('Dropdown', () => {
 			expect(button.attributes('aria-haspopup')).toBeTruthy()
 		})
 
-		it('changes its `aria-expanded` attribute', () => {
+		it('changes its `aria-expanded` attribute', async () => {
 			button.trigger('click')
-
+			await wrapper.vm.$nextTick()
 			expect(button.attributes('aria-expanded')).toBe('true')
 
 			button.trigger('click')
-
+			await wrapper.vm.$nextTick()
 			expect(button.attributes('aria-expanded')).toBe('false')
 		})
 	})
