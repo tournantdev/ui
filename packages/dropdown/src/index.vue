@@ -128,7 +128,7 @@ export default {
 			})
 		},
 		close(setFocus = true) {
-			// Method will be called from the `clickaway` directive on every component instance
+			// Multiple instances might have added event listeners
 			// Limit work and ensure correct handling of focus by having an additional check for visibility
 			if (this.isVisible) {
 				this.isVisible = false
