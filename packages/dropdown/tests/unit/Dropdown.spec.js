@@ -150,3 +150,59 @@ describe('Dropdown', () => {
 		})
 	})
 })
+
+describe('Dropdown – menuitemcheckbox', () => {
+	let wrapper
+	let button
+
+	beforeEach(() => {
+		wrapper = shallowMount(Dropdown, {
+			slots: {
+				'button-text': 'Options',
+				items: `<button role="menuitemcheckbox" tabindex="-1">Rename</button>
+					<button role="menuitemcheckbox" tabindex="-1">Delete</button>
+				`
+			},
+			localVue,
+			attachToDocument: true
+		})
+
+		button = wrapper.find('button')
+	})
+
+	it('detects `menuitemradio` button', async () => {
+		button.trigger('click')
+
+		await wrapper.vm.$nextTick()
+
+		expect(wrapper.vm.items).toHaveLength(2)
+	})
+})
+
+describe('Dropdown – menuitemradio', () => {
+	let wrapper
+	let button
+
+	beforeEach(() => {
+		wrapper = shallowMount(Dropdown, {
+			slots: {
+				'button-text': 'Options',
+				items: `<button role="menuitemradio" tabindex="-1">Rename</button>
+					<button role="menuitemradio" tabindex="-1">Delete</button>
+				`
+			},
+			localVue,
+			attachToDocument: true
+		})
+
+		button = wrapper.find('button')
+	})
+
+	it('detects `menuitemradio` button', async () => {
+		button.trigger('click')
+
+		await wrapper.vm.$nextTick()
+
+		expect(wrapper.vm.items).toHaveLength(2)
+	})
+})

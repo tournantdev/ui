@@ -117,7 +117,7 @@ export default {
 
 			this.$nextTick().then(() => {
 				this.items = Array.from(
-					this.$refs.menu.querySelectorAll('[role=menuitem]:not([disabled])')
+					this.$refs.menu.querySelectorAll('[role^="menuitem"]:not([disabled])')
 				)
 
 				this.items.forEach(button => {
