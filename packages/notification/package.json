@@ -1,10 +1,17 @@
 {
-	"name": "@tournant/dynamic-anchor",
-	"version": "1.0.1",
-	"description": "A wrapper around nuxt-link or router-link. Or a simple <a> tag.",
-	"keywords": [],
-	"main": "./dist/dynamic-anchor.ssr.js",
-	"module": "./dist/dynamic-anchor.js",
+	"name": "@tournant/notification",
+	"version": "1.0.0",
+	"description": "Screenreader friendly notification messages",
+	"keywords": [
+		"accessibility",
+		"vue",
+		"component",
+		"notification",
+		"alert",
+		"status"
+	],
+	"main": "./dist/notification.ssr.js",
+	"module": "./dist/notification.js",
 	"unpkg": "./dist/browser.min.js",
 	"files": [
 		"dist",
@@ -19,10 +26,11 @@
 		"build": "rollup -c ../../_build/rollup.config.js --environment BUILD:production",
 		"lint": "vue-cli-service lint",
 		"prepack": "yarn test && yarn build",
-		"test": "cd ../.. && jest packages/dynamic-anchor --color",
+		"test": "cd ../.. && jest packages/notification --color",
 		"watch": "rollup -c ../../_build/rollup.config.js --watch"
 	},
 	"peerDependencies": {
 		"vue": "^2.6.10"
-	}
+	},
+	"gitHead": "43e18fdf87469cc6c1d1ff93729c5fb29ffee898"
 }

@@ -1,7 +1,7 @@
 {
 	"name": "@tournant/combobox",
 	"description": "Accessible Combobox component for Vue.js",
-	"version": "0.6.4",
+	"version": "0.6.5",
 	"keywords": [
 		"Vue",
 		"components",
