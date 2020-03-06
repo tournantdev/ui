@@ -66,11 +66,11 @@ export default {
 
 		this.checkForAccessibleName()
 
-		document.addEventListener('keydown', this.handleGlobalKeyDown)
+		document.addEventListener('focusin', this.handleGlobalFocus)
 		document.documentElement.addEventListener('click', this.handleGlobalClick)
 	},
 	beforeDestroy() {
-		document.removeEventListener('keydown', this.handleGlobalKeyDown)
+		document.removeEventListener('focusin', this.handleGlobalFocus)
 		document.documentElement.removeEventListener(
 			'click',
 			this.handleGlobalClick
@@ -99,10 +99,10 @@ export default {
 				this.open()
 			}
 		},
-		handleGlobalKeyDown(evt) {
-			if (evt.keyCode === 9 && isOutsidePath(evt, this.$el)) {
-				this.close(false)
-			}
+		handleGlobalFocus() {
+			if (this.$el.contains(document.activeElement)) return
+
+			this.close(false)
 		},
 		handleGlobalClick(evt) {
 			if (isOutsidePath(evt, this.$el)) {
