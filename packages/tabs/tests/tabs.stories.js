@@ -1,8 +1,4 @@
-import {
-	TournantTabsWidget,
-	TournantTab,
-	TournantTabpanel
-} from '@tournant/tabs/src/index'
+import { TournantTabsWidget, TournantTab, TournantTabpanel } from '../src/'
 
 export default { title: '@tournant/tabs' }
 
