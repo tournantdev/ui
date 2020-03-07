@@ -2,6 +2,15 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 
 import Dropdown from '@p/dropdown/src/index.vue'
 
+document.body.innerHTML = `
+    <div>
+        <button id="btn1">btn 1 </button>
+        <button id="btn2">btn 2 </button>
+				<button id="btn3">btn 3 </button>
+				<a href="#" id="test-link">test</a>
+    </div>
+`
+
 const localVue = createLocalVue()
 
 describe('Dropdown', () => {
@@ -95,6 +104,18 @@ describe('Dropdown', () => {
 			const lastItem = wrapper.findAll('[role="menuitem"]').at(length - 1)
 
 			expect(lastItem.element).toBe(document.activeElement)
+		})
+
+		it('closes the menu if click happens outside of it', async () => {
+			button.trigger('keydown.down')
+
+			await wrapper.vm.$nextTick()
+
+			document.getElementById('test-link').click()
+
+			await wrapper.vm.$nextTick()
+
+			expect(wrapper.vm.$refs.menu).toBeUndefined()
 		})
 	})
 
