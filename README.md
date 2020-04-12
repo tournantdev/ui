@@ -1,6 +1,6 @@
 # Tournant UI
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/tournantdev/ui.svg)](https://greenkeeper.io/)
+
 
 In the kitchen, the _tournant_ is the person moving around, helping out.
 
