@@ -26,6 +26,6 @@
 		"vue": "^2.6.10"
 	},
 	"dependencies": {
-		"@tournant/dynamic-anchor": "^0.0.1"
+		"@tournant/dynamic-anchor": "^0.0.2"
 	}
 }
