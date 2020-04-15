@@ -2,7 +2,7 @@
  * Check if the target of an event is outside of an element
  *
  * @param {Event} evt
- * @param {Node} element
+ * @param {HTMLElement} element
  * @returns
  */
 const isOutsidePath = (evt, element) => {

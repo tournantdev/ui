@@ -66,11 +66,11 @@ export default {
 
 		this.checkForAccessibleName()
 
-		document.addEventListener('keydown', this.handleGlobalKeyDown)
+		document.addEventListener('focusin', this.handleGlobalFocus)
 		document.documentElement.addEventListener('click', this.handleGlobalClick)
 	},
 	beforeDestroy() {
-		document.removeEventListener('keydown', this.handleGlobalKeyDown)
+		document.removeEventListener('focusin', this.handleGlobalFocus)
 		document.documentElement.removeEventListener(
 			'click',
 			this.handleGlobalClick
@@ -99,10 +99,10 @@ export default {
 				this.open()
 			}
 		},
-		handleGlobalKeyDown(evt) {
-			if (evt.keyCode === 9 && isOutsidePath(evt, this.$el)) {
-				this.close(false)
-			}
+		handleGlobalFocus() {
+			if (this.$el.contains(document.activeElement)) return
+
+			this.close(false)
 		},
 		handleGlobalClick(evt) {
 			if (isOutsidePath(evt, this.$el)) {
@@ -117,7 +117,7 @@ export default {
 
 			this.$nextTick().then(() => {
 				this.items = Array.from(
-					this.$refs.menu.querySelectorAll('[role=menuitem]:not([disabled])')
+					this.$refs.menu.querySelectorAll('[role^="menuitem"]:not([disabled])')
 				)
 
 				this.items.forEach(button => {
@@ -128,7 +128,7 @@ export default {
 			})
 		},
 		close(setFocus = true) {
-			// Method will be called from the `clickaway` directive on every component instance
+			// Multiple instances might have added event listeners
 			// Limit work and ensure correct handling of focus by having an additional check for visibility
 			if (this.isVisible) {
 				this.isVisible = false
