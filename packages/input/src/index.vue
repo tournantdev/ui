@@ -1,10 +1,17 @@
 <template>
 	<div class="t-ui-input">
-		<label :for="id" class="t-ui-input__label">
+		<label :for="id" class="t-ui-input__label" data-test="label">
 			{{ label }}
 			<slot name="label-text" />
 		</label>
-		<input
+		<p
+			v-if="description && descriptionPosition === 'top'"
+			:id="`${id}__desc`"
+			class="t-ui-input__description"
+			data-test="description-top"
+		>
+			{{ description }}
+		</p>
 			:id="id"
 			:value="value"
 			:aria-invalid="validation.$error.toString()"
@@ -14,7 +21,12 @@
 			v-on="listeners"
 			@input="updateValue"
 		/>
-		<p v-if="description" :id="`${id}__desc`" class="t-ui-input__description">
+		<p
+			v-if="description && descriptionPosition === 'bottom'"
+			:id="`${id}__desc`"
+			class="t-ui-input__description"
+			data-test="description-bottom"
+		>
 			{{ description }}
 		</p>
 		<div
@@ -41,6 +53,11 @@ export default {
 		description: {
 			type: String,
 			default: ''
+		},
+		descriptionPosition: {
+			type: String,
+			default: 'bottom',
+			validator: position => position === 'top' || position === 'bottom'
 		},
 		label: {
 			type: String,
