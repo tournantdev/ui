@@ -20,8 +20,8 @@
 	},
 	"dependencies": {
 		"@babel/core": "^7.8.3",
-		"@storybook/addon-knobs": "^5.3.4",
-		"@storybook/vue": "^5.3.4",
+		"@storybook/addon-knobs": "5.3.21",
+		"@storybook/vue": "5.3.21",
 		"@tournant/communard": "^2.2.0",
 		"@vue/babel-preset-app": "^4.1.2",
 		"@vue/cli-plugin-babel": "^4.1.2",
@@ -32,6 +32,7 @@
 		"@vue/test-utils": "1.0.0-beta.29",
 		"babel-eslint": "^10.0.1",
 		"babel-jest": "^24.9.0",
+		"babel-loader": "^8.1.0",
 		"babel-preset-vue": "^2.0.2",
 		"codecov": "^3.5.0",
 		"eslint": "^6.7.1",
