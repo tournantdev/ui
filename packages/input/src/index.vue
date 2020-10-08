@@ -23,7 +23,9 @@
 			data-test="input"
 			v-on="listeners"
 			@input="updateValue"
-		/>
+		>
+			{{ value }}
+		</component>
 		<p
 			v-if="description && descriptionPosition === 'bottom'"
 			:id="`${id}__desc`"
