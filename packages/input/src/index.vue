@@ -12,12 +12,15 @@
 		>
 			{{ description }}
 		</p>
+		<component
+			:is="isTextarea ? 'textarea' : 'input'"
 			:id="id"
 			:value="value"
 			:aria-invalid="validation.$error.toString()"
 			:aria-describedby="ariaDescribedby"
 			v-bind="$attrs"
 			class="t-ui-input__input"
+			data-test="input"
 			v-on="listeners"
 			@input="updateValue"
 		/>
@@ -66,6 +69,10 @@ export default {
 		validation: {
 			type: Object,
 			required: true
+		},
+		isTextarea: {
+			type: Boolean,
+			default: false
 		}
 	},
 	data() {
