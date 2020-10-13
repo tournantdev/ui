@@ -1,5 +1,5 @@
 import TournantInput from '../src/index.vue'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { withKnobs, text, radios } from '@storybook/addon-knobs'
 
 // const dataNoError = { $error: false, $dirty: false }
 
@@ -15,7 +15,7 @@ export const withLabel = () => {
 		},
 		data: () => ({
 			validation: { $error: false, $dirty: false },
-			name: ''
+			name: 'Tournant'
 		}),
 		template: `<tournant-input :label="label" :validation="validation" value="" v-model="name" type="text" />`
 	}
@@ -28,6 +28,30 @@ export const typePassword = () => ({
 		password: ''
 	}),
 	template: `<tournant-input label="password" :validation="validation" value="" v-model="password" type="password" />`
+})
+
+export const asTextarea = () => ({
+	components: { TournantInput },
+	data: () => ({
+		validation: { $error: false, $dirty: false },
+		message: 'Hello'
+	}),
+	template: `<tournant-input label="Your message" :value="message" :validation="validation"  v-model="message" :is-textarea="true" />`
+})
+
+export const asTextareaWithError = () => ({
+	components: { TournantInput },
+	data: () => ({
+		validation: { $error: true, $dirty: false },
+		message: 'Hello'
+	}),
+	template: `
+		<tournant-input label="Your message" :value="message" :validation="validation"  v-model="message" :is-textarea="true">
+			<template v-slot:feedback>
+				<p>Please enter your message</p>
+			</template>
+		</tournant-input>
+	`
 })
 
 export const withError = () => ({
@@ -43,11 +67,35 @@ export const withError = () => ({
 	</tournant-input>`
 })
 
+const descriptionPositions = {
+	Top: 'top',
+	Bottom: 'bottom'
+}
+
 export const withDescription = () => ({
 	components: { TournantInput },
+	props: {
+		descriptionPosition: {
+			default: radios(
+				'Description position',
+				descriptionPositions,
+				'bottom',
+				'tuidescpos'
+			)
+		}
+	},
 	data: () => ({
 		validation: { $error: false, $dirty: false },
 		password: ''
 	}),
-	template: `<tournant-input label="password" :validation="validation" value="" v-model="password" type="password" description="Your password must be unique to this site." />`
+	template: `
+		<tournant-input
+			label="password"
+			:validation="validation"
+			value=""
+			v-model="password"
+			type="password"
+			description="Your password must be unique to this site."
+			:description-position="descriptionPosition" />
+	`
 })

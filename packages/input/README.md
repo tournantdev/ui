@@ -46,6 +46,8 @@ This is just a quick overview. For an in-depth guide how to use the component ch
 - `label`: The label text of the input. Required.
 - `validation`: A vuelidate-like object, must contain properties named `$error` and `$dirty`. Required.
 - `description`: Descriptive text giving a user more context on what form their input has to have. Optional.
+- `descriptionPosition`: Controls if the position should be displayed underneath the input or between label and input; defaults to `bottom`.
+- `isTextarea`: Render a textarea instead of an input element. Default to `false`.
 
 ### Styles
 
@@ -91,6 +93,32 @@ Ths will result in the following input:
 ```
 
 💁‍ _Note:_ You do not need to pass in a `id`. A unique ID for every instance of the component is automatically generated.
+
+### Textarea
+
+`<input>`s and `<textarea>`s are quite similar, in that they can both hold text content, which might need validation and so forth. This is why, instead of having a separate component to add a `<textarea>`, you can change this one via the `isTextarea` prop to be one:
+
+```html
+<tournant-input
+	v-model="message"
+	:is-textarea="true"
+	name="message"
+	label="Your message"
+/>
+```
+
+will output
+
+```html
+<label class="t-ui-input__label" for="6ac26f8f-930c-4dc4-a098-b00094b56906">
+	Your message
+</label>
+<textarea
+	class="t-ui-input__input"
+	name="message"
+	id="6ac26f8f-930c-4dc4-a098-b00094b56906"
+></textarea>
+```
 
 ### Label
 
@@ -157,7 +185,7 @@ No input without validation, right?
 
 You will have to take care of this yourself, though. The component can and should not know what value is expected inside of it.
 
-Nonetheless, I tried to make it as easy as possible to use the component along existing solutions like [Vuelidate](https://vuelidate.netlify.com/).
+Nonetheless, we tried to make it as easy as possible to use the component along existing solutions like [Vuelidate](https://vuelidate.netlify.com/).
 
 In fact, if you are already using Vuelidate, you are good to go.
 
@@ -204,11 +232,6 @@ This attribute could also be used to add styles based on the validated state.
 ```css
 .tournant-input__input[aria-invalid='true'] {
 	border-color: red;
-}
-
-/** [data-untouched is set on the input while `validation.$dirty is `false``] and can be used to only apply validated styles to touched and validated inputs */
-.tournant-input__input[aria-invalid='false']:not([data-untouched]) {
-	border-color: green;
 }
 ```
 

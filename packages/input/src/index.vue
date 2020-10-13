@@ -1,20 +1,37 @@
 <template>
 	<div class="t-ui-input">
-		<label :for="id" class="t-ui-input__label">
+		<label :for="id" class="t-ui-input__label" data-test="label">
 			{{ label }}
 			<slot name="label-text" />
 		</label>
-		<input
+		<p
+			v-if="description && descriptionPosition === 'top'"
+			:id="`${id}__desc`"
+			class="t-ui-input__description"
+			data-test="description-top"
+		>
+			{{ description }}
+		</p>
+		<component
+			:is="isTextarea ? 'textarea' : 'input'"
 			:id="id"
 			:value="value"
 			:aria-invalid="validation.$error.toString()"
 			:aria-describedby="ariaDescribedby"
 			v-bind="$attrs"
 			class="t-ui-input__input"
+			data-test="input"
 			v-on="listeners"
 			@input="updateValue"
-		/>
-		<p v-if="description" :id="`${id}__desc`" class="t-ui-input__description">
+		>
+			{{ value }}
+		</component>
+		<p
+			v-if="description && descriptionPosition === 'bottom'"
+			:id="`${id}__desc`"
+			class="t-ui-input__description"
+			data-test="description-bottom"
+		>
 			{{ description }}
 		</p>
 		<div
@@ -42,6 +59,11 @@ export default {
 			type: String,
 			default: ''
 		},
+		descriptionPosition: {
+			type: String,
+			default: 'bottom',
+			validator: position => position === 'top' || position === 'bottom'
+		},
 		label: {
 			type: String,
 			required: true
@@ -49,6 +71,10 @@ export default {
 		validation: {
 			type: Object,
 			required: true
+		},
+		isTextarea: {
+			type: Boolean,
+			default: false
 		}
 	},
 	data() {

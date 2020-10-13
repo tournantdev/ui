@@ -60,6 +60,20 @@ describe('Input', () => {
 		expect(type).toBe('password')
 	})
 
+	it('renders an input element by default', () => {
+		const input = wrapper.find('[data-test="input"]')
+
+		expect(input.element.tagName).toBe('INPUT')
+	})
+
+	it('renders a textarea if instructed', () => {
+		wrapper.setProps({ isTextarea: true })
+
+		const input = wrapper.find('[data-test="input"]')
+
+		expect(input.element.tagName).toBe('TEXTAREA')
+	})
+
 	describe('`v-model` compatibility', () => {
 		it('sets the value prop on the input', () => {
 			const $input = wrapper.find('input')
@@ -135,6 +149,29 @@ describe('Input', () => {
 			expect(input.attributes('aria-describedby')).toBe(
 				`${feedbackId} ${descId}`
 			)
+		})
+
+		it('positions the description text underneath the input by default', () => {
+			wrapper.setProps({
+				description: 'This is a description',
+				validation: { $error: true }
+			})
+
+			const description = wrapper.find('[data-test="description-bottom"]')
+
+			expect(description.exists()).toBe(true)
+		})
+
+		it('allows to position the description text above the input', () => {
+			wrapper.setProps({
+				description: 'This is a description',
+				descriptionPosition: 'top',
+				validation: { $error: true }
+			})
+
+			const description = wrapper.find('[data-test="description-top"]')
+
+			expect(description.exists()).toBe(true)
 		})
 	})
 
