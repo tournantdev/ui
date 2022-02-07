@@ -23,9 +23,7 @@
 			data-test="input"
 			v-on="listeners"
 			@input="updateValue"
-		>
-			{{ value }}
-		</component>
+			><!-- eslint-disable -->{{ value }}</component><!-- eslint-enable -->
 		<p
 			v-if="description && descriptionPosition === 'bottom'"
 			:id="`${id}__desc`"
