@@ -1,0 +1,45 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.22.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - codecov > teeny-request > https-proxy-agent:
+        patched: '2022-04-13T21:17:40.199Z'
+    - lerna > @lerna/publish > @evocateur/npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2022-04-13T21:17:40.199Z'
+  SNYK-JS-LODASH-567746:
+    - eslint > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
+    - node-sass > sass-graph > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
+    - '@storybook/addon-knobs > react-color > reactcss > lodash':
+        patched: '2022-04-13T21:17:40.199Z'
+    - '@vue/cli-service > portfinder > async > lodash':
+        patched: '2022-04-13T21:17:40.199Z'
+    - lerna > @lerna/bootstrap > @lerna/command > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
+    - node-sass > gaze > globule > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
+    - '@vue/test-utils > lodash':
+        patched: '2022-04-13T21:17:40.199Z'
+    - '@vue/cli-service > html-webpack-plugin > lodash':
+        patched: '2022-04-13T21:17:40.199Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-types > lodash':
+        patched: '2022-04-13T21:17:40.199Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > lodash':
+        patched: '2022-04-13T21:17:40.199Z'
+    - '@vue/cli-plugin-unit-jest > vue-jest > node-cache > lodash':
+        patched: '2022-04-13T21:17:40.199Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > babel-traverse > lodash':
+        patched: '2022-04-13T21:17:40.199Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-commits-parser > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-recommended-bump > conventional-commits-parser > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
+    - rollup-plugin-vue > @vue/component-compiler > pug > pug-code-gen > constantinople > babel-types > lodash:
+        patched: '2022-04-13T21:17:40.199Z'
