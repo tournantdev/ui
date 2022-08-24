@@ -1,0 +1,75 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - codecov > teeny-request > https-proxy-agent:
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/publish > @evocateur/pacote > make-fetch-happen > https-proxy-agent:
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/publish > @lerna/npm-dist-tag > @evocateur/npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/publish > @lerna/npm-publish > @evocateur/libnpmpublish > @evocateur/npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2022-08-24T16:37:13.884Z'
+  SNYK-JS-LODASH-567746:
+    - eslint > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - node-sass > sass-graph > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@storybook/addon-knobs > react-color > reactcss > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-service > portfinder > async > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/run > @lerna/command > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - node-sass > gaze > globule > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-service > webpack-dev-server > portfinder > async > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/command > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-service > html-webpack-plugin > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-types > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > vue-jest > node-cache > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-plugin-transform-strict-mode > babel-types > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > babel-types > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > vue-jest > babel-plugin-transform-es2015-modules-commonjs > babel-types > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > babel-traverse > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > vue-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > vue-jest > babel-plugin-transform-es2015-modules-commonjs > babel-plugin-transform-strict-mode > babel-types > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > babel-traverse > babel-types > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > vue-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > babel-types > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > vue-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > babel-traverse > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-commits-parser > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-recommended-bump > conventional-commits-parser > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - '@vue/cli-plugin-unit-jest > vue-jest > babel-plugin-transform-es2015-modules-commonjs > babel-template > babel-traverse > babel-types > lodash':
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-commits-parser > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-recommended-bump > conventional-commits-parser > lodash:
+        patched: '2022-08-24T16:37:13.884Z'
