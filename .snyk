@@ -1,0 +1,21 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - lerna > @lerna/add > @evocateur/pacote > @evocateur/npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2023-05-24T17:52:53.799Z'
+  SNYK-JS-LODASH-567746:
+    - lerna > @lerna/add > @lerna/bootstrap > @lerna/command > lodash:
+        patched: '2023-05-24T17:52:53.799Z'
+    - '@vue/cli-plugin-unit-jest > babel-plugin-transform-es2015-modules-commonjs > babel-plugin-transform-strict-mode > babel-types > lodash':
+        patched: '2023-05-24T17:52:53.799Z'
+    - lerna > @lerna/changed > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > lodash:
+        patched: '2023-05-24T17:52:53.799Z'
+    - lerna > @lerna/changed > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > lodash:
+        patched: '2023-05-24T17:52:53.799Z'
+    - lerna > @lerna/changed > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-commits-parser > lodash:
+        patched: '2023-05-24T17:52:53.799Z'
+    - lerna > @lerna/changed > @lerna/version > @lerna/conventional-commits > conventional-recommended-bump > conventional-commits-parser > lodash:
+        patched: '2023-05-24T17:52:53.799Z'
