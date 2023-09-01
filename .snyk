@@ -1,0 +1,12 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - rollup-plugin-vue > @vue/component-compiler > pug > pug-code-gen > constantinople > babel-types > lodash:
+        patched: '2023-09-01T15:31:32.593Z'
+        id: SNYK-JS-LODASH-567746
+        path: >-
+          rollup-plugin-vue > @vue/component-compiler > pug > pug-code-gen >
+          constantinople > babel-types > lodash
